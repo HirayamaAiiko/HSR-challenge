@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Honkai: Star Rail — Compendio y Modos de Juego</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Destruction.png" type="image/png">
+</head>
+<body>
+  <div class="app-container">
+
+    <!-- Header Navigation Bar -->
+    <header class="app-header">
+      <div class="brand-section">
+        <div class="brand-logo-wrap" title="Honkai: Star Rail">
+          <svg viewBox="0 0 24 24" class="brand-logo-svg">
+            <path fill="currentColor" d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2ZM6.4 6.4L10 10L6.4 10V6.4ZM17.6 6.4V10L14 10L17.6 6.4Z"/>
+          </svg>
+        </div>
+        <div class="brand-titles">
+          <h1>
+            Honkai: Star Rail
+            <span class="brand-badge">Tools</span>
+          </h1>
+          <p>Compendio completo, ruleta y duelos 1v1 para amigos</p>
+        </div>
+      </div>
+
+      <!-- Main Navigation Tabs -->
+      <nav class="main-nav-tabs" id="mainNavTabs">
+        <button class="nav-tab-btn active" data-tab="catalog">
+          <svg viewBox="0 0 24 24" class="tab-svg">
+            <path fill="currentColor" d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"/>
+          </svg>
+          <span>Catálogo</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="roulette">
+          <svg viewBox="0 0 24 24" class="tab-svg">
+            <path fill="currentColor" d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"/>
+          </svg>
+          <span>Ruleta</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="duel">
+          <svg viewBox="0 0 24 24" class="tab-svg">
+            <path fill="currentColor" d="M6.92 5.51L5.51 6.92l4.24 4.24-1.41 1.41-4.24-4.24-1.42 1.41 4.24 4.24-2.12 2.12c-.78.78-.78 2.05 0 2.83l.71.71c.78.78 2.05.78 2.83 0l2.12-2.12 4.24 4.24 1.41-1.42-4.24-4.24 1.41-1.41 4.24 4.24 1.41-1.41-4.24-4.24 2.83-2.83c1.95-1.95 2.5-4.8 1.41-7.07l-2.83 2.83-2.83-2.83 2.83-2.83C11.72 3.01 8.87 3.56 6.92 5.51z"/>
+          </svg>
+          <span>Duelo Endgame</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="universe" title="Universo Diferenciado, Guerra de Divisas y La Plaga">
+          <svg viewBox="0 0 24 24" class="tab-svg">
+            <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+          </svg>
+          <span>Expediciones</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="gacha" title="Modo Gachapón: Salto de Escuadras, Banners 50/50 y Presupuesto">
+          <svg viewBox="0 0 24 24" class="tab-svg">
+            <path fill="currentColor" d="M12 2.5l2.4 5.8 6.1.9-4.4 4.3 1 6.1-5.1-2.9-5.1 2.9 1-6.1-4.4-4.3 6.1-.9L12 2.5z"/>
+          </svg>
+          <span>Gachapón</span>
+        </button>
+      </nav>
+
+      <!-- Action Controls -->
+      <div class="header-actions">
+        <!-- Sound Effect Toggle -->
+        <button id="soundToggleBtn" class="btn-fluent btn-icon" title="Sonido de interfaz">
+          <span id="soundIcon">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+            </svg>
+          </span>
+        </button>
+
+        <!-- User Profile Trigger -->
+        <button id="openProfileModalBtn" class="btn-fluent profile-header-btn" title="Perfil y Copia de Seguridad">
+          <img id="headerUserAvatar" src="https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1001.png" alt="Avatar">
+          <span id="headerUserName">Trazacaminos</span>
+        </button>
+
+        <!-- Collection Filter Trigger -->
+        <button id="openRosterModalBtn" class="btn-fluent" title="Configurar personajes obtenidos">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/>
+          </svg>
+          <span id="rosterBtnText">Colección</span>
+          <span class="roster-active-indicator" id="rosterIndicatorDot" style="display: none;"></span>
+        </button>
+
+        <!-- Theme Toggle -->
+        <button id="themeToggleBtn" class="btn-fluent btn-icon" title="Alternar tema claro / oscuro">
+          <svg id="themeIcon" viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+            <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/>
+          </svg>
+          <span id="themeBtnText" style="display:none;">Tema</span>
+        </button>
+
+        <!-- Share Room Link -->
+        <button id="quickShareRoomBtn" class="btn-fluent btn-primary" title="Copiar enlace de sala">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/>
+          </svg>
+          <span>Compartir</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Shared Room Notification Banner (Visible when opening a friend's link) -->
+    <aside id="sharedRoomBanner" class="shared-room-banner" style="display: none;" aria-live="polite">
+      <div class="shared-room-banner-inner">
+        <div class="shared-room-host-visual">
+          <img id="sharedRoomHostAvatar" src="https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1001.png" alt="Host">
+          <span class="live-dot-pulse"></span>
+        </div>
+        <div class="shared-room-details">
+          <div class="shared-room-host-line">
+            <span class="shared-room-badge-tag">✦ Sala de Amigo</span>
+            <strong id="sharedRoomHostName">Anfitrión</strong>
+            <span class="shared-room-uid-chip" id="sharedRoomHostUid">UID: ---</span>
+          </div>
+          <div class="shared-room-desc" id="sharedRoomSubText">
+            Desafío sincronizado listo para jugar.
+          </div>
+        </div>
+        <div class="shared-room-actions">
+          <button type="button" id="openFriendInspectBannerBtn" class="btn-fluent btn-primary" title="Ver la ruleta, tiradas y expedición de tu amigo">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+              <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+            </svg>
+            <span>Ver Partida de Amigo</span>
+          </button>
+          <span class="p2p-badge-status" id="p2pLiveStatusBadge">● P2P Conectando...</span>
+          <button type="button" id="disconnectRoomBtn" class="btn-fluent" title="Desconectar y volver a mi sesión local">
+            Salir de la Sala
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Context Status Bar -->
+    <div class="breadcrumb-bar" id="breadcrumbBar">
+      <span class="breadcrumb-item" id="breadcrumbMain">Catálogo</span>
+      <span class="breadcrumb-sep">•</span>
+      <span class="breadcrumb-sub" id="breadcrumbSub">98 personajes registrados</span>
+    </div>
+
+    <!-- ======================================================================
+         PAGE 1: CATÁLOGO DE PERSONAJES
+         ====================================================================== -->
+    <div id="pageCatalog" class="mode-page">
+      <!-- Role Counter Bar -->
+      <section class="density-stats-bar">
+        <div class="stat-pill"><span class="stat-num" id="statTotalChars">98</span> personajes</div>
+        <div class="stat-separator">•</div>
+        <div class="stat-pill stat-pill-dps"><span class="stat-role-tag">DPS</span> <span class="stat-num" id="statDpsChars">40</span></div>
+        <div class="stat-separator">•</div>
+        <div class="stat-pill stat-pill-subdps"><span class="stat-role-tag">Sub-DPS</span> <span class="stat-num" id="statSubDpsChars">15</span></div>
+        <div class="stat-separator">•</div>
+        <div class="stat-pill stat-pill-support"><span class="stat-role-tag">Support</span> <span class="stat-num" id="statSupportChars">43</span></div>
+        <div class="stat-separator">•</div>
+        <div class="stat-pill" id="catalogRosterStatusText" style="margin-left: auto; color: var(--text-muted);">
+          Colección: Todos los personajes activos
+        </div>
+      </section>
+
+      <!-- Control Hub & Search -->
+      <section class="control-hub">
+        <div class="search-and-view-row">
+          <div class="search-wrapper">
+            <svg class="search-icon" viewBox="0 0 24 24">
+              <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+            </svg>
+            <input type="text" id="searchInput" class="search-input" placeholder="Buscar por nombre, elemento, vía o rol... (Ctrl + K)">
+            <button id="searchClearBtn" class="search-clear-btn" title="Limpiar búsqueda">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+              </svg>
+            </button>
+          </div>
+
+          <div class="view-mode-switcher">
+            <button id="viewTableBtn" class="view-btn active" title="Vista de Tabla">
+              <svg viewBox="0 0 24 24"><path d="M3 3v18h18V3H3zm8 16H5v-6h6v6zm0-8H5V5h6v6zm8 8h-6v-6h6v6zm0-8h-6V5h6v6z"/></svg>
+              <span>Tabla</span>
+            </button>
+            <button id="viewCardsBtn" class="view-btn" title="Vista de Tarjetas">
+              <svg viewBox="0 0 24 24"><path d="M4 11h5V5H4v6zm0 7h5v-6H4v6zm6 0h5v-6h-5v6zm6 0h5v-6h-5v6zm-6-7h5V5h-5v6zm6-6v6h5V5h-5z"/></svg>
+              <span>Tarjetas</span>
+            </button>
+            <button id="exportCsvBtn" class="view-btn" title="Descargar base de datos CSV">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+              </svg>
+              <span>CSV</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter Groups -->
+        <div class="filter-groups-grid">
+          <div class="filter-row">
+            <div class="filter-title"><span>Función</span></div>
+            <div class="filter-chips" id="roleFilters">
+              <button class="filter-chip active" data-filter-role="ALL">Todos <span class="chip-count" id="countRoleAll">98</span></button>
+              <button class="filter-chip chip-dps" data-filter-role="DPS">DPS <span class="chip-count" id="countRoleDps">0</span></button>
+              <button class="filter-chip chip-subdps" data-filter-role="SUB-DPS">Sub-DPS <span class="chip-count" id="countRoleSubDps">0</span></button>
+              <button class="filter-chip chip-support" data-filter-role="SUPPORT">Support <span class="chip-count" id="countRoleSupport">0</span></button>
+            </div>
+          </div>
+
+          <div class="filter-row">
+            <div class="filter-title"><span>Elemento</span></div>
+            <div class="filter-chips" id="elementFilters">
+              <button class="filter-chip active" data-filter-elem="ALL">Todos</button>
+            </div>
+          </div>
+
+          <div class="filter-row">
+            <div class="filter-title"><span>Vía</span></div>
+            <div class="filter-chips" id="pathFilters">
+              <button class="filter-chip active" data-filter-path="ALL">Todas</button>
+            </div>
+          </div>
+
+          <div class="filter-row">
+            <div class="filter-title"><span>Rareza</span></div>
+            <div class="filter-chips" id="rarityFilters">
+              <button class="filter-chip active" data-filter-rarity="ALL">Todas</button>
+              <button class="filter-chip chip-5star" data-filter-rarity="5"><span class="star-gold">✦✦✦✦✦</span> 5 Estrellas</button>
+              <button class="filter-chip chip-4star" data-filter-rarity="4"><span class="star-purple">✦✦✦✦</span> 4 Estrellas</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="active-filters-bar" id="activeFiltersBar">
+          <span id="resultsCounterText">Mostrando 98 de 98 personajes</span>
+          <button id="clearAllFiltersBtn" class="btn-clear-filters" style="display: none;">Restablecer filtros</button>
+        </div>
+      </section>
+
+      <!-- Table View Section -->
+      <main id="tableViewSection" class="table-view-container">
+        <div class="fluent-table-wrapper">
+          <table class="fluent-table" id="charactersTable">
+            <thead>
+              <tr>
+                <th data-sort="name" class="sorted" title="Ordenar por Nombre">
+                  <div class="th-wrap"><span>Personaje</span><span class="sort-icon" id="sortIconName">▲</span></div>
+                </th>
+                <th data-sort="rarity" title="Ordenar por Rareza">
+                  <div class="th-wrap"><span>Rareza</span><span class="sort-icon" id="sortIconRarity">◆</span></div>
+                </th>
+                <th data-sort="element" title="Ordenar por Elemento">
+                  <div class="th-wrap"><span>Elemento</span><span class="sort-icon" id="sortIconElem">◆</span></div>
+                </th>
+                <th data-sort="path" title="Ordenar por Vía">
+                  <div class="th-wrap"><span>Vía</span><span class="sort-icon" id="sortIconPath">◆</span></div>
+                </th>
+                <th data-sort="role" title="Ordenar por Función">
+                  <div class="th-wrap"><span>Función</span><span class="sort-icon" id="sortIconRole">◆</span></div>
+                </th>
+                <th><div class="th-wrap"><span>Especialidad de Combate</span></div></th>
+                <th style="text-align: right;"><div class="th-wrap" style="justify-content: flex-end;"><span>Colección</span></div></th>
+              </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+      </main>
+
+      <!-- Cards Grid View Section -->
+      <main id="cardsViewSection" class="cards-view-container" style="display: none;"></main>
+
+      <!-- Empty State -->
+      <div id="noResultsState" class="no-results" style="display: none;">
+        <div class="no-results-icon">
+          <svg viewBox="0 0 24 24" width="40" height="40" fill="var(--text-muted)">
+            <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+          </svg>
+        </div>
+        <h3>No se encontraron personajes</h3>
+        <p>Prueba ajustando los términos de búsqueda o restableciendo los filtros activos.</p>
+        <button id="resetFiltersFromEmptyBtn" class="btn-fluent btn-primary">Restablecer Filtros</button>
+      </div>
+    </div>
+
+    <!-- ======================================================================
+         PAGE 2: RULETA DE EQUIPOS
+         ====================================================================== -->
+    <div id="pageRoulette" class="mode-page" style="display: none;">
+      <section class="roulette-control-panel">
+        <div class="roulette-options-bar">
+          <div class="roulette-mode-pills">
+            <span class="mode-label-text">Composición:</span>
+            <button class="roulette-pill-btn active" data-roulette-mode="coherent" title="1 DPS + 1 Sub-DPS/Buffer + 1 Support + 1 Sustain">
+              Coherente
+            </button>
+            <button class="roulette-pill-btn" data-roulette-mode="thematic" title="Arquetipos: DoT, FUA, Superruptura, Hypercarry">
+              Arquetipos
+            </button>
+            <button class="roulette-pill-btn" data-roulette-mode="chaos" title="100% aleatorio sin restricciones de rol">
+              Caos Total
+            </button>
+          </div>
+
+          <div class="roulette-action-buttons">
+            <button id="spinRouletteBtn" class="btn-fluent btn-primary spin-main-btn">
+              <span id="spinBtnIcon">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                  <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"/>
+                </svg>
+              </span>
+              <span id="spinBtnText">Girar Ruleta</span>
+            </button>
+            <button id="copyTeamLinkBtn" class="btn-fluent" title="Copiar enlace directo de este equipo">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+              </svg>
+              <span>Copiar Enlace</span>
+            </button>
+            <button id="rouletteFriendViewBtn" class="btn-fluent" title="Ver la ruleta que le salió a tu amigo">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+              </svg>
+              <span>Ruleta de Amigo</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="roulette-sub-options">
+          <label class="roulette-toggle-label">
+            <input type="checkbox" id="rouletteOnlyFourStars">
+            <span>Solo 4 Estrellas (Desafío F2P)</span>
+          </label>
+
+          <div class="roulette-captain-box">
+            <span>Capitán fijo:</span>
+            <select id="rouletteCaptainSelect" class="btn-fluent roulette-select">
+              <option value="">Aleatorio (Sin fijar)</option>
+            </select>
+          </div>
+
+          <div id="rouletteRosterStatusPill" class="roster-status-pill">
+            <span id="rouletteRosterCountText">Roster: 98 disponibles</span>
+            <button id="rouletteConfigRosterBtn" class="btn-link-action">Ajustar</button>
+          </div>
+
+          <span id="rouletteArchetypeBadge" class="archetype-badge-indicator"></span>
+        </div>
+      </section>
+
+      <!-- 4 Team Slots Showcase -->
+      <section class="team-slots-grid" id="teamSlotsContainer"></section>
+    </div>
+
+    <!-- ======================================================================
+         PAGE 3: ARENA DUELO ENDGAME 1V1 (MoC, PF, AS - DOBLE NODO)
+         ====================================================================== -->
+    <div id="pageDuel" class="mode-page" style="display: none;">
+      <!-- Endgame Mode Selector Pills -->
+      <section class="endgame-selector-bar">
+        <div class="roulette-mode-pills" id="endgameModePills">
+          <button class="roulette-pill-btn active" data-endgame="moc">
+            Caos del Recuerdo (MoC 12)
+          </button>
+          <button class="roulette-pill-btn" data-endgame="pure_fiction">
+            Pura Ficción (PF 4)
+          </button>
+          <button class="roulette-pill-btn" data-endgame="apocalyptic_shadow">
+            Sombra Apocalíptica (AS 4)
+          </button>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 8px; margin-left: auto;">
+          <button id="newDuelMatchBtn" class="btn-fluent btn-primary">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+              <path d="M12 2l2.4 7.2h7.6l-6.1 4.5 2.3 7.1-6.2-4.5-6.2 4.5 2.3-7.1-6.1-4.5h7.6z"/>
+            </svg>
+            <span>Generar Duelo</span>
+          </button>
+          <button id="copyDuelLinkBtn" class="btn-fluent" title="Copiar enlace de sala">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+              <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/>
+            </svg>
+            <span>Compartir Sala</span>
+          </button>
+        </div>
+
+        <!-- Seasonal Rotation Selector Row -->
+        <div class="seasonal-rotation-row" id="endgameSeasonSelectorBar">
+          <span class="seasonal-row-label">Rotación Oficial:</span>
+          <div class="roulette-mode-pills" id="endgameSeasonPills"></div>
+        </div>
+      </section>
+
+      <!-- Bosses & Turbulence Stage Overview -->
+      <section class="endgame-stage-card" id="endgameStageContainer">
+        <!-- Rendered by JS -->
+      </section>
+
+      <!-- Player 1 vs Player 2 Double-Node Arenas -->
+      <section class="duel-teams-grid">
+        <!-- Player 1 Double Node Panel -->
+        <div class="duel-player-panel">
+          <div class="player-panel-header">
+            <div class="player-name-tag">
+              <span id="duelP1NameDisplay" style="color: var(--accent-color);">Jugador 1</span>
+            </div>
+            <span class="node-indicator-badge">8 Personajes (Nodo 1 + Nodo 2)</span>
+          </div>
+
+          <div class="node-section-title">Nodo 1 (Primera Mitad)</div>
+          <div class="duel-roster-slots" id="p1Node1Grid"></div>
+
+          <div class="node-section-title" style="margin-top: 10px;">Nodo 2 (Segunda Mitad)</div>
+          <div class="duel-roster-slots" id="p1Node2Grid"></div>
+
+          <!-- Score Input for P1 -->
+          <div class="score-input-box">
+            <label id="p1ScoreLabel">Tu resultado (Ciclos gastados):</label>
+            <input type="number" id="p1ScoreInput" placeholder="Ej. 5 ciclos" class="search-input" style="padding: 6px 12px; width: 140px;">
+          </div>
+        </div>
+
+        <!-- Center VS & Scoreboard Controller -->
+        <div class="duel-vs-separator">
+          <div class="vs-circle">VS</div>
+          <button id="calculateWinnerBtn" class="btn-fluent btn-primary" style="margin-top: 10px; font-size: 0.76rem; padding: 6px 14px;">
+            Comparar
+          </button>
+        </div>
+
+        <!-- Player 2 Double Node Panel -->
+        <div class="duel-player-panel">
+          <div class="player-panel-header">
+            <div class="player-name-tag">
+              <span id="duelP2NameDisplay" style="color: #f87171;">Jugador 2 (Amigo)</span>
+            </div>
+            <span class="node-indicator-badge">8 Personajes (Nodo 1 + Nodo 2)</span>
+          </div>
+
+          <div class="node-section-title">Nodo 1 (Primera Mitad)</div>
+          <div class="duel-roster-slots" id="p2Node1Grid"></div>
+
+          <div class="node-section-title" style="margin-top: 10px;">Nodo 2 (Segunda Mitad)</div>
+          <div class="duel-roster-slots" id="p2Node2Grid"></div>
+
+          <!-- Score Input for P2 -->
+          <div class="score-input-box">
+            <label id="p2ScoreLabel">Resultado de tu amigo:</label>
+            <input type="number" id="p2ScoreInput" placeholder="Ej. 7 ciclos" class="search-input" style="padding: 6px 12px; width: 140px;">
+          </div>
+        </div>
+      </section>
+
+      <!-- Match Result Banner -->
+      <div id="duelResultBanner" class="duel-result-card" style="display: none;"></div>
+    </div>
+
+    <!-- ======================================================================
+         PAGE 4: EXPEDICIONES RNG (UNIVERSO DIFERENCIADO, GUERRA DE DIVISAS, LA PLAGA)
+         ====================================================================== -->
+    <div id="pageUniverse" class="mode-page" style="display: none;">
+      <!-- Mode Selector Pills Bar -->
+      <section class="endgame-selector-bar">
+        <div class="roulette-mode-pills" id="expeditionModePills">
+          <button class="roulette-pill-btn active" data-expedition="divergent_universe">
+            Universo Diferenciado
+          </button>
+          <button class="roulette-pill-btn" data-expedition="currency_wars">
+            Guerra de Divisas
+          </button>
+          <button class="roulette-pill-btn" data-expedition="swarm_disaster">
+            Desastre del Enjambre
+          </button>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 8px; margin-left: auto; flex-wrap: wrap;">
+          <button id="newUnivChallengeBtn" class="btn-fluent btn-primary">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+            </svg>
+            <span>Generar Expedición</span>
+          </button>
+          <button id="copyUnivChallengeBtn" class="btn-fluent" title="Copiar enlace de expedición">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+              <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/>
+            </svg>
+            <span>Compartir</span>
+          </button>
+          <button id="expeditionFriendViewBtn" class="btn-fluent" title="Ver objetivos y progreso de tu amigo">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+              <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+            </svg>
+            <span>Progreso de Amigo</span>
+          </button>
+          <div class="seed-pill">
+            Semilla: <span id="univSeedDisplay">#EXP-000000</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Compact Expedition Overview -->
+      <section class="expedition-overview-card" id="universeChallengeContainer">
+        <!-- Rendered by JS -->
+      </section>
+
+      <!-- Recommended Starting Squad -->
+      <div>
+        <h3 class="section-subheading">
+          <span>◆</span> Escuadra de Partida Sugerida
+        </h3>
+        <div class="team-slots-grid" id="univTeamSlotsGrid"></div>
+      </div>
+
+      <!-- 1v1 Interactive Scorecard Checklist -->
+      <section class="expedition-scorecard-section">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;">
+          <div>
+            <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-primary);">
+              Tablero de Puntuación 1v1
+            </h3>
+            <p style="font-size: 0.78rem; color: var(--text-secondary); margin-top: 2px;">
+              Jueguen la misma semilla de partida y al terminar marquen los objetivos cumplidos para comparar quién obtuvo mejor puntuación.
+            </p>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button id="resetExpeditionChecklistBtn" class="btn-fluent" style="font-size: 0.76rem;">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+                <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+              </svg>
+              <span>Restablecer</span>
+            </button>
+            <button id="calculateExpeditionBtn" class="btn-fluent btn-primary" style="font-size: 0.78rem;">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0 0 11 15.9V19H7v2h10v-2h-4v-3.1a5.01 5.01 0 0 0 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/>
+              </svg>
+              <span>Calcular Ganador</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="scorecard-players-row">
+          <!-- Player 1 Score Column -->
+          <div class="scorecard-player-col">
+            <div class="scorecard-player-header">
+              <div class="scorecard-player-info">
+                <img id="p1ExpAvatar" class="scorecard-player-avatar" src="https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1001.png" alt="Avatar">
+                <span id="p1ExpName" style="color: var(--accent-color);">Trazacaminos</span>
+              </div>
+              <span id="p1ScoreBadge" class="scorecard-total-badge">0 pts</span>
+            </div>
+
+            <div class="criteria-list" id="p1CriteriaList">
+              <!-- Rendered by JS -->
+            </div>
+
+            <div class="scorecard-bonus-box">
+              <div>
+                <label id="p1BonusLabel" style="font-weight: 600;">Fragmentos Cósmicos finales:</label>
+                <div id="p1BonusHelper" style="font-size: 0.72rem; color: var(--text-muted);">1 pt por cada 10 unidades acumuladas</div>
+              </div>
+              <input type="number" id="p1BonusInput" min="0" placeholder="0" class="search-input" style="width: 100px; padding: 5px 8px; text-align: right;">
+            </div>
+          </div>
+
+          <!-- Player 2 Score Column -->
+          <div class="scorecard-player-col">
+            <div class="scorecard-player-header">
+              <div class="scorecard-player-info">
+                <img id="p2ExpAvatar" class="scorecard-player-avatar" src="https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1001.png" alt="Avatar" style="display: none;">
+                <svg id="p2ExpSvg" viewBox="0 0 24 24" width="20" height="20" fill="#f87171" style="vertical-align: middle;">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+                <span id="p2ExpName" style="color: #f87171;">Jugador 2 (Amigo)</span>
+              </div>
+              <span id="p2ScoreBadge" class="scorecard-total-badge">0 pts</span>
+            </div>
+
+            <div class="criteria-list" id="p2CriteriaList">
+              <!-- Rendered by JS -->
+            </div>
+
+            <div class="scorecard-bonus-box">
+              <div>
+                <label id="p2BonusLabel" style="font-weight: 600;">Fragmentos Cósmicos finales:</label>
+                <div id="p2BonusHelper" style="font-size: 0.72rem; color: var(--text-muted);">1 pt por cada 10 unidades acumuladas</div>
+              </div>
+              <input type="number" id="p2BonusInput" min="0" placeholder="0" class="search-input" style="width: 100px; padding: 5px 8px; text-align: right;">
+            </div>
+          </div>
+        </div>
+
+        <!-- Expedition Victory Result Banner -->
+        <div id="expeditionResultBanner" class="duel-result-card" style="display: none;"></div>
+      </section>
+    </div>
+
+    <!-- ======================================================================
+         PAGE 5: MODO GACHAPÓN // WARP SIMULATOR & SQUAD DRAFT
+         ====================================================================== -->
+    <div id="pageGacha" class="mode-page" style="display: none;">
+      <!-- Gacha Control & HUD Header -->
+      <section class="gacha-header-panel">
+        <!-- Configuration Row 1: Rarity Filter & Roster Sync -->
+        <div class="gacha-config-row">
+          <div class="gacha-config-group">
+            <span class="gacha-config-label">Filtro de Rareza:</span>
+            <div class="gacha-filter-pills" id="gachaRarityFilterPills">
+              <button type="button" class="limit-pill-btn active" data-rarity="all">✦ Todos (5★ y 4★)</button>
+              <button type="button" class="limit-pill-btn" data-rarity="5star">✦ Solo 5★</button>
+              <button type="button" class="limit-pill-btn" data-rarity="4star">✦ Solo 4★</button>
+            </div>
+          </div>
+
+          <div class="gacha-config-group roster-sync-group">
+            <label class="gacha-checkbox-label" for="gachaSyncRosterToggle" title="Limitar personajes sorteables a tu colección guardada">
+              <input type="checkbox" id="gachaSyncRosterToggle">
+              <span class="checkbox-custom"></span>
+              <span class="gacha-sync-text">Limitar a mi Roster de Colección</span>
+            </label>
+            <span class="gacha-pool-badge" id="gachaPoolStatusBadge">Cargando personajes...</span>
+          </div>
+        </div>
+
+        <!-- Configuration Row 2: 5★ Pity Goal & Pulls Budget -->
+        <div class="gacha-config-row">
+          <div class="gacha-config-group">
+            <span class="gacha-config-label">Meta Pity 5★ (Garantizado):</span>
+            <div class="gacha-limit-pills" id="gachaPityTargetPills">
+              <button type="button" class="limit-pill-btn" data-pity="50">50</button>
+              <button type="button" class="limit-pill-btn" data-pity="70">70</button>
+              <button type="button" class="limit-pill-btn" data-pity="80">80</button>
+              <button type="button" class="limit-pill-btn active" data-pity="90">90 (Oficial)</button>
+            </div>
+            <div class="gacha-custom-limit-wrap">
+              <input type="number" id="gachaCustomPityInput" class="custom-limit-input" min="10" max="300" placeholder="Pity..." title="Tiradas para garantizar 5★">
+              <button type="button" id="applyGachaCustomPityBtn" class="btn-custom-limit" title="Fijar meta de Pity">Fijar Pity</button>
+            </div>
+          </div>
+
+          <div class="gacha-config-group">
+            <span class="gacha-config-label">Presupuesto de Tiradas:</span>
+            <div class="gacha-limit-pills" id="gachaLimitPills">
+              <button type="button" class="limit-pill-btn" data-limit="10">10</button>
+              <button type="button" class="limit-pill-btn" data-limit="50">50</button>
+              <button type="button" class="limit-pill-btn active" data-limit="90">90</button>
+              <button type="button" class="limit-pill-btn" data-limit="160">160</button>
+              <button type="button" class="limit-pill-btn" data-limit="unlimited">Ilimitado</button>
+            </div>
+            <div class="gacha-custom-limit-wrap">
+              <input type="number" id="gachaCustomLimitInput" class="custom-limit-input" min="1" max="9999" placeholder="Tiradas..." title="Cantidad personalizada de tiradas">
+              <button type="button" id="applyGachaCustomLimitBtn" class="btn-custom-limit" title="Fijar presupuesto">Fijar</button>
+              <button type="button" id="addGachaCustomPullsBtn" class="btn-custom-limit" title="Añadir tiradas">+ Añadir</button>
+            </div>
+          </div>
+
+          <div class="gacha-session-actions">
+            <button id="gachaFriendViewBtn" class="btn-fluent" title="Ver tiradas y escuadra de tu amigo">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+              </svg>
+              <span>Tiradas de Amigo</span>
+            </button>
+            <button id="resetGachaSessionBtn" class="btn-fluent" title="Reiniciar sesión de gacha">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+              </svg>
+              <span>Reiniciar</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Gacha Telemetry & Pity HUD -->
+      <section class="gacha-hud-bar">
+        <!-- Passes Counter -->
+        <div class="gacha-hud-stat">
+          <div class="stat-caption">Tiradas Realizadas</div>
+          <div class="stat-value" id="gachaPullsCounterDisplay">0 / 90</div>
+        </div>
+
+        <!-- 5-Star Pity Progress (Configurable) -->
+        <div class="gacha-hud-stat pity-stat">
+          <div class="stat-caption-row">
+            <span id="gachaPity5Caption">Pity 5★ (Garantizado en 90)</span>
+            <strong id="gachaPity5Text">0 / 90</strong>
+          </div>
+          <div class="pity-progress-bar">
+            <div class="pity-fill pity-fill-gold" id="gachaPity5Bar" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <!-- 4-Star Pity Progress -->
+        <div class="gacha-hud-stat pity-stat">
+          <div class="stat-caption-row">
+            <span>Pity 4★ (Garantizado en 10)</span>
+            <strong id="gachaPity4Text">0 / 10</strong>
+          </div>
+          <div class="pity-progress-bar">
+            <div class="pity-fill pity-fill-purple" id="gachaPity4Bar" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <!-- Active Pool Roster Badge -->
+        <div class="gacha-hud-stat pool-stat">
+          <div class="stat-caption">Universo de Salto</div>
+          <div id="gachaActivePoolBadge" class="gacha-pool-active-pill">Todos los Héroes</div>
+        </div>
+
+        <!-- Seed & Cryptographic Verification Code -->
+        <div class="gacha-hud-stat seed-stat">
+          <div class="stat-caption">Código de Auditoría</div>
+          <div class="seed-badge-wrap">
+            <code id="gachaSeedDisplay" class="gacha-seed-code">#WARP-000000</code>
+            <button id="copyGachaSeedBtn" class="btn-icon-tiny" title="Copiar código de sesión">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+                <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Banner Main Card & Pull Action Area -->
+      <section class="gacha-banner-stage" id="gachaBannerStage"></section>
+
+      <!-- Active Squad Roster (La Escuadra Activa del Desafío) -->
+      <section class="gacha-squad-section">
+        <div class="gacha-squad-header">
+          <div>
+            <h3>Escuadra Activa del Desafío</h3>
+            <p>El equipo que llevarás a los duelos y expediciones. Cambia cualquier personaje por uno que hayas obtenido en tus tiradas.</p>
+          </div>
+          <div class="squad-export-actions">
+            <button id="exportSquadToExpeditionBtn" class="btn-fluent" title="Cargar esta escuadra en Universo Diferenciado o Guerra de Divisas">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+              </svg>
+              <span>Llevar a Expedición</span>
+            </button>
+            <button id="exportSquadToDuelBtn" class="btn-fluent" title="Cargar esta escuadra en Nodo 1 del Duelo Endgame">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                <path d="M6.92 5.51L5.51 6.92l4.24 4.24-1.41 1.41-4.24-4.24-1.42 1.41 4.24 4.24-2.12 2.12c-.78.78-.78 2.05 0 2.83l.71.71c.78.78 2.05.78 2.83 0l2.12-2.12 4.24 4.24 1.41-1.42-4.24-4.24 1.41-1.41 4.24 4.24 1.41-1.41-4.24-4.24 2.83-2.83c1.95-1.95 2.5-4.8 1.41-7.07l-2.83 2.83-2.83-2.83 2.83-2.83C11.72 3.01 8.87 3.56 6.92 5.51z"/>
+              </svg>
+              <span>Llevar a Duelo (Nodo 1)</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="gacha-squad-grid" id="gachaSquadSlotsContainer"></div>
+      </section>
+
+      <!-- Characters Inventory Drawer & History Audit Section (Dual Column) -->
+      <section class="gacha-inventory-history-grid">
+        <!-- Inventory Column -->
+        <div class="gacha-inv-col">
+          <div class="col-head">
+            <div class="col-title-wrap">
+              <h4>Personajes Obtenidos</h4>
+              <span id="gachaInvCountBadge" class="count-badge">0</span>
+            </div>
+            <span class="col-subtitle">Toca "Asignar" para colocarlo en tu escuadra activa.</span>
+          </div>
+          <div class="gacha-inv-scroll" id="gachaInventoryGrid"></div>
+        </div>
+
+        <!-- Provably Fair Audit Log Column -->
+        <div class="gacha-audit-col">
+          <div class="col-head">
+            <div class="col-title-wrap">
+              <h4>Historial de Saltos & Auditoría</h4>
+              <span id="gachaHistoryCountBadge" class="count-badge">0</span>
+            </div>
+            <button id="copyGachaAuditBtn" class="btn-fluent" style="font-size: 0.72rem; padding: 4px 10px;">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+                <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+              </svg>
+              <span>Copiar Acta</span>
+            </button>
+          </div>
+          <div class="gacha-history-table-wrap">
+            <table class="gacha-history-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Elemento / Cono</th>
+                  <th>Rareza</th>
+                  <th>Pity</th>
+                  <th>Resultado Canónico</th>
+                </tr>
+              </thead>
+              <tbody id="gachaHistoryTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ======================================================================
+         MODAL: SALA MULTIJUGADOR & COMPARTIR (WEBRTC P2P EN TIEMPO REAL)
+         ====================================================================== -->
+    <div id="shareRoomModal" class="modal-overlay" aria-hidden="true">
+      <div class="fluent-dialog share-dialog">
+        <button id="shareRoomModalCloseBtn" class="dialog-close-btn" title="Cerrar ventana">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+          </svg>
+        </button>
+        <div class="share-modal-content">
+          <div class="roster-header">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="color: var(--accent-color); font-size: 1.2rem;">✦</span>
+              <h2>Sala Multijugador & Compartir</h2>
+            </div>
+            <p>Juega desafíos con amigos en vivo mediante conexión directa WebRTC P2P o comparte enlaces listos para abrir en cualquier navegador o móvil.</p>
+          </div>
+
+          <!-- Card 1: Mi Identidad Activa -->
+          <div class="share-identity-card">
+            <div class="share-identity-avatar-wrap">
+              <img id="shareModalUserAvatar" src="https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1001.png" alt="Avatar">
+            </div>
+            <div class="share-identity-info">
+              <div class="share-identity-name-row">
+                <strong id="shareModalUserName">Trazacaminos</strong>
+                <span class="share-uid-badge" id="shareModalUserUid">UID: Sin configurar</span>
+              </div>
+              <span class="share-identity-hint">Tu nombre y UID se envían a tu amigo para identificarte como anfitrión del desafío.</span>
+            </div>
+            <button type="button" id="shareEditProfileBtn" class="btn-fluent" style="font-size: 0.74rem;">
+              Editar Perfil
+            </button>
+          </div>
+
+          <!-- Card 2: Conexión en Tiempo Real P2P (WebRTC) -->
+          <div class="share-p2p-panel">
+            <div class="share-section-head">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--accent-color)">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                </svg>
+                <h4 style="font-size: 0.88rem; font-weight: 800; color: var(--text-primary); margin: 0;">Sincronización P2P en Vivo</h4>
+              </div>
+              <span id="shareModalP2pStatus" class="p2p-status-pill offline">● Desconectado</span>
+            </div>
+
+            <div class="share-p2p-body">
+              <!-- Subsección A: Crear Sala (Anfitrión) -->
+              <div class="share-p2p-host-col">
+                <span class="share-label-tag">Opción A: Crear Sala como Anfitrión</span>
+                <div class="p2p-room-code-display" id="p2pRoomCodeBox">
+                  <div class="p2p-code-val" id="p2pCurrentRoomCode">---</div>
+                  <button type="button" id="copyP2pCodeBtn" class="btn-fluent" style="font-size: 0.74rem;">
+                    Copiar Código
+                  </button>
+                  <button type="button" id="createP2pRoomBtn" class="btn-fluent btn-primary" style="font-size: 0.74rem;">
+                    ✦ Generar Sala en Vivo
+                  </button>
+                </div>
+                <div class="share-help-text" id="p2pHostStatusText">
+                  Pulsa "Generar Sala en Vivo" para obtener un código y permitir que tu amigo se conecte en tiempo real.
+                </div>
+              </div>
+
+              <!-- Subsección B: Unirse a Sala (Invitado) -->
+              <div class="share-p2p-guest-col">
+                <span class="share-label-tag">Opción B: Unirse a la Sala de un Amigo</span>
+                <div class="p2p-join-row">
+                  <input type="text" id="joinP2pCodeInput" class="search-input" placeholder="Ej. HSR-7429" maxlength="12" style="text-transform: uppercase;">
+                  <button type="button" id="connectP2pBtn" class="btn-fluent btn-primary" style="font-size: 0.74rem;">
+                    Conectar en Vivo
+                  </button>
+                </div>
+                <div class="share-help-text">
+                  Introduce el código de 4 a 6 caracteres que te dio tu amigo para sincronizarte con su pantalla.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Enlace Directo Compartible -->
+          <div class="share-url-panel">
+            <div class="share-section-head">
+              <h4 style="font-size: 0.84rem; font-weight: 800; color: var(--text-primary); margin: 0;">Enlace Directo de la Sala</h4>
+              <span style="font-size: 0.72rem; color: var(--text-muted);">Abre en cualquier navegador o pestaña privada</span>
+            </div>
+            <div class="share-url-box">
+              <input type="text" id="shareModalFullUrlInput" class="search-input" readonly>
+              <button type="button" id="shareModalCopyUrlBtn" class="btn-fluent btn-primary">
+                Copiar Enlace Completo
+              </button>
+            </div>
+            <div class="share-summary-chips" id="shareSummaryChips">
+              <!-- Badges de qué se está compartiendo: Modo, Semilla, Nombre, UID -->
+            </div>
+          </div>
+
+          <div class="roster-modal-footer">
+            <button id="shareModalDoneBtn" class="btn-fluent" style="margin-left: auto; padding: 7px 20px;">
+              Entendido
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================================
+         MODAL: INSPECCIONAR ACTIVIDAD DEL AMIGO (RULETA, GACHA, EXPEDICIÓN)
+         ====================================================================== -->
+    <div id="friendInspectModal" class="modal-overlay" aria-hidden="true">
+      <div class="fluent-dialog friend-inspect-dialog">
+        <button id="friendInspectModalCloseBtn" class="dialog-close-btn" title="Cerrar ventana">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+          </svg>
+        </button>
+        <div class="friend-inspect-content">
+          <!-- Friend Header / Profile & Refresh Action -->
+          <div class="friend-inspect-header">
+            <div class="friend-inspect-identity">
+              <div class="friend-inspect-avatar-wrap">
+                <img id="friendInspectAvatar" src="https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1001.png" alt="Amigo">
+                <span class="live-dot-pulse" id="friendInspectPulse"></span>
+              </div>
+              <div class="friend-inspect-info">
+                <div class="friend-inspect-name-row">
+                  <h3 id="friendInspectName">Amigo</h3>
+                  <span class="share-uid-badge" id="friendInspectUid">UID: ---</span>
+                  <span class="p2p-status-pill offline" id="friendInspectStatusPill">● Desconectado</span>
+                </div>
+                <div class="friend-inspect-subtext" id="friendInspectSubtext">
+                  Partida sincronizada en tiempo real mediante WebRTC P2P.
+                </div>
+              </div>
+            </div>
+
+            <!-- Refresh Button -->
+            <div class="friend-inspect-actions">
+              <button type="button" id="refreshFriendDataBtn" class="btn-fluent btn-primary" title="Solicitar datos más recientes al amigo">
+                <svg id="refreshFriendIcon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                  <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+                </svg>
+                <span>Actualizar Datos</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Navigation Pills for Friend Sections -->
+          <div class="friend-nav-pills" id="friendNavPills">
+            <button type="button" class="friend-nav-btn active" data-friend-tab="roulette">
+              <span>✦ Ruleta de Amigo</span>
+            </button>
+            <button type="button" class="friend-nav-btn" data-friend-tab="gacha">
+              <span>✦ Gachapón & Tiradas</span>
+            </button>
+            <button type="button" class="friend-nav-btn" data-friend-tab="expedition">
+              <span>✦ Expedición RNG</span>
+            </button>
+          </div>
+
+          <!-- Section 1: Ruleta del Amigo -->
+          <div id="friendInspectRoulettePanel" class="friend-tab-panel active">
+            <div class="friend-panel-head-bar">
+              <div class="friend-panel-meta">
+                <span class="friend-meta-tag" id="friendRouletteArchetype">Arquetipo: ---</span>
+                <span class="friend-meta-tag seed-tag" id="friendRouletteSeed">Semilla: ---</span>
+              </div>
+            </div>
+            <div class="friend-team-slots-grid" id="friendRouletteSlots">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+          <!-- Section 2: Gachapón del Amigo -->
+          <div id="friendInspectGachaPanel" class="friend-tab-panel" style="display: none;">
+            <div class="friend-panel-head-bar">
+              <div class="friend-panel-meta">
+                <span class="friend-meta-tag" id="friendGachaPullsText">Tiradas: 0 / 90</span>
+                <span class="friend-meta-tag" id="friendGachaPity5Text">Pity 5★: 0/90</span>
+                <span class="friend-meta-tag seed-tag" id="friendGachaSeed">Semilla: ---</span>
+              </div>
+            </div>
+
+            <div class="friend-section-caption">
+              <span>◆</span> Escuadra Activa del Amigo (4 Combatientes)
+            </div>
+            <div class="friend-team-slots-grid" id="friendGachaSquadSlots">
+              <!-- Rendered by JS -->
+            </div>
+
+            <div class="friend-section-caption" style="margin-top: 14px;">
+              <span>◆</span> Últimas Tiradas y Personajes Obtenidos
+            </div>
+            <div class="friend-gacha-history-list" id="friendGachaHistoryList">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+          <!-- Section 3: Expedición del Amigo -->
+          <div id="friendInspectExpeditionPanel" class="friend-tab-panel" style="display: none;">
+            <div class="friend-panel-head-bar">
+              <div class="friend-panel-meta">
+                <span class="friend-meta-tag" id="friendExpModeTitle">Modo: ---</span>
+                <span class="friend-meta-tag" id="friendExpScoreBadge">Puntuación: 0 pts</span>
+                <span class="friend-meta-tag seed-tag" id="friendExpSeed">Semilla: ---</span>
+              </div>
+            </div>
+
+            <div class="friend-section-caption">
+              <span>◆</span> Escuadra de Partida del Amigo
+            </div>
+            <div class="friend-team-slots-grid" id="friendExpSquadSlots">
+              <!-- Rendered by JS -->
+            </div>
+
+            <div class="friend-section-caption" style="margin-top: 14px;">
+              <span>◆</span> Objetivos Cumplidos del Amigo (Checklist en Vivo)
+            </div>
+            <div class="friend-criteria-list" id="friendExpCriteriaList">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+          <!-- Offline / Empty Notice Banner -->
+          <div id="friendInspectEmptyState" class="friend-empty-state" style="display: none;">
+            <svg viewBox="0 0 24 24" width="36" height="36" fill="var(--text-muted)">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+            </svg>
+            <h4>Sin datos sincronizados de amigo</h4>
+            <p>Conéctate en vivo con tu amigo mediante un código de sala o comparte tu enlace para ver su ruleta, tiradas del gachapón y progreso de expedición en tiempo real.</p>
+            <button type="button" id="friendInspectOpenShareBtn" class="btn-fluent btn-primary">
+              ✦ Abrir Sala & Conectar
+            </button>
+          </div>
+
+          <div class="roster-modal-footer" style="margin-top: 18px;">
+            <button id="friendInspectDoneBtn" class="btn-fluent" style="margin-left: auto; padding: 7px 20px;">
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="profileModal" class="modal-overlay" aria-hidden="true">
+      <div class="fluent-dialog profile-dialog">
+        <button id="profileModalCloseBtn" class="dialog-close-btn" title="Cerrar ventana">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+          </svg>
+        </button>
+        <div class="profile-modal-content">
+          <div class="roster-header">
+            <h2>Perfil de Trazacaminos</h2>
+            <p>Configura tu apodo y avatar. Puedes exportar una copia de seguridad para llevar tus datos a otros navegadores o dispositivos.</p>
+          </div>
+
+          <!-- Profile Info Form -->
+          <div class="profile-card-edit">
+            <div class="profile-avatar-select-wrap">
+              <img id="profileCurrentAvatar" src="https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1001.png" alt="Avatar">
+              <span class="avatar-change-hint">Avatar Activo</span>
+            </div>
+            <div class="profile-inputs-col">
+              <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted);">Apodo o Identificador:</label>
+              <input type="text" id="profileUsernameInput" class="search-input" placeholder="Tu nombre..." maxlength="24">
+              <span style="font-size: 0.74rem; color: var(--text-secondary);">Se mostrará en tus duelos y actas de resultados.</span>
+
+              <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); margin-top: 8px;">UID de Honkai: Star Rail / ID de Jugador:</label>
+              <input type="text" id="profileUidInput" class="search-input" placeholder="Ej. 700123456" maxlength="16">
+              <span style="font-size: 0.74rem; color: var(--text-secondary);">Se compartirá al enviar salas para que tu amigo te identifique de inmediato.</span>
+            </div>
+          </div>
+
+          <!-- Avatar Picker Grid -->
+          <div>
+            <h4 style="font-size: 0.78rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px;">
+              Seleccionar Avatar:
+            </h4>
+            <div class="avatar-picker-grid" id="avatarPickerContainer">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <!-- Backup & Migration Section -->
+          <div class="backup-section-box">
+            <h4 style="font-size: 0.82rem; font-weight: 600; margin-bottom: 6px;">Copia de Seguridad y Migración:</h4>
+            <p style="font-size: 0.76rem; color: var(--text-secondary); margin-bottom: 12px;">
+              Descarga o restaura un archivo JSON con tu perfil, lista de personajes obtenidos y preferencias.
+            </p>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+              <button id="exportSettingsJsonBtn" class="btn-fluent btn-primary">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                  <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                </svg>
+                <span>Descargar Copia (.json)</span>
+              </button>
+              <label class="btn-fluent" style="cursor: pointer;">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                  <path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/>
+                </svg>
+                <span>Restaurar Archivo</span>
+                <input type="file" id="importSettingsFileInput" accept=".json" style="display: none;">
+              </label>
+              <button id="resetAllSettingsBtn" class="btn-fluent" style="color: #fca5a5; margin-left: auto;">
+                Reiniciar Datos
+              </button>
+            </div>
+          </div>
+
+          <div class="roster-modal-footer">
+            <button id="saveProfileBtn" class="btn-fluent btn-primary" style="margin-left: auto; padding: 8px 24px;">
+              Guardar Cambios
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================================
+         MODAL: MI COLECCIÓN / FILTRO DE PERSONAJES OBTENIDOS
+         ====================================================================== -->
+    <div id="rosterModal" class="modal-overlay" aria-hidden="true">
+      <div class="fluent-dialog roster-dialog">
+        <button id="rosterModalCloseBtn" class="dialog-close-btn" title="Cerrar ventana">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+          </svg>
+        </button>
+        <div class="roster-modal-content">
+          <div class="roster-header">
+            <div>
+              <h2>Mi Colección de Personajes</h2>
+              <p>Filtra y excluye los personajes que no tienes en tu cuenta para que los juegos sean 100% justos y adaptados a tu inventario.</p>
+            </div>
+          </div>
+
+          <!-- Master Filter Activation Bar -->
+          <div class="roster-master-toggle-card">
+            <label class="master-toggle-label">
+              <input type="checkbox" id="rosterMasterToggle">
+              <div class="toggle-track"><div class="toggle-thumb"></div></div>
+              <div class="toggle-text-block">
+                <strong>Activar filtro de personajes obtenidos</strong>
+                <span>Al activar este filtro, la Ruleta, los Duelos y las Expediciones únicamente elegirán personajes que tengas marcados aquí abajo.</span>
+              </div>
+            </label>
+          </div>
+
+          <!-- Quick Tools & Search -->
+          <div class="roster-tools-row">
+            <div class="search-wrapper" style="flex: 1;">
+              <svg class="search-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+              <input type="text" id="rosterSearchInput" class="search-input" placeholder="Buscar en tu colección...">
+            </div>
+            <div class="roster-btn-group">
+              <button id="rosterSelectAllBtn" class="btn-fluent" style="font-size: 0.76rem;">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span>Marcar Todos</span>
+              </button>
+              <button id="rosterDeselectAllBtn" class="btn-fluent" style="font-size: 0.76rem;">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                <span>Desmarcar Todos</span>
+              </button>
+              <button id="rosterSelectFourStarsBtn" class="btn-fluent" style="font-size: 0.76rem;">
+                <span class="star-purple">✦</span> Solo 4★
+              </button>
+            </div>
+          </div>
+
+          <!-- Counter Bar -->
+          <div class="roster-counter-info">
+            <span id="rosterCountStatus">Seleccionados: 98 de 98 personajes</span>
+          </div>
+
+          <!-- Character Check-Tiles Grid -->
+          <div class="roster-tiles-grid" id="rosterTilesContainer"></div>
+
+          <div class="roster-modal-footer">
+            <button id="rosterSaveBtn" class="btn-fluent btn-primary" style="margin-left: auto; padding: 8px 24px;">
+              Guardar y Aplicar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Character Details Dialog -->
+    <div id="characterModal" class="modal-overlay" aria-hidden="true">
+      <div class="fluent-dialog">
+        <button id="modalCloseBtn" class="dialog-close-btn" title="Cerrar ventana">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+          </svg>
+        </button>
+        <div class="dialog-grid" id="modalContent"></div>
+      </div>
+    </div>
+
+    <!-- ======================================================================
+         MODAL: REVELACIÓN DE SALTO // WARP REVEAL SCREEN
+         ====================================================================== -->
+    <div id="gachaRevealModal" class="modal-overlay" aria-hidden="true">
+      <div class="fluent-dialog gacha-reveal-dialog">
+        <div class="warp-reveal-header">
+          <div class="warp-reveal-title">
+            <span class="warp-star-symbol">✦</span>
+            <h2>Resultado del Salto Astral</h2>
+            <span class="warp-star-symbol">✦</span>
+          </div>
+          <div class="warp-reveal-badge" id="gachaRevealSummaryText">Tiradas Realizadas</div>
+        </div>
+
+        <div class="gacha-reveal-grid" id="gachaRevealCardsGrid"></div>
+
+        <div class="gacha-reveal-footer">
+          <button id="gachaRevealPullAgainBtn" class="btn-fluent" style="padding: 10px 22px; font-weight: 700; color: #2dd4bf; border-color: rgba(45, 212, 191, 0.4);">
+            ✦ Saltar de Nuevo
+          </button>
+          <button id="gachaRevealCloseBtn" class="btn-fluent btn-primary" style="padding: 10px 28px; font-weight: 700;">
+            Aceptar y Continuar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================================
+         MODAL: CAMBIAR INTEGRANTE DE LA ESCUADRA
+         ====================================================================== -->
+    <div id="squadSwapModal" class="modal-overlay" aria-hidden="true">
+      <div class="fluent-dialog swap-dialog">
+        <button id="squadSwapCloseBtn" class="dialog-close-btn" title="Cerrar ventana">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+          </svg>
+        </button>
+        <div class="swap-modal-content">
+          <div class="roster-header">
+            <h2 id="squadSwapTitle">Asignar Personaje a la Ranura</h2>
+            <p id="squadSwapSubtitle">Elige uno de tus combatientes obtenidos en el Gachapón para ocupar este puesto en la formación.</p>
+          </div>
+          <div class="swap-characters-grid" id="squadSwapGrid"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================================
+         CINEMÁTICA DE SALTO ASTRAL // WARP HYPERDRIVE CANVAS & TICKETS
+         ====================================================================== -->
+    <div id="gachaWarpCinematic" class="gacha-warp-overlay" style="display: none;" aria-hidden="true">
+      <canvas id="gachaWarpCanvas" class="gacha-warp-canvas"></canvas>
+
+      <div class="gacha-warp-centerpiece" id="gachaWarpCenterpiece">
+        <div class="warp-ticket-container" id="warpTicketContainer">
+          <div class="warp-ticket-aura" id="warpTicketAura"></div>
+          <div class="warp-ticket-core" id="warpTicketCore">
+            <div class="warp-ticket-notch"></div>
+            <div class="warp-ticket-content">
+              <div class="warp-ticket-icon">✦</div>
+              <div class="warp-ticket-text">STAR RAIL PASS</div>
+              <div class="warp-ticket-sub">EXPRESO ASTRAL</div>
+            </div>
+          </div>
+        </div>
+        <div class="warp-burst-ring" id="warpBurstRing"></div>
+      </div>
+
+      <div class="warp-cinematic-controls">
+        <div class="warp-brand-tag">
+          <span id="warpCinematicTitle">✦ SALTO ASTRAL // HIPERESPACIO</span>
+        </div>
+        <button type="button" id="skipWarpAnimationBtn" class="btn-skip-warp" title="Omitir animación de salto">
+          <span>Omitir Salto</span>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+
+
+  </div>
+
+  <!-- Load Data and Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
+  <script src="characters_data.js"></script>
+  <script src="game_modes.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

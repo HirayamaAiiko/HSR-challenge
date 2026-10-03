@@ -1,0 +1,3138 @@
+[
+  {
+    "id": "1308",
+    "name": "Acheron",
+    "name_en": "Acheron",
+    "rarity": 5,
+    "element": {
+      "id": "Thunder",
+      "name": "Rayo",
+      "name_en": "Lightning",
+      "color": "#AA72FF",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Thunder.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Thunder.png"
+    },
+    "path": {
+      "id": "Warlock",
+      "name": "Nihilidad",
+      "name_en": "Nihility",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Nihility.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Nihility.png"
+    },
+    "role": "DPS",
+    "sub_role": "Hypercarry de Ruptura y Tajos del Sueño",
+    "specialty": "No usa energía: acumula Sueño hendido con estados negativos y ejecuta un tajo dimensional supremo.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1308.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1308.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1308.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1308.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1308.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1308.png"
+    }
+  },
+  {
+    "id": "1402",
+    "name": "Aglaea",
+    "name_en": "Aglaea",
+    "rarity": 5,
+    "element": {
+      "id": "Thunder",
+      "name": "Rayo",
+      "name_en": "Lightning",
+      "color": "#AA72FF",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Thunder.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Thunder.png"
+    },
+    "path": {
+      "id": "Memory",
+      "name": "Reminiscencia",
+      "name_en": "Remembrance",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Remembrance.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Remembrance.png"
+    },
+    "role": "DPS",
+    "sub_role": "Hypercarry de Mnemoduendes de Rayo",
+    "specialty": "Invoca espíritus de la memoria que luchan de forma independiente causando daño eléctrico masivo.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1402.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1402.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1402.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1402.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1402.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1402.png"
+    }
+  },
+  {
+    "id": "1405",
+    "name": "Anaxa",
+    "name_en": "Anaxa",
+    "rarity": 5,
+    "element": {
+      "id": "Wind",
+      "name": "Viento",
+      "name_en": "Wind",
+      "color": "#00FF9C",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Wind.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Wind.png"
+    },
+    "path": {
+      "id": "Mage",
+      "name": "Erudición",
+      "name_en": "Erudition",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Erudition.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Erudition.png"
+    },
+    "role": "DPS",
+    "sub_role": "DPS de AdE de Viento",
+    "specialty": "Barre formaciones enemigas con ráfagas cortantes continuas.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1405.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1405.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1405.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1405.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1405.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1405.png"
+    }
+  },
+  {
+    "id": "1015",
+    "name": "Archer",
+    "name_en": "Archer",
+    "rarity": 5,
+    "element": {
+      "id": "Quantum",
+      "name": "Cuántico",
+      "name_en": "Quantum",
+      "color": "#6D79F8",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Quantum.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Quantum.png"
+    },
+    "path": {
+      "id": "Rogue",
+      "name": "Cacería",
+      "name_en": "The Hunt",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Hunt.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Hunt.png"
+    },
+    "role": "DPS",
+    "sub_role": "Single Target Colaboración",
+    "specialty": "Especialista en daño cuántico a objetivos individuales.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1015.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1015.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1015.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1015.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1015.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1015.png"
+    }
+  },
+  {
+    "id": "1302",
+    "name": "Argenti",
+    "name_en": "Argenti",
+    "rarity": 5,
+    "element": {
+      "id": "Physical",
+      "name": "Físico",
+      "name_en": "Physical",
+      "color": "#E0E0E0",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Physical.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Physical.png"
+    },
+    "path": {
+      "id": "Mage",
+      "name": "Erudición",
+      "name_en": "Erudition",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Erudition.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Erudition.png"
+    },
+    "role": "DPS",
+    "sub_role": "Hypercarry de Definitiva en AdE",
+    "specialty": "Alcanza hasta 180 puntos de energía para limpiar oleadas de enemigos con Daño Físico crítico.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1302.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1302.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1302.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1302.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1302.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1302.png"
+    }
+  },
+  {
+    "id": "1504",
+    "name": "Ashveil",
+    "name_en": "Ashveil",
+    "rarity": 5,
+    "element": {
+      "id": "Thunder",
+      "name": "Rayo",
+      "name_en": "Lightning",
+      "color": "#AA72FF",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Thunder.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Thunder.png"
+    },
+    "path": {
+      "id": "Rogue",
+      "name": "Cacería",
+      "name_en": "The Hunt",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Hunt.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Hunt.png"
+    },
+    "role": "DPS",
+    "sub_role": "Single Target de Rayo",
+    "specialty": "Inflige daño eléctrico de alta cadencia a objetivos prioritarios.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1504.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1504.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1504.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1504.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1504.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1504.png"
+    }
+  },
+  {
+    "id": "1304",
+    "name": "Aventurino",
+    "name_en": "Aventurine",
+    "rarity": 5,
+    "element": {
+      "id": "Imaginary",
+      "name": "Imaginario",
+      "name_en": "Imaginary",
+      "color": "#F4D258",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Imaginary.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Imaginary.png"
+    },
+    "path": {
+      "id": "Knight",
+      "name": "Conservación",
+      "name_en": "Preservation",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Preservation.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Preservation.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Sustain de Escudos Acumulables y CRIT",
+    "specialty": "Otorga escudos automáticos con ataques adicionales del equipo e incrementa el Daño CRIT recibido por el rival.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1304.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1304.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1304.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1304.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1304.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1304.png"
+    }
+  },
+  {
+    "id": "1513",
+    "name": "Aventurino • Oleaje",
+    "name_en": "Aventurine • Waveflair",
+    "rarity": 5,
+    "element": {
+      "id": "Quantum",
+      "name": "Cuántico",
+      "name_en": "Quantum",
+      "color": "#6D79F8",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Quantum.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Quantum.png"
+    },
+    "path": {
+      "id": "Elation",
+      "name": "Exultación",
+      "name_en": "Elation",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Elation.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Elation.png"
+    },
+    "role": "SUB-DPS",
+    "sub_role": "Co-carry de Ruleta y Aleatoriedad",
+    "specialty": "Lanza dados cuánticos con efectos impredecibles de daño y beneficios de combate.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1513.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1513.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1513.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1513.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1513.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1513.png"
+    }
+  },
+  {
+    "id": "1211",
+    "name": "Bailu",
+    "name_en": "Bailu",
+    "rarity": 5,
+    "element": {
+      "id": "Thunder",
+      "name": "Rayo",
+      "name_en": "Lightning",
+      "color": "#AA72FF",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Thunder.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Thunder.png"
+    },
+    "path": {
+      "id": "Priest",
+      "name": "Abundancia",
+      "name_en": "Abundance",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Abundance.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Abundance.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Sustain de Vigorización y Resurrección",
+    "specialty": "Cura con rebotes eléctricos, aplica estado Vigor que cura al recibir daño y resucita un aliado caído.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1211.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1211.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1211.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1211.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1211.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1211.png"
+    }
+  },
+  {
+    "id": "1205",
+    "name": "Blade",
+    "name_en": "Blade",
+    "rarity": 5,
+    "element": {
+      "id": "Wind",
+      "name": "Viento",
+      "name_en": "Wind",
+      "color": "#00FF9C",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Wind.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Wind.png"
+    },
+    "path": {
+      "id": "Warrior",
+      "name": "Destrucción",
+      "name_en": "Destruction",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Destruction.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Destruction.png"
+    },
+    "role": "DPS",
+    "sub_role": "DPS Blast de Escala de PV",
+    "specialty": "Sacrifica y recupera PV para desatar ataques de Viento y contraataques en área.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1205.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1205.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1205.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1205.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1205.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1205.png"
+    }
+  },
+  {
+    "id": "1315",
+    "name": "Boothill",
+    "name_en": "Boothill",
+    "rarity": 5,
+    "element": {
+      "id": "Physical",
+      "name": "Físico",
+      "name_en": "Physical",
+      "color": "#E0E0E0",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Physical.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Physical.png"
+    },
+    "path": {
+      "id": "Rogue",
+      "name": "Cacería",
+      "name_en": "The Hunt",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Hunt.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Hunt.png"
+    },
+    "role": "DPS",
+    "sub_role": "Hypercarry de Ruptura Física",
+    "specialty": "Aplica Debilidad Física con duelo 1v1 e inflige Daño de Ruptura masivo.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1315.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1315.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1315.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1315.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1315.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1315.png"
+    }
+  },
+  {
+    "id": "1101",
+    "name": "Bronya",
+    "name_en": "Bronya",
+    "rarity": 5,
+    "element": {
+      "id": "Wind",
+      "name": "Viento",
+      "name_en": "Wind",
+      "color": "#00FF9C",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Wind.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Wind.png"
+    },
+    "path": {
+      "id": "Shaman",
+      "name": "Armonía",
+      "name_en": "Harmony",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Harmony.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Harmony.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Buffer de Avance Inmediato y Daño CRIT",
+    "specialty": "Avanza 100% la acción de un aliado, disipa estados negativos y otorga ATQ y Daño CRIT.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1101.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1101.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1101.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1101.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1101.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1101.png"
+    }
+  },
+  {
+    "id": "1407",
+    "name": "Castorice",
+    "name_en": "Castorice",
+    "rarity": 5,
+    "element": {
+      "id": "Quantum",
+      "name": "Cuántico",
+      "name_en": "Quantum",
+      "color": "#6D79F8",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Quantum.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Quantum.png"
+    },
+    "path": {
+      "id": "Memory",
+      "name": "Reminiscencia",
+      "name_en": "Remembrance",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Remembrance.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Remembrance.png"
+    },
+    "role": "DPS",
+    "sub_role": "DPS de Mnemoduendes Cuánticos",
+    "specialty": "Despliega entidades mnemónicas que consumen recuerdos para causar estallidos cuánticos.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1407.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1407.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1407.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1407.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1407.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1407.png"
+    }
+  },
+  {
+    "id": "1501",
+    "name": "Chispa",
+    "name_en": "Sparxie",
+    "rarity": 5,
+    "element": {
+      "id": "Fire",
+      "name": "Fuego",
+      "name_en": "Fire",
+      "color": "#FF5733",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Fire.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Fire.png"
+    },
+    "path": {
+      "id": "Elation",
+      "name": "Exultación",
+      "name_en": "Elation",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Elation.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Elation.png"
+    },
+    "role": "SUB-DPS",
+    "sub_role": "Co-carry de Chispas Explosivas",
+    "specialty": "Aplica fuego y fuegos artificiales de daño adicional aleatorio.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1501.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1501.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1501.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1501.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1501.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1501.png"
+    }
+  },
+  {
+    "id": "1415",
+    "name": "Cirene",
+    "name_en": "Cyrene",
+    "rarity": 5,
+    "element": {
+      "id": "Ice",
+      "name": "Hielo",
+      "name_en": "Ice",
+      "color": "#47C7FD",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Ice.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Ice.png"
+    },
+    "path": {
+      "id": "Memory",
+      "name": "Reminiscencia",
+      "name_en": "Remembrance",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Remembrance.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Remembrance.png"
+    },
+    "role": "DPS",
+    "sub_role": "DPS de Reminiscencia Gélida",
+    "specialty": "Invoca sirvientes gélidos que paralizan y destruyen las líneas defensivas.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1415.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1415.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1415.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1415.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1415.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1415.png"
+    }
+  },
+  {
+    "id": "1307",
+    "name": "Cisne Negro",
+    "name_en": "Black Swan",
+    "rarity": 5,
+    "element": {
+      "id": "Wind",
+      "name": "Viento",
+      "name_en": "Wind",
+      "color": "#00FF9C",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Wind.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Wind.png"
+    },
+    "path": {
+      "id": "Warlock",
+      "name": "Nihilidad",
+      "name_en": "Nihility",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Nihility.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Nihility.png"
+    },
+    "role": "SUB-DPS",
+    "sub_role": "Co-carry de Arcanos y DoT",
+    "specialty": "Acumula Arcanos sobre los enemigos, reduciendo su DEF y explotando al inicio de cada turno.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1307.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1307.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1307.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1307.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1307.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1307.png"
+    }
+  },
+  {
+    "id": "1107",
+    "name": "Clara",
+    "name_en": "Clara",
+    "rarity": 5,
+    "element": {
+      "id": "Physical",
+      "name": "Físico",
+      "name_en": "Physical",
+      "color": "#E0E0E0",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Physical.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Physical.png"
+    },
+    "path": {
+      "id": "Warrior",
+      "name": "Destrucción",
+      "name_en": "Destruction",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Destruction.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Destruction.png"
+    },
+    "role": "DPS",
+    "sub_role": "DPS de Contraataque Físico",
+    "specialty": "Svarog contraataca automáticamente cada vez que Clara o sus aliados reciben daño.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1107.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1107.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1107.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1107.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1107.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1107.png"
+    }
+  },
+  {
+    "id": "1412",
+    "name": "Céridra",
+    "name_en": "Cerydra",
+    "rarity": 5,
+    "element": {
+      "id": "Wind",
+      "name": "Viento",
+      "name_en": "Wind",
+      "color": "#00FF9C",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Wind.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Wind.png"
+    },
+    "path": {
+      "id": "Shaman",
+      "name": "Armonía",
+      "name_en": "Harmony",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Harmony.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Harmony.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Buffer Armónico de Viento",
+    "specialty": "Eleva el desempeño ofensivo de los aliados con sinergia elemental.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1412.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1412.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1412.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1412.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1412.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1412.png"
+    }
+  },
+  {
+    "id": "1406",
+    "name": "Cífer",
+    "name_en": "Cipher",
+    "rarity": 5,
+    "element": {
+      "id": "Quantum",
+      "name": "Cuántico",
+      "name_en": "Quantum",
+      "color": "#6D79F8",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Quantum.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Quantum.png"
+    },
+    "path": {
+      "id": "Warlock",
+      "name": "Nihilidad",
+      "name_en": "Nihility",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Nihility.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Nihility.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Debuffer Cuántico",
+    "specialty": "Debilita las defensas y resistencias de los objetivos clave.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1406.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1406.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1406.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1406.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1406.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1406.png"
+    }
+  },
+  {
+    "id": "1213",
+    "name": "Dan Heng • Imbibitor Lunae",
+    "name_en": "Dan Heng • Imbibitor Lunae",
+    "rarity": 5,
+    "element": {
+      "id": "Imaginary",
+      "name": "Imaginario",
+      "name_en": "Imaginary",
+      "color": "#F4D258",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Imaginary.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Imaginary.png"
+    },
+    "path": {
+      "id": "Warrior",
+      "name": "Destrucción",
+      "name_en": "Destruction",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Destruction.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Destruction.png"
+    },
+    "role": "DPS",
+    "sub_role": "Hypercarry de Consumo de PB",
+    "specialty": "Consume hasta 3 puntos de habilidad básica para desatar ataques devastadores de AdE Imaginario.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1213.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1213.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1213.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1213.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1213.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1213.png"
+    }
+  },
+  {
+    "id": "1414",
+    "name": "Dan Heng • Permansor Terrae",
+    "name_en": "Dan Heng • Permansor Terrae",
+    "rarity": 5,
+    "element": {
+      "id": "Physical",
+      "name": "Físico",
+      "name_en": "Physical",
+      "color": "#E0E0E0",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Physical.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Physical.png"
+    },
+    "path": {
+      "id": "Knight",
+      "name": "Conservación",
+      "name_en": "Preservation",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Preservation.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Preservation.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Sustain de Barrera de Protección Física",
+    "specialty": "Muro defensivo impenetrable que amortigua daño crítico.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1414.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1414.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1414.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1414.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1414.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1414.png"
+    }
+  },
+  {
+    "id": "1305",
+    "name": "Dr. Ratio",
+    "name_en": "Dr. Ratio",
+    "rarity": 5,
+    "element": {
+      "id": "Imaginary",
+      "name": "Imaginario",
+      "name_en": "Imaginary",
+      "color": "#F4D258",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Imaginary.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Imaginary.png"
+    },
+    "path": {
+      "id": "Rogue",
+      "name": "Cacería",
+      "name_en": "The Hunt",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Hunt.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Hunt.png"
+    },
+    "role": "DPS",
+    "sub_role": "Single Target de Ataques Adicionales",
+    "specialty": "Lanza tizas de daño Imaginario proporcionales al número de estados negativos del enemigo.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1305.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1305.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1305.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1305.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1305.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1305.png"
+    }
+  },
+  {
+    "id": "1505",
+    "name": "Evanescia",
+    "name_en": "Evanescia",
+    "rarity": 5,
+    "element": {
+      "id": "Physical",
+      "name": "Físico",
+      "name_en": "Physical",
+      "color": "#E0E0E0",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Physical.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Physical.png"
+    },
+    "path": {
+      "id": "Elation",
+      "name": "Exultación",
+      "name_en": "Elation",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Elation.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Elation.png"
+    },
+    "role": "DPS",
+    "sub_role": "DPS de Ataques Adicionales Exultantes",
+    "specialty": "Desata combinaciones acrobáticas de daño físico ininterrumpido.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1505.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1505.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1505.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1505.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1505.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1505.png"
+    }
+  },
+  {
+    "id": "1408",
+    "name": "Fainón",
+    "name_en": "Phainon",
+    "rarity": 5,
+    "element": {
+      "id": "Physical",
+      "name": "Físico",
+      "name_en": "Physical",
+      "color": "#E0E0E0",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Physical.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Physical.png"
+    },
+    "path": {
+      "id": "Warrior",
+      "name": "Destrucción",
+      "name_en": "Destruction",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Destruction.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Destruction.png"
+    },
+    "role": "DPS",
+    "sub_role": "DPS Blast Físico",
+    "specialty": "Especialista en demolición física de objetivos múltiples.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1408.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1408.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1408.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1408.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1408.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1408.png"
+    }
+  },
+  {
+    "id": "1220",
+    "name": "Feixiao",
+    "name_en": "Feixiao",
+    "rarity": 5,
+    "element": {
+      "id": "Wind",
+      "name": "Viento",
+      "name_en": "Wind",
+      "color": "#00FF9C",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Wind.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Wind.png"
+    },
+    "path": {
+      "id": "Rogue",
+      "name": "Cacería",
+      "name_en": "The Hunt",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Hunt.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Hunt.png"
+    },
+    "role": "DPS",
+    "sub_role": "Hypercarry de Ataque Adicional",
+    "specialty": "Genera Aureus con ataques aliados y desata su potente Habilidad Definitiva.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1220.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1220.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1220.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1220.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1220.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1220.png"
+    }
+  },
+  {
+    "id": "1208",
+    "name": "Fu Xuan",
+    "name_en": "Fu Xuan",
+    "rarity": 5,
+    "element": {
+      "id": "Quantum",
+      "name": "Cuántico",
+      "name_en": "Quantum",
+      "color": "#6D79F8",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Quantum.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Quantum.png"
+    },
+    "path": {
+      "id": "Knight",
+      "name": "Conservación",
+      "name_en": "Preservation",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Preservation.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Preservation.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Sustain de Mitigación y Prob. CRIT",
+    "specialty": "Redirige el daño de los aliados hacia sí misma, cura al equipo y previene efectos de control.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1208.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1208.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1208.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1208.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1208.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1208.png"
+    }
+  },
+  {
+    "id": "1225",
+    "name": "Fugue",
+    "name_en": "Fugue",
+    "rarity": 5,
+    "element": {
+      "id": "Fire",
+      "name": "Fuego",
+      "name_en": "Fire",
+      "color": "#FF5733",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Fire.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Fire.png"
+    },
+    "path": {
+      "id": "Warlock",
+      "name": "Nihilidad",
+      "name_en": "Nihility",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Nihility.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Nihility.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Debuffer de Firmeza Exógena y Ruptura",
+    "specialty": "Permite romper a enemigos con firmeza reducida activando Superruptura acelerada.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1225.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1225.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1225.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1225.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1225.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1225.png"
+    }
+  },
+  {
+    "id": "1104",
+    "name": "Gepard",
+    "name_en": "Gepard",
+    "rarity": 5,
+    "element": {
+      "id": "Ice",
+      "name": "Hielo",
+      "name_en": "Ice",
+      "color": "#47C7FD",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Ice.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Ice.png"
+    },
+    "path": {
+      "id": "Knight",
+      "name": "Conservación",
+      "name_en": "Preservation",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Preservation.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Preservation.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Sustain de Gran Escudo de Hielo",
+    "specialty": "Provee un escudo monumental para toda la escuadra con su Definitiva y revive con vida completa.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1104.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1104.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1104.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1104.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1104.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1104.png"
+    }
+  },
+  {
+    "id": "1509",
+    "name": "Gilgamesh",
+    "name_en": "Gilgamesh",
+    "rarity": 5,
+    "element": {
+      "id": "Thunder",
+      "name": "Rayo",
+      "name_en": "Lightning",
+      "color": "#AA72FF",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Thunder.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Thunder.png"
+    },
+    "path": {
+      "id": "Warrior",
+      "name": "Destrucción",
+      "name_en": "Destruction",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Destruction.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Destruction.png"
+    },
+    "role": "DPS",
+    "sub_role": "Hypercarry de Rayo",
+    "specialty": "Especialista en ráfagas de daño de relámpago.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1509.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1509.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1509.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1509.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1509.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1509.png"
+    }
+  },
+  {
+    "id": "1003",
+    "name": "Himeko",
+    "name_en": "Himeko",
+    "rarity": 5,
+    "element": {
+      "id": "Fire",
+      "name": "Fuego",
+      "name_en": "Fire",
+      "color": "#FF5733",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Fire.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Fire.png"
+    },
+    "path": {
+      "id": "Mage",
+      "name": "Erudición",
+      "name_en": "Erudition",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Erudition.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Erudition.png"
+    },
+    "role": "SUB-DPS",
+    "sub_role": "Co-carry de Ruptura y Remate",
+    "specialty": "Lanza una persecución de satélite orbital de Fuego cuando los aliados rompen debilidades enemigas.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1003.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1003.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1003.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1003.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1003.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1003.png"
+    }
+  },
+  {
+    "id": "1510",
+    "name": "Himeko • Nova",
+    "name_en": "Himeko • Nova",
+    "rarity": 5,
+    "element": {
+      "id": "Fire",
+      "name": "Fuego",
+      "name_en": "Fire",
+      "color": "#FF5733",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Fire.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Fire.png"
+    },
+    "path": {
+      "id": "Mage",
+      "name": "Erudición",
+      "name_en": "Erudition",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Erudition.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Erudition.png"
+    },
+    "role": "DPS",
+    "sub_role": "Hypercarry de AdE de Fuego",
+    "specialty": "Forma avanzada que desata tormentas estelares ígneas.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1510.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1510.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1510.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1510.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1510.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1510.png"
+    }
+  },
+  {
+    "id": "1217",
+    "name": "Huohuo",
+    "name_en": "Huohuo",
+    "rarity": 5,
+    "element": {
+      "id": "Wind",
+      "name": "Viento",
+      "name_en": "Wind",
+      "color": "#00FF9C",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Wind.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Wind.png"
+    },
+    "path": {
+      "id": "Priest",
+      "name": "Abundancia",
+      "name_en": "Abundance",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Abundance.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Abundance.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Sustain de Recarga de Energía y Purificación",
+    "specialty": "Cura pasivamente al inicio de turno, purifica desventajas y recarga la energía definitiva del equipo.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1217.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1217.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1217.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1217.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1217.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1217.png"
+    }
+  },
+  {
+    "id": "1409",
+    "name": "Hyacine",
+    "name_en": "Hyacine",
+    "rarity": 5,
+    "element": {
+      "id": "Wind",
+      "name": "Viento",
+      "name_en": "Wind",
+      "color": "#00FF9C",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Wind.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Wind.png"
+    },
+    "path": {
+      "id": "Memory",
+      "name": "Reminiscencia",
+      "name_en": "Remembrance",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Remembrance.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Remembrance.png"
+    },
+    "role": "SUB-DPS",
+    "sub_role": "Co-carry de Reminiscencia de Viento",
+    "specialty": "Apoyo táctico mediante invocaciones que reducen la firmeza enemiga.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1409.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1409.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1409.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1409.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1409.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1409.png"
+    }
+  },
+  {
+    "id": "1410",
+    "name": "Hysilens",
+    "name_en": "Hysilens",
+    "rarity": 5,
+    "element": {
+      "id": "Physical",
+      "name": "Físico",
+      "name_en": "Physical",
+      "color": "#E0E0E0",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Physical.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Physical.png"
+    },
+    "path": {
+      "id": "Warlock",
+      "name": "Nihilidad",
+      "name_en": "Nihility",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Nihility.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Nihility.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Debuffer de Reducción de RES",
+    "specialty": "Disminuye la tenacidad y resistencias enemigas.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1410.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1410.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1410.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1410.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1410.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1410.png"
+    }
+  },
+  {
+    "id": "1314",
+    "name": "Jade",
+    "name_en": "Jade",
+    "rarity": 5,
+    "element": {
+      "id": "Quantum",
+      "name": "Cuántico",
+      "name_en": "Quantum",
+      "color": "#6D79F8",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Quantum.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Quantum.png"
+    },
+    "path": {
+      "id": "Mage",
+      "name": "Erudición",
+      "name_en": "Erudition",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Erudition.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Erudition.png"
+    },
+    "role": "SUB-DPS",
+    "sub_role": "Co-carry de Cobrador de Deudas",
+    "specialty": "Otorga velocidad a un aliado cobrador y acumula cargas para látigos de área cuántica.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1314.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1314.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1314.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1314.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1314.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1314.png"
+    }
+  },
+  {
+    "id": "1218",
+    "name": "Jiaoqiu",
+    "name_en": "Jiaoqiu",
+    "rarity": 5,
+    "element": {
+      "id": "Fire",
+      "name": "Fuego",
+      "name_en": "Fire",
+      "color": "#FF5733",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Fire.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Fire.png"
+    },
+    "path": {
+      "id": "Warlock",
+      "name": "Nihilidad",
+      "name_en": "Nihility",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Nihility.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Nihility.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Debuffer de Asado Cenizo y Definitivas",
+    "specialty": "Aumenta la vulnerabilidad al daño de Habilidad Definitiva de los enemigos y asiste a Acheron.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1218.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1218.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1218.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1218.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1218.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1218.png"
+    }
+  },
+  {
+    "id": "1204",
+    "name": "Jing Yuan",
+    "name_en": "Jing Yuan",
+    "rarity": 5,
+    "element": {
+      "id": "Thunder",
+      "name": "Rayo",
+      "name_en": "Lightning",
+      "color": "#AA72FF",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Thunder.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Thunder.png"
+    },
+    "path": {
+      "id": "Mage",
+      "name": "Erudición",
+      "name_en": "Erudition",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Erudition.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Erudition.png"
+    },
+    "role": "DPS",
+    "sub_role": "Hypercarry de AdE de Rayo",
+    "specialty": "Invoca al Señor del Rayo que ejecuta hasta 10 golpes devastadores con daño de rebote.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1204.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1204.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1204.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1204.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1204.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1204.png"
+    }
+  },
+  {
+    "id": "1212",
+    "name": "Jingliu",
+    "name_en": "Jingliu",
+    "rarity": 5,
+    "element": {
+      "id": "Ice",
+      "name": "Hielo",
+      "name_en": "Ice",
+      "color": "#47C7FD",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Ice.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Ice.png"
+    },
+    "path": {
+      "id": "Warrior",
+      "name": "Destrucción",
+      "name_en": "Destruction",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Destruction.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Destruction.png"
+    },
+    "role": "DPS",
+    "sub_role": "Hypercarry de Transmigración",
+    "specialty": "Entra en estado de Transmigración espectral ganando Prob. CRIT masiva y ataques mejorados gratis.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1212.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1212.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1212.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1212.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1212.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1212.png"
+    }
+  },
+  {
+    "id": "1005",
+    "name": "Kafka",
+    "name_en": "Kafka",
+    "rarity": 5,
+    "element": {
+      "id": "Thunder",
+      "name": "Rayo",
+      "name_en": "Lightning",
+      "color": "#AA72FF",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Thunder.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Thunder.png"
+    },
+    "path": {
+      "id": "Warlock",
+      "name": "Nihilidad",
+      "name_en": "Nihility",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Nihility.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Nihility.png"
+    },
+    "role": "DPS",
+    "sub_role": "Detonador de DoT y Motor de Equipo",
+    "specialty": "Detona instantáneamente todo el Daño con el Tiempo (Sangrado, Quemadura, Electrocución, Intemperie).",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1005.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1005.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1005.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1005.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1005.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1005.png"
+    }
+  },
+  {
+    "id": "1321",
+    "name": "La Dalia",
+    "name_en": "The Dahlia",
+    "rarity": 5,
+    "element": {
+      "id": "Fire",
+      "name": "Fuego",
+      "name_en": "Fire",
+      "color": "#FF5733",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Fire.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Fire.png"
+    },
+    "path": {
+      "id": "Warlock",
+      "name": "Nihilidad",
+      "name_en": "Nihility",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Nihility.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Nihility.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Debuffer de Fuego",
+    "specialty": "Aplica penalizaciones continuas al adversario.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1321.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1321.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1321.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1321.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1321.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1321.png"
+    }
+  },
+  {
+    "id": "1413",
+    "name": "Larganoche (Evernight)",
+    "name_en": "Evernight",
+    "rarity": 5,
+    "element": {
+      "id": "Ice",
+      "name": "Hielo",
+      "name_en": "Ice",
+      "color": "#47C7FD",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Ice.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Ice.png"
+    },
+    "path": {
+      "id": "Memory",
+      "name": "Reminiscencia",
+      "name_en": "Remembrance",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Remembrance.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Remembrance.png"
+    },
+    "role": "DPS",
+    "sub_role": "DPS de Reminiscencia de Hielo",
+    "specialty": "Desata el poder de la larga noche con daño continuo de congelación.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1413.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1413.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1413.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1413.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1413.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1413.png"
+    }
+  },
+  {
+    "id": "1222",
+    "name": "Lingsha",
+    "name_en": "Lingsha",
+    "rarity": 5,
+    "element": {
+      "id": "Fire",
+      "name": "Fuego",
+      "name_en": "Fire",
+      "color": "#FF5733",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Fire.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Fire.png"
+    },
+    "path": {
+      "id": "Priest",
+      "name": "Abundancia",
+      "name_en": "Abundance",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Abundance.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Abundance.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Sustain de Limpieza Automática y Fuyuan",
+    "specialty": "Invoca a un conejo de incienso que limpia estados negativos y cura a todo el equipo al atacar.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1222.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1222.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1222.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1222.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1222.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1222.png"
+    }
+  },
+  {
+    "id": "1310",
+    "name": "Luciérnaga",
+    "name_en": "Firefly",
+    "rarity": 5,
+    "element": {
+      "id": "Fire",
+      "name": "Fuego",
+      "name_en": "Fire",
+      "color": "#FF5733",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Fire.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Fire.png"
+    },
+    "path": {
+      "id": "Warrior",
+      "name": "Destrucción",
+      "name_en": "Destruction",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Destruction.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Destruction.png"
+    },
+    "role": "DPS",
+    "sub_role": "Hypercarry de Superruptura",
+    "specialty": "Entra en estado Combustión completa con velocidad extrema y daño de Superruptura de Fuego.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1310.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1310.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1310.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1310.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1310.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1310.png"
+    }
+  },
+  {
+    "id": "1203",
+    "name": "Luocha",
+    "name_en": "Luocha",
+    "rarity": 5,
+    "element": {
+      "id": "Imaginary",
+      "name": "Imaginario",
+      "name_en": "Imaginary",
+      "color": "#F4D258",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Imaginary.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Imaginary.png"
+    },
+    "path": {
+      "id": "Priest",
+      "name": "Abundancia",
+      "name_en": "Abundance",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Abundance.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Abundance.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Sustain de Curación Automática sin PB",
+    "specialty": "Cura de emergencia gratis cuando un aliado cae bajo 50% de PV y despliega un campo de vida.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1203.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1203.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1203.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1203.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1203.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1203.png"
+    }
+  },
+  {
+    "id": "1404",
+    "name": "Midei",
+    "name_en": "Mydei",
+    "rarity": 5,
+    "element": {
+      "id": "Imaginary",
+      "name": "Imaginario",
+      "name_en": "Imaginary",
+      "color": "#F4D258",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Imaginary.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Imaginary.png"
+    },
+    "path": {
+      "id": "Warrior",
+      "name": "Destrucción",
+      "name_en": "Destruction",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Destruction.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Destruction.png"
+    },
+    "role": "DPS",
+    "sub_role": "DPS Blast Imaginario",
+    "specialty": "Combina supervivencia con daño imaginario de alta firmeza.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1404.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1404.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1404.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1404.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1404.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1404.png"
+    }
+  },
+  {
+    "id": "1507",
+    "name": "Mortenax Blade",
+    "name_en": "Mortenax Blade",
+    "rarity": 5,
+    "element": {
+      "id": "Fire",
+      "name": "Fuego",
+      "name_en": "Fire",
+      "color": "#FF5733",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Fire.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Fire.png"
+    },
+    "path": {
+      "id": "Warlock",
+      "name": "Nihilidad",
+      "name_en": "Nihility",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Nihility.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Nihility.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Debuffer de Fuego",
+    "specialty": "Aplica debilidades térmicas y aumento de vulnerabilidad.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1507.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1507.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1507.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1507.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1507.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1507.png"
+    }
+  },
+  {
+    "id": "1503",
+    "name": "Perla",
+    "name_en": "Pearl",
+    "rarity": 5,
+    "element": {
+      "id": "Ice",
+      "name": "Hielo",
+      "name_en": "Ice",
+      "color": "#47C7FD",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Ice.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Ice.png"
+    },
+    "path": {
+      "id": "Elation",
+      "name": "Exultación",
+      "name_en": "Elation",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Elation.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Elation.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Buffer de Ataques Adicionales",
+    "specialty": "Multiplica el daño de los golpes adicionales y eleva la diversión del equipo.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1503.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1503.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1503.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1503.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1503.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1503.png"
+    }
+  },
+  {
+    "id": "1317",
+    "name": "Rappa",
+    "name_en": "Rappa",
+    "rarity": 5,
+    "element": {
+      "id": "Imaginary",
+      "name": "Imaginario",
+      "name_en": "Imaginary",
+      "color": "#F4D258",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Imaginary.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Imaginary.png"
+    },
+    "path": {
+      "id": "Mage",
+      "name": "Erudición",
+      "name_en": "Erudition",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Erudition.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Erudition.png"
+    },
+    "role": "DPS",
+    "sub_role": "DPS de Ruptura en AdE Ninjutsu",
+    "specialty": "Entra en Forma del sello y convierte su ATQ básico en golpes de dispersión de Ruptura Imaginaria.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1317.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1317.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1317.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1317.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1317.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1317.png"
+    }
+  },
+  {
+    "id": "1508",
+    "name": "Rin Tohsaka",
+    "name_en": "Rin Tohsaka",
+    "rarity": 5,
+    "element": {
+      "id": "Quantum",
+      "name": "Cuántico",
+      "name_en": "Quantum",
+      "color": "#6D79F8",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Quantum.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Quantum.png"
+    },
+    "path": {
+      "id": "Mage",
+      "name": "Erudición",
+      "name_en": "Erudition",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Erudition.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Erudition.png"
+    },
+    "role": "DPS",
+    "sub_role": "DPS de AdE Cuántico",
+    "specialty": "Magia rúnica concentrada para barrer oleadas de enemigos.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1508.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1508.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1508.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1508.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1508.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1508.png"
+    }
+  },
+  {
+    "id": "1309",
+    "name": "Robin",
+    "name_en": "Robin",
+    "rarity": 5,
+    "element": {
+      "id": "Physical",
+      "name": "Físico",
+      "name_en": "Physical",
+      "color": "#E0E0E0",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Physical.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Physical.png"
+    },
+    "path": {
+      "id": "Shaman",
+      "name": "Armonía",
+      "name_en": "Harmony",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Harmony.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Harmony.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Buffer de Concierto y Avance Inmediato 100%",
+    "specialty": "Avanza inmediatamente el turno de todo el equipo al 100% y añade daño físico adicional a cada golpe.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1309.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1309.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1309.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1309.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1309.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1309.png"
+    }
+  },
+  {
+    "id": "1512",
+    "name": "Robin • Estival",
+    "name_en": "Robin • Summeretto",
+    "rarity": 5,
+    "element": {
+      "id": "Wind",
+      "name": "Viento",
+      "name_en": "Wind",
+      "color": "#00FF9C",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Wind.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Wind.png"
+    },
+    "path": {
+      "id": "Memory",
+      "name": "Reminiscencia",
+      "name_en": "Remembrance",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Remembrance.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Remembrance.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Buffer de Reminiscencia de Viento",
+    "specialty": "Acelera y sincroniza a las invocaciones aliadas para maximizar turnos.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1512.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1512.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1512.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1512.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1512.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1512.png"
+    }
+  },
+  {
+    "id": "1303",
+    "name": "Ruan Mei",
+    "name_en": "Ruan Mei",
+    "rarity": 5,
+    "element": {
+      "id": "Ice",
+      "name": "Hielo",
+      "name_en": "Ice",
+      "color": "#47C7FD",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Ice.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Ice.png"
+    },
+    "path": {
+      "id": "Shaman",
+      "name": "Armonía",
+      "name_en": "Harmony",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Harmony.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Harmony.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Buffer de Eficiencia de Ruptura y Penetración",
+    "specialty": "Aumenta la velocidad, eficiencia de ruptura y otorga Penetración de RES a todos los tipos.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1303.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1303.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1303.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1303.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1303.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1303.png"
+    }
+  },
+  {
+    "id": "1014",
+    "name": "Saber",
+    "name_en": "Saber",
+    "rarity": 5,
+    "element": {
+      "id": "Wind",
+      "name": "Viento",
+      "name_en": "Wind",
+      "color": "#00FF9C",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Wind.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Wind.png"
+    },
+    "path": {
+      "id": "Warrior",
+      "name": "Destrucción",
+      "name_en": "Destruction",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Destruction.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Destruction.png"
+    },
+    "role": "DPS",
+    "sub_role": "DPS Blast de Viento",
+    "specialty": "Corta las defensas enemigas con ráfagas de Viento concentradas.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1014.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1014.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1014.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1014.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1014.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1014.png"
+    }
+  },
+  {
+    "id": "1102",
+    "name": "Seele",
+    "name_en": "Seele",
+    "rarity": 5,
+    "element": {
+      "id": "Quantum",
+      "name": "Cuántico",
+      "name_en": "Quantum",
+      "color": "#6D79F8",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Quantum.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Quantum.png"
+    },
+    "path": {
+      "id": "Rogue",
+      "name": "Cacería",
+      "name_en": "The Hunt",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Hunt.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Hunt.png"
+    },
+    "role": "DPS",
+    "sub_role": "Hypercarry Crítico",
+    "specialty": "Especialista en turnos extra con su talento Reaparición al eliminar enemigos.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1102.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1102.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1102.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1102.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1102.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1102.png"
+    }
+  },
+  {
+    "id": "1006",
+    "name": "Silver Wolf",
+    "name_en": "Silver Wolf",
+    "rarity": 5,
+    "element": {
+      "id": "Quantum",
+      "name": "Cuántico",
+      "name_en": "Quantum",
+      "color": "#6D79F8",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Quantum.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Quantum.png"
+    },
+    "path": {
+      "id": "Warlock",
+      "name": "Nihilidad",
+      "name_en": "Nihility",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Nihility.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Nihility.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Debuffer de Implante de Debilidad",
+    "specialty": "Implanta al enemigo la debilidad elemental de un aliado y reduce DEF, VEL y RES.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1006.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1006.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1006.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1006.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1006.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1006.png"
+    }
+  },
+  {
+    "id": "1506",
+    "name": "Silver Wolf (Niv. 999)",
+    "name_en": "Silver Wolf LV.999",
+    "rarity": 5,
+    "element": {
+      "id": "Imaginary",
+      "name": "Imaginario",
+      "name_en": "Imaginary",
+      "color": "#F4D258",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Imaginary.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Imaginary.png"
+    },
+    "path": {
+      "id": "Elation",
+      "name": "Exultación",
+      "name_en": "Elation",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Elation.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Elation.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Debuffer de Manipulación de Reglas",
+    "specialty": "Altera parámetros del juego para confundir y desarmar a los enemigos.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1506.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1506.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1506.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1506.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1506.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1506.png"
+    }
+  },
+  {
+    "id": "1306",
+    "name": "Sparkle",
+    "name_en": "Sparkle",
+    "rarity": 5,
+    "element": {
+      "id": "Quantum",
+      "name": "Cuántico",
+      "name_en": "Quantum",
+      "color": "#6D79F8",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Quantum.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Quantum.png"
+    },
+    "path": {
+      "id": "Shaman",
+      "name": "Armonía",
+      "name_en": "Harmony",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Harmony.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Harmony.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Buffer de Puntos de Habilidad y Daño CRIT",
+    "specialty": "Expande los puntos de habilidad máxima a 7, avanza acciones y dispara el Daño CRIT.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1306.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1306.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1306.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1306.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1306.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1306.png"
+    }
+  },
+  {
+    "id": "1401",
+    "name": "Sra. Herta",
+    "name_en": "The Herta",
+    "rarity": 5,
+    "element": {
+      "id": "Ice",
+      "name": "Hielo",
+      "name_en": "Ice",
+      "color": "#47C7FD",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Ice.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Ice.png"
+    },
+    "path": {
+      "id": "Mage",
+      "name": "Erudición",
+      "name_en": "Erudition",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Erudition.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Erudition.png"
+    },
+    "role": "DPS",
+    "sub_role": "Hypercarry de Erudición de Hielo",
+    "specialty": "Desata ráfagas gélidas continuas que barren campos enteros de batalla.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1401.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1401.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1401.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1401.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1401.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1401.png"
+    }
+  },
+  {
+    "id": "1313",
+    "name": "Sunday",
+    "name_en": "Sunday",
+    "rarity": 5,
+    "element": {
+      "id": "Imaginary",
+      "name": "Imaginario",
+      "name_en": "Imaginary",
+      "color": "#F4D258",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Imaginary.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Imaginary.png"
+    },
+    "path": {
+      "id": "Shaman",
+      "name": "Armonía",
+      "name_en": "Harmony",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Harmony.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Harmony.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Buffer de Recarga y Traspaso de Acción",
+    "specialty": "Otorga turnos inmediatos, incrementa el daño crítico y regenera energía de la definitiva.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1313.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1313.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1313.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1313.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1313.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1313.png"
+    }
+  },
+  {
+    "id": "1112",
+    "name": "Topaz y Conti",
+    "name_en": "Topaz & Numby",
+    "rarity": 5,
+    "element": {
+      "id": "Fire",
+      "name": "Fuego",
+      "name_en": "Fire",
+      "color": "#FF5733",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Fire.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Fire.png"
+    },
+    "path": {
+      "id": "Rogue",
+      "name": "Cacería",
+      "name_en": "The Hunt",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Hunt.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Hunt.png"
+    },
+    "role": "SUB-DPS",
+    "sub_role": "Habilitador de Ataques Adicionales",
+    "specialty": "Aplica 'Certificado de deuda' que incrementa el daño de ataques adicionales de todo el equipo.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1112.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1112.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1112.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1112.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1112.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1112.png"
+    }
+  },
+  {
+    "id": "8005",
+    "name": "Trazacaminos (Armonía - Caelus)",
+    "name_en": "Trailblazer (Harmony - Caelus)",
+    "rarity": 5,
+    "element": {
+      "id": "Imaginary",
+      "name": "Imaginario",
+      "name_en": "Imaginary",
+      "color": "#F4D258",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Imaginary.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Imaginary.png"
+    },
+    "path": {
+      "id": "Shaman",
+      "name": "Armonía",
+      "name_en": "Harmony",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Harmony.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Harmony.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Buffer de Superruptura en Equipo",
+    "specialty": "Habilita que todos los miembros del equipo causen daño de Superruptura cuando el enemigo está roto.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/8005.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/8005.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/8005.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/8005.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/8005.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/8005.png"
+    }
+  },
+  {
+    "id": "8006",
+    "name": "Trazacaminos (Armonía - Stelle)",
+    "name_en": "Trailblazer (Harmony - Stelle)",
+    "rarity": 5,
+    "element": {
+      "id": "Imaginary",
+      "name": "Imaginario",
+      "name_en": "Imaginary",
+      "color": "#F4D258",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Imaginary.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Imaginary.png"
+    },
+    "path": {
+      "id": "Shaman",
+      "name": "Armonía",
+      "name_en": "Harmony",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Harmony.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Harmony.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Buffer de Superruptura en Equipo",
+    "specialty": "Habilita que todos los miembros del equipo causen daño de Superruptura cuando el enemigo está roto.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/8006.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/8006.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/8006.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/8006.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/8006.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/8006.png"
+    }
+  },
+  {
+    "id": "8003",
+    "name": "Trazacaminos (Conservación - Caelus)",
+    "name_en": "Trailblazer (Preservation - Caelus)",
+    "rarity": 5,
+    "element": {
+      "id": "Fire",
+      "name": "Fuego",
+      "name_en": "Fire",
+      "color": "#FF5733",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Fire.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Fire.png"
+    },
+    "path": {
+      "id": "Knight",
+      "name": "Conservación",
+      "name_en": "Preservation",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Preservation.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Preservation.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Sustain de Provocación y Escudo de Fuego",
+    "specialty": "Provoca a los enemigos para forzar ataques hacia sí mismo y reparte escudos continuos.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/8003.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/8003.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/8003.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/8003.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/8003.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/8003.png"
+    }
+  },
+  {
+    "id": "8004",
+    "name": "Trazacaminos (Conservación - Stelle)",
+    "name_en": "Trailblazer (Preservation - Stelle)",
+    "rarity": 5,
+    "element": {
+      "id": "Fire",
+      "name": "Fuego",
+      "name_en": "Fire",
+      "color": "#FF5733",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Fire.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Fire.png"
+    },
+    "path": {
+      "id": "Knight",
+      "name": "Conservación",
+      "name_en": "Preservation",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Preservation.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Preservation.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Sustain de Provocación y Escudo de Fuego",
+    "specialty": "Provoca a los enemigos para forzar ataques hacia sí mismo y reparte escudos continuos.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/8004.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/8004.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/8004.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/8004.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/8004.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/8004.png"
+    }
+  },
+  {
+    "id": "8001",
+    "name": "Trazacaminos (Destrucción - Caelus)",
+    "name_en": "Trailblazer (Destruction - Caelus)",
+    "rarity": 5,
+    "element": {
+      "id": "Physical",
+      "name": "Físico",
+      "name_en": "Physical",
+      "color": "#E0E0E0",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Physical.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Physical.png"
+    },
+    "path": {
+      "id": "Warrior",
+      "name": "Destrucción",
+      "name_en": "Destruction",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Destruction.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Destruction.png"
+    },
+    "role": "DPS",
+    "sub_role": "DPS Blast Físico",
+    "specialty": "Golpea a enemigos adyacentes con su bate y desata daño masivo de Ruptura.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/8001.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/8001.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/8001.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/8001.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/8001.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/8001.png"
+    }
+  },
+  {
+    "id": "8002",
+    "name": "Trazacaminos (Destrucción - Stelle)",
+    "name_en": "Trailblazer (Destruction - Stelle)",
+    "rarity": 5,
+    "element": {
+      "id": "Physical",
+      "name": "Físico",
+      "name_en": "Physical",
+      "color": "#E0E0E0",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Physical.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Physical.png"
+    },
+    "path": {
+      "id": "Warrior",
+      "name": "Destrucción",
+      "name_en": "Destruction",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Destruction.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Destruction.png"
+    },
+    "role": "DPS",
+    "sub_role": "DPS Blast Físico",
+    "specialty": "Golpea a enemigos adyacentes con su bate y desata daño masivo de Ruptura.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/8002.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/8002.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/8002.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/8002.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/8002.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/8002.png"
+    }
+  },
+  {
+    "id": "8009",
+    "name": "Trazacaminos (Exultación - Caelus)",
+    "name_en": "Trailblazer (Elation - Caelus)",
+    "rarity": 5,
+    "element": {
+      "id": "Thunder",
+      "name": "Rayo",
+      "name_en": "Lightning",
+      "color": "#AA72FF",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Thunder.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Thunder.png"
+    },
+    "path": {
+      "id": "Elation",
+      "name": "Exultación",
+      "name_en": "Elation",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Elation.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Elation.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Buffer de Exultación de Rayo",
+    "specialty": "Canaliza la vía del Eón Aha para beneficiar los ataques imprevistos del equipo.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/8009.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/8009.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/8009.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/8009.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/8009.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/8009.png"
+    }
+  },
+  {
+    "id": "8010",
+    "name": "Trazacaminos (Exultación - Stelle)",
+    "name_en": "Trailblazer (Elation - Stelle)",
+    "rarity": 5,
+    "element": {
+      "id": "Thunder",
+      "name": "Rayo",
+      "name_en": "Lightning",
+      "color": "#AA72FF",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Thunder.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Thunder.png"
+    },
+    "path": {
+      "id": "Elation",
+      "name": "Exultación",
+      "name_en": "Elation",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Elation.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Elation.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Buffer de Exultación de Rayo",
+    "specialty": "Canaliza la vía del Eón Aha para beneficiar los ataques imprevistos del equipo.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/8010.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/8010.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/8010.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/8010.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/8010.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/8010.png"
+    }
+  },
+  {
+    "id": "8007",
+    "name": "Trazacaminos (Reminiscencia - Caelus)",
+    "name_en": "Trailblazer (Remembrance - Caelus)",
+    "rarity": 5,
+    "element": {
+      "id": "Ice",
+      "name": "Hielo",
+      "name_en": "Ice",
+      "color": "#47C7FD",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Ice.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Ice.png"
+    },
+    "path": {
+      "id": "Memory",
+      "name": "Reminiscencia",
+      "name_en": "Remembrance",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Remembrance.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Remembrance.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Buffer de Mnemoduende de Apoyo",
+    "specialty": "Invoca a Mem para cooperar en combate y potenciar a los aliados de hielo.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/8007.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/8007.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/8007.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/8007.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/8007.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/8007.png"
+    }
+  },
+  {
+    "id": "8008",
+    "name": "Trazacaminos (Reminiscencia - Stelle)",
+    "name_en": "Trailblazer (Remembrance - Stelle)",
+    "rarity": 5,
+    "element": {
+      "id": "Ice",
+      "name": "Hielo",
+      "name_en": "Ice",
+      "color": "#47C7FD",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Ice.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Ice.png"
+    },
+    "path": {
+      "id": "Memory",
+      "name": "Reminiscencia",
+      "name_en": "Remembrance",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Remembrance.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Remembrance.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Buffer de Mnemoduende de Apoyo",
+    "specialty": "Invoca a Mem para cooperar en combate y potenciar a los aliados de hielo.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/8008.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/8008.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/8008.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/8008.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/8008.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/8008.png"
+    }
+  },
+  {
+    "id": "1403",
+    "name": "Tribbie",
+    "name_en": "Tribbie",
+    "rarity": 5,
+    "element": {
+      "id": "Quantum",
+      "name": "Cuántico",
+      "name_en": "Quantum",
+      "color": "#6D79F8",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Quantum.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Quantum.png"
+    },
+    "path": {
+      "id": "Shaman",
+      "name": "Armonía",
+      "name_en": "Harmony",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Harmony.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Harmony.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Buffer Armónico Cuántico",
+    "specialty": "Provee potenciaciones de combate a toda la escuadra.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1403.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1403.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1403.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1403.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1403.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1403.png"
+    }
+  },
+  {
+    "id": "1004",
+    "name": "Welt",
+    "name_en": "Welt",
+    "rarity": 5,
+    "element": {
+      "id": "Imaginary",
+      "name": "Imaginario",
+      "name_en": "Imaginary",
+      "color": "#F4D258",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Imaginary.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Imaginary.png"
+    },
+    "path": {
+      "id": "Warlock",
+      "name": "Nihilidad",
+      "name_en": "Nihility",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Nihility.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Nihility.png"
+    },
+    "role": "SUB-DPS",
+    "sub_role": "Co-carry de Control y Ralentización",
+    "specialty": "Genera campos gravitatorios que aprisionan a los rivales, retrasando sus turnos.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1004.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1004.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1004.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1004.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1004.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1004.png"
+    }
+  },
+  {
+    "id": "1209",
+    "name": "Yanqing",
+    "name_en": "Yanqing",
+    "rarity": 5,
+    "element": {
+      "id": "Ice",
+      "name": "Hielo",
+      "name_en": "Ice",
+      "color": "#47C7FD",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Ice.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Ice.png"
+    },
+    "path": {
+      "id": "Rogue",
+      "name": "Cacería",
+      "name_en": "The Hunt",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Hunt.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Hunt.png"
+    },
+    "role": "DPS",
+    "sub_role": "Single Target Crítico",
+    "specialty": "Aumenta drásticamente Prob. CRIT y Daño CRIT mientras mantenga su sincronización.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1209.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1209.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1209.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1209.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1209.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1209.png"
+    }
+  },
+  {
+    "id": "1502",
+    "name": "Yao Guang",
+    "name_en": "Yao Guang",
+    "rarity": 5,
+    "element": {
+      "id": "Physical",
+      "name": "Físico",
+      "name_en": "Physical",
+      "color": "#E0E0E0",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Physical.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Physical.png"
+    },
+    "path": {
+      "id": "Elation",
+      "name": "Exultación",
+      "name_en": "Elation",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Elation.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Elation.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Buffer de Exultación Físico",
+    "specialty": "Aporta moral y potencia los impactos críticos de las persecuciones.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1502.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1502.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1502.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1502.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1502.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1502.png"
+    }
+  },
+  {
+    "id": "1221",
+    "name": "Yunli",
+    "name_en": "Yunli",
+    "rarity": 5,
+    "element": {
+      "id": "Physical",
+      "name": "Físico",
+      "name_en": "Physical",
+      "color": "#E0E0E0",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Physical.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Physical.png"
+    },
+    "path": {
+      "id": "Warrior",
+      "name": "Destrucción",
+      "name_en": "Destruction",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Destruction.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Destruction.png"
+    },
+    "role": "DPS",
+    "sub_role": "DPS de Bloqueo y Contraataque",
+    "specialty": "Provoca a los enemigos y desata el contragolpe 'Demolición' con daño crítico garantizado.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1221.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1221.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1221.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1221.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1221.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1221.png"
+    }
+  },
+  {
+    "id": "1008",
+    "name": "Arlan",
+    "name_en": "Arlan",
+    "rarity": 4,
+    "element": {
+      "id": "Thunder",
+      "name": "Rayo",
+      "name_en": "Lightning",
+      "color": "#AA72FF",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Thunder.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Thunder.png"
+    },
+    "path": {
+      "id": "Warrior",
+      "name": "Destrucción",
+      "name_en": "Destruction",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Destruction.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Destruction.png"
+    },
+    "role": "DPS",
+    "sub_role": "DPS de Sacrificio de PV",
+    "specialty": "Incrementa su daño porcentual a medida que disminuye su barra de vida actual.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1008.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1008.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1008.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1008.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1008.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1008.png"
+    }
+  },
+  {
+    "id": "1009",
+    "name": "Asta",
+    "name_en": "Asta",
+    "rarity": 4,
+    "element": {
+      "id": "Fire",
+      "name": "Fuego",
+      "name_en": "Fire",
+      "color": "#FF5733",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Fire.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Fire.png"
+    },
+    "path": {
+      "id": "Shaman",
+      "name": "Armonía",
+      "name_en": "Harmony",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Harmony.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Harmony.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Buffer de Velocidad y ATQ en Área",
+    "specialty": "Incrementa la velocidad de todo el equipo drásticamente y acumula bonos de ataque.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1009.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1009.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1009.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1009.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1009.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1009.png"
+    }
+  },
+  {
+    "id": "1002",
+    "name": "Dan Heng",
+    "name_en": "Dan Heng",
+    "rarity": 4,
+    "element": {
+      "id": "Wind",
+      "name": "Viento",
+      "name_en": "Wind",
+      "color": "#00FF9C",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Wind.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Wind.png"
+    },
+    "path": {
+      "id": "Rogue",
+      "name": "Cacería",
+      "name_en": "The Hunt",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Hunt.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Hunt.png"
+    },
+    "role": "DPS",
+    "sub_role": "Single Target de Viento",
+    "specialty": "Aplica Ralentización e incrementa la penetración de RES a Viento.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1002.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1002.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1002.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1002.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1002.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1002.png"
+    }
+  },
+  {
+    "id": "1301",
+    "name": "Gallagher",
+    "name_en": "Gallagher",
+    "rarity": 4,
+    "element": {
+      "id": "Fire",
+      "name": "Fuego",
+      "name_en": "Fire",
+      "color": "#FF5733",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Fire.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Fire.png"
+    },
+    "path": {
+      "id": "Priest",
+      "name": "Abundancia",
+      "name_en": "Abundance",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Abundance.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Abundance.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Sustain de Ruptura y Curación Ofensiva",
+    "specialty": "Aplica Beodez para aumentar el daño de ruptura y cura a los aliados cada vez que atacan al objetivo.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1301.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1301.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1301.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1301.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1301.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1301.png"
+    }
+  },
+  {
+    "id": "1210",
+    "name": "Guinaifen",
+    "name_en": "Guinaifen",
+    "rarity": 4,
+    "element": {
+      "id": "Fire",
+      "name": "Fuego",
+      "name_en": "Fire",
+      "color": "#FF5733",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Fire.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Fire.png"
+    },
+    "path": {
+      "id": "Warlock",
+      "name": "Nihilidad",
+      "name_en": "Nihility",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Nihility.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Nihility.png"
+    },
+    "role": "SUB-DPS",
+    "sub_role": "Co-carry de Quemadura y Beso de Fuego",
+    "specialty": "Aplica Fuego y la debilidad Beso ígneo que incrementa el daño que reciben los enemigos.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1210.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1210.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1210.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1210.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1210.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1210.png"
+    }
+  },
+  {
+    "id": "1215",
+    "name": "Hanya",
+    "name_en": "Hanya",
+    "rarity": 4,
+    "element": {
+      "id": "Physical",
+      "name": "Físico",
+      "name_en": "Physical",
+      "color": "#E0E0E0",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Physical.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Physical.png"
+    },
+    "path": {
+      "id": "Shaman",
+      "name": "Armonía",
+      "name_en": "Harmony",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Harmony.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Harmony.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Buffer de Puntos de Habilidad y Velocidad",
+    "specialty": "Aplica Lastre para generar PB adicionales y acelera a los carries principales.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1215.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1215.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1215.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1215.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1215.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1215.png"
+    }
+  },
+  {
+    "id": "1013",
+    "name": "Herta",
+    "name_en": "Herta",
+    "rarity": 4,
+    "element": {
+      "id": "Ice",
+      "name": "Hielo",
+      "name_en": "Ice",
+      "color": "#47C7FD",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Ice.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Ice.png"
+    },
+    "path": {
+      "id": "Mage",
+      "name": "Erudición",
+      "name_en": "Erudition",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Erudition.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Erudition.png"
+    },
+    "role": "SUB-DPS",
+    "sub_role": "Co-carry de Giro en Cadena",
+    "specialty": "Realiza su famoso ataque adicional en tromba 'Kuru Kuru' cuando la vida enemiga cae bajo el 50%.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1013.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1013.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1013.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1013.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1013.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1013.png"
+    }
+  },
+  {
+    "id": "1109",
+    "name": "Hook",
+    "name_en": "Hook",
+    "rarity": 4,
+    "element": {
+      "id": "Fire",
+      "name": "Fuego",
+      "name_en": "Fire",
+      "color": "#FF5733",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Fire.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Fire.png"
+    },
+    "path": {
+      "id": "Warrior",
+      "name": "Destrucción",
+      "name_en": "Destruction",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Destruction.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Destruction.png"
+    },
+    "role": "DPS",
+    "sub_role": "Single Target / Blast de Quemadura",
+    "specialty": "Aplica Quemadura y gana turnos extra y regeneración de energía.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1109.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1109.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1109.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1109.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1109.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1109.png"
+    }
+  },
+  {
+    "id": "1111",
+    "name": "Luka",
+    "name_en": "Luka",
+    "rarity": 4,
+    "element": {
+      "id": "Physical",
+      "name": "Físico",
+      "name_en": "Physical",
+      "color": "#E0E0E0",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Physical.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Physical.png"
+    },
+    "path": {
+      "id": "Warlock",
+      "name": "Nihilidad",
+      "name_en": "Nihility",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Nihility.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Nihility.png"
+    },
+    "role": "SUB-DPS",
+    "sub_role": "Co-carry de Sangrado y Vulnerabilidad",
+    "specialty": "Detona estados de Sangrado con puñetazos directos e incrementa el daño recibido.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1111.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1111.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1111.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1111.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1111.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1111.png"
+    }
+  },
+  {
+    "id": "1110",
+    "name": "Lynx",
+    "name_en": "Lynx",
+    "rarity": 4,
+    "element": {
+      "id": "Quantum",
+      "name": "Cuántico",
+      "name_en": "Quantum",
+      "color": "#6D79F8",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Quantum.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Quantum.png"
+    },
+    "path": {
+      "id": "Priest",
+      "name": "Abundancia",
+      "name_en": "Abundance",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Abundance.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Abundance.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Sustain de Limpieza en AdE y Salud Máxima",
+    "specialty": "Aumenta la vida máxima de los aliados de Destrucción/Preservación y limpia desventajas en área.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1110.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1110.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1110.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1110.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1110.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1110.png"
+    }
+  },
+  {
+    "id": "1312",
+    "name": "Misha",
+    "name_en": "Misha",
+    "rarity": 4,
+    "element": {
+      "id": "Ice",
+      "name": "Hielo",
+      "name_en": "Ice",
+      "color": "#47C7FD",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Ice.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Ice.png"
+    },
+    "path": {
+      "id": "Warrior",
+      "name": "Destrucción",
+      "name_en": "Destruction",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Destruction.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Destruction.png"
+    },
+    "role": "DPS",
+    "sub_role": "DPS de Rebote y Congelación",
+    "specialty": "Acumula golpes para su Habilidad Definitiva que congela e inflige daño de hielo en rebote.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1312.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1312.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1312.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1312.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1312.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1312.png"
+    }
+  },
+  {
+    "id": "1223",
+    "name": "Moze",
+    "name_en": "Moze",
+    "rarity": 4,
+    "element": {
+      "id": "Thunder",
+      "name": "Rayo",
+      "name_en": "Lightning",
+      "color": "#AA72FF",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Thunder.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Thunder.png"
+    },
+    "path": {
+      "id": "Rogue",
+      "name": "Cacería",
+      "name_en": "The Hunt",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Hunt.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Hunt.png"
+    },
+    "role": "SUB-DPS",
+    "sub_role": "Co-carry en Estado Ausente",
+    "specialty": "Marca a un objetivo como presa y lanza ataques adicionales letales desde las sombras.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1223.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1223.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1223.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1223.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1223.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1223.png"
+    }
+  },
+  {
+    "id": "1105",
+    "name": "Natasha",
+    "name_en": "Natasha",
+    "rarity": 4,
+    "element": {
+      "id": "Physical",
+      "name": "Físico",
+      "name_en": "Physical",
+      "color": "#E0E0E0",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Physical.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Physical.png"
+    },
+    "path": {
+      "id": "Priest",
+      "name": "Abundancia",
+      "name_en": "Abundance",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Abundance.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Abundance.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Sustain de Purificación y Curación Rápida",
+    "specialty": "Disipa estados alterados con su habilidad básica y sana a la escuadra con su Definitiva.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1105.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1105.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1105.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1105.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1105.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1105.png"
+    }
+  },
+  {
+    "id": "1106",
+    "name": "Pela",
+    "name_en": "Pela",
+    "rarity": 4,
+    "element": {
+      "id": "Ice",
+      "name": "Hielo",
+      "name_en": "Ice",
+      "color": "#47C7FD",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Ice.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Ice.png"
+    },
+    "path": {
+      "id": "Warlock",
+      "name": "Nihilidad",
+      "name_en": "Nihility",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Nihility.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Nihility.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Debuffer de Reducción de DEF en AdE",
+    "specialty": "Aplica bajada general de DEF a todos los enemigos y disipa ventajas con su habilidad básica.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1106.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1106.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1106.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1106.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1106.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1106.png"
+    }
+  },
+  {
+    "id": "1201",
+    "name": "Qingque",
+    "name_en": "Qingque",
+    "rarity": 4,
+    "element": {
+      "id": "Quantum",
+      "name": "Cuántico",
+      "name_en": "Quantum",
+      "color": "#6D79F8",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Quantum.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Quantum.png"
+    },
+    "path": {
+      "id": "Mage",
+      "name": "Erudición",
+      "name_en": "Erudition",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Erudition.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Erudition.png"
+    },
+    "role": "DPS",
+    "sub_role": "Hypercarry Cuántico de Azar",
+    "specialty": "Roba fichas de jade celestial para obtener póquer y multiplicar salvajemente su ATQ.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1201.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1201.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1201.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1201.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1201.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1201.png"
+    }
+  },
+  {
+    "id": "1108",
+    "name": "Sampo",
+    "name_en": "Sampo",
+    "rarity": 4,
+    "element": {
+      "id": "Wind",
+      "name": "Viento",
+      "name_en": "Wind",
+      "color": "#00FF9C",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Wind.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Wind.png"
+    },
+    "path": {
+      "id": "Warlock",
+      "name": "Nihilidad",
+      "name_en": "Nihility",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Nihility.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Nihility.png"
+    },
+    "role": "SUB-DPS",
+    "sub_role": "Co-carry de Intemperie y Multiplicador",
+    "specialty": "Aplica hasta 5 acumulaciones de Intemperie y aumenta el daño DoT recibido por los enemigos.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1108.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1108.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1108.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1108.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1108.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1108.png"
+    }
+  },
+  {
+    "id": "1103",
+    "name": "Serval",
+    "name_en": "Serval",
+    "rarity": 4,
+    "element": {
+      "id": "Thunder",
+      "name": "Rayo",
+      "name_en": "Lightning",
+      "color": "#AA72FF",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Thunder.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Thunder.png"
+    },
+    "path": {
+      "id": "Mage",
+      "name": "Erudición",
+      "name_en": "Erudition",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Erudition.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Erudition.png"
+    },
+    "role": "SUB-DPS",
+    "sub_role": "Co-carry de Electrocución en Área",
+    "specialty": "Extiende la duración de Electrocución y genera energía con ataques en área.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1103.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1103.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1103.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1103.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1103.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1103.png"
+    }
+  },
+  {
+    "id": "1001",
+    "name": "Siete de Marzo",
+    "name_en": "March 7th",
+    "rarity": 4,
+    "element": {
+      "id": "Ice",
+      "name": "Hielo",
+      "name_en": "Ice",
+      "color": "#47C7FD",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Ice.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Ice.png"
+    },
+    "path": {
+      "id": "Knight",
+      "name": "Conservación",
+      "name_en": "Preservation",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Preservation.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Preservation.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Sustain de Escudo Individual y Congelación",
+    "specialty": "Protege a un aliado con escudo, atrae la atención enemiga y contraataca.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1001.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1001.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1001.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1001.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1001.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1001.png"
+    }
+  },
+  {
+    "id": "1224",
+    "name": "Siete de Marzo",
+    "name_en": "March 7th",
+    "rarity": 4,
+    "element": {
+      "id": "Imaginary",
+      "name": "Imaginario",
+      "name_en": "Imaginary",
+      "color": "#F4D258",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Imaginary.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Imaginary.png"
+    },
+    "path": {
+      "id": "Rogue",
+      "name": "Cacería",
+      "name_en": "The Hunt",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Hunt.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Hunt.png"
+    },
+    "role": "SUB-DPS",
+    "sub_role": "Co-carry y Potenciador de Shifu",
+    "specialty": "Adopta a un aliado como Maestro, potenciando su velocidad y coordinando ataques adicionales.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1224.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1224.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1224.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1224.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1224.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1224.png"
+    }
+  },
+  {
+    "id": "1206",
+    "name": "Sushang",
+    "name_en": "Sushang",
+    "rarity": 4,
+    "element": {
+      "id": "Physical",
+      "name": "Físico",
+      "name_en": "Physical",
+      "color": "#E0E0E0",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Physical.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Physical.png"
+    },
+    "path": {
+      "id": "Rogue",
+      "name": "Cacería",
+      "name_en": "The Hunt",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Hunt.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Hunt.png"
+    },
+    "role": "DPS",
+    "sub_role": "DPS de Ruptura y Postura de Espada",
+    "specialty": "Inflige daño físico masivo a enemigos con Debilidad Rota y avanza su acción 100%.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1206.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1206.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1206.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1206.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1206.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1206.png"
+    }
+  },
+  {
+    "id": "1202",
+    "name": "Tingyun",
+    "name_en": "Tingyun",
+    "rarity": 4,
+    "element": {
+      "id": "Thunder",
+      "name": "Rayo",
+      "name_en": "Lightning",
+      "color": "#AA72FF",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Thunder.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Thunder.png"
+    },
+    "path": {
+      "id": "Shaman",
+      "name": "Armonía",
+      "name_en": "Harmony",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Harmony.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Harmony.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Buffer Batería de Energía y ATQ",
+    "specialty": "Rellena hasta 50 puntos de energía de la Habilidad Definitiva e imbuye Bendición de Rayo.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1202.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1202.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1202.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1202.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1202.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1202.png"
+    }
+  },
+  {
+    "id": "1214",
+    "name": "Xueyi",
+    "name_en": "Xueyi",
+    "rarity": 4,
+    "element": {
+      "id": "Quantum",
+      "name": "Cuántico",
+      "name_en": "Quantum",
+      "color": "#6D79F8",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Quantum.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Quantum.png"
+    },
+    "path": {
+      "id": "Warrior",
+      "name": "Destrucción",
+      "name_en": "Destruction",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Destruction.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Destruction.png"
+    },
+    "role": "DPS",
+    "sub_role": "DPS de Ruptura Cuántica Universal",
+    "specialty": "Reduce Firmeza ignorando tipos de debilidad y desata ataques adicionales con acumulaciones de Karma.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1214.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1214.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1214.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1214.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1214.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1214.png"
+    }
+  },
+  {
+    "id": "1207",
+    "name": "Yukong",
+    "name_en": "Yukong",
+    "rarity": 4,
+    "element": {
+      "id": "Imaginary",
+      "name": "Imaginario",
+      "name_en": "Imaginary",
+      "color": "#F4D258",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/element/Imaginary.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/element/Imaginary.png"
+    },
+    "path": {
+      "id": "Shaman",
+      "name": "Armonía",
+      "name_en": "Harmony",
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/path/Harmony.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Harmony.png"
+    },
+    "role": "SUPPORT",
+    "sub_role": "Buffer de Flechas y Prob./Daño CRIT",
+    "specialty": "Cuerda de arco otorga bonificaciones masivas de Prob. CRIT y Daño CRIT para sincronizar remates.",
+    "images": {
+      "icon": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/character/1207.png",
+      "icon_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1207.png",
+      "preview": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_preview/1207.png",
+      "preview_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_preview/1207.png",
+      "portrait": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/image/character_portrait/1207.png",
+      "portrait_cdn": "https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/image/character_portrait/1207.png"
+    }
+  }
+]
