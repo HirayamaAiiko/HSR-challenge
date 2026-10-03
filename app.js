@@ -82,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentExpeditionMode = 'divergent_universe';
   let currentExpeditionChallenge = null;
+  const lockedExpeditionSlots = new Set();
   let p1CheckedCriteria = new Set();
   let p2CheckedCriteria = new Set();
 
@@ -376,9 +377,19 @@ document.addEventListener('DOMContentLoaded', () => {
     handleHashNavigation();
   }
 
+  function getUrlParams() {
+    const searchParams = new URLSearchParams(window.location.search || '');
+    const hashString = (window.location.hash || '').replace(/^#/, '');
+    const hashParams = new URLSearchParams(hashString);
+    const params = new URLSearchParams();
+    for (const [k, v] of searchParams.entries()) params.set(k, v);
+    for (const [k, v] of hashParams.entries()) params.set(k, v);
+    return params;
+  }
+
   function handleHashNavigation() {
-    const rawHash = window.location.hash.replace(/^#/, '');
-    const params = new URLSearchParams(rawHash);
+    const params = getUrlParams();
+    const rawHash = (window.location.hash || '').replace(/^#/, '');
     const tab = params.get('tab') || (rawHash.includes('roulette') ? 'roulette' : rawHash.includes('duel') ? 'duel' : rawHash.includes('universe') ? 'universe' : rawHash.includes('gacha') ? 'gacha' : 'catalog');
 
     // Extract Host Profile & Shared Room params
@@ -435,15 +446,22 @@ document.addEventListener('DOMContentLoaded', () => {
       if (p2ExpSvg) {
         p2ExpSvg.style.display = 'none';
       }
-
-      // If room parameter is provided, auto-join WebRTC P2P room
-      if (roomParam && (!p2pConn || currentP2pRoomCode !== roomParam)) {
-        joinP2PRoom(roomParam);
+    } else if (roomParam) {
+      // Room param provided directly in link
+      if (sharedRoomBanner) {
+        sharedRoomBanner.style.display = 'block';
+        if (sharedRoomHostName) sharedRoomHostName.textContent = `Sala ${roomParam}`;
+        if (sharedRoomSubText) sharedRoomSubText.textContent = 'Conectando con la sala P2P en vivo de tu amigo...';
       }
     } else {
       if (sharedRoomBanner) sharedRoomBanner.style.display = 'none';
       remoteHostProfile = null;
       updateUserProfileUI();
+    }
+
+    // Auto-join WebRTC P2P room if room param is present
+    if (roomParam && (!p2pConn || currentP2pRoomCode !== roomParam)) {
+      joinP2PRoom(roomParam);
     }
 
     switchTab(tab, false);
@@ -782,7 +800,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function exportAllDataAsJson() {
     const exportPayload = {
       app: 'HSR_Endgame_Platform',
-      version: '1.11.0',
+      version: '1.11.1',
       exportDate: new Date().toISOString(),
       profile: userProfile,
       ownedCharacters: Array.from(ownedCharacterIds),
@@ -1234,6 +1252,46 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 600);
   }
 
+  const P2P_ICE_SERVERS = [
+    { urls: 'stun:stun.l.google.com:19302' },
+    { urls: 'stun:stun1.l.google.com:19302' },
+    { urls: 'stun:stun2.l.google.com:19302' },
+    { urls: 'stun:stun3.l.google.com:19302' },
+    { urls: 'stun:stun4.l.google.com:19302' },
+    { urls: 'stun:stun.cloudflare.com:3478' },
+    { urls: 'stun:stun.services.mozilla.com' },
+    {
+      urls: 'turn:openrelay.metered.ca:80',
+      username: 'openrelay',
+      credential: 'openrelay'
+    },
+    {
+      urls: 'turn:openrelay.metered.ca:443',
+      username: 'openrelay',
+      credential: 'openrelay'
+    },
+    {
+      urls: 'turn:openrelay.metered.ca:443?transport=tcp',
+      username: 'openrelay',
+      credential: 'openrelay'
+    }
+  ];
+
+  function createPeerConfig() {
+    return {
+      host: '0.peerjs.com',
+      port: 443,
+      path: '/',
+      secure: true,
+      pingInterval: 10000,
+      debug: 1,
+      config: {
+        iceServers: P2P_ICE_SERVERS,
+        iceCandidatePoolSize: 10
+      }
+    };
+  }
+
   function generateP2PRoomCode() {
     const chars = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ';
     let code = '';
@@ -1245,7 +1303,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function getPeerIdFromCode(code) {
     const clean = code.toUpperCase().replace(/[^A-Z0-9]/g, '');
-    return `hsr-room-${clean.toLowerCase()}`;
+    return `hsrv2-peer-${clean.toLowerCase()}`;
+  }
+
+  let p2pHeartbeatInterval = null;
+  function startP2PHeartbeat() {
+    stopP2PHeartbeat();
+    p2pHeartbeatInterval = setInterval(() => {
+      if (p2pPeer && !p2pPeer.destroyed && p2pPeer.disconnected) {
+        console.log('[P2P] Reconnecting signaling WebSocket...');
+        try { p2pPeer.reconnect(); } catch (e) {}
+      }
+      if (p2pConn && p2pConn.open) {
+        try {
+          p2pConn.send({ type: 'HEARTBEAT_PING', timestamp: Date.now() });
+        } catch (e) {}
+      }
+    }, 15000);
+  }
+
+  function stopP2PHeartbeat() {
+    if (p2pHeartbeatInterval) {
+      clearInterval(p2pHeartbeatInterval);
+      p2pHeartbeatInterval = null;
+    }
   }
 
   function updateP2PStatusUI(status, label) {
@@ -1514,12 +1595,27 @@ document.addEventListener('DOMContentLoaded', () => {
         renderFriendInspectUI();
         break;
       }
+
+      case 'HEARTBEAT_PING': {
+        sendP2PMessage('HEARTBEAT_PONG', { originalTimestamp: data.timestamp });
+        break;
+      }
+
+      case 'HEARTBEAT_PONG': {
+        // Channel alive confirmation
+        break;
+      }
     }
   }
 
   function setupDataConnection(conn) {
     conn.on('open', () => {
       isP2pConnected = true;
+      p2pJoinRetryCount = 0;
+      if (p2pJoinRetryTimer) {
+        clearTimeout(p2pJoinRetryTimer);
+        p2pJoinRetryTimer = null;
+      }
       updateP2PStatusUI('connected', p2pRole === 'host' ? 'En Vivo con Amigo' : 'En Vivo con Anfitrión');
       if (p2pHostStatusText) {
         p2pHostStatusText.textContent = p2pRole === 'host'
@@ -1533,6 +1629,9 @@ document.addEventListener('DOMContentLoaded', () => {
         fullState: getFullStatePayload(),
         timestamp: Date.now()
       });
+      startP2PHeartbeat();
+      showToast(p2pRole === 'host' ? '✦ ¡Amigo conectado a la sala!' : '✦ ¡Conectado al anfitrión en vivo!', 'success');
+      playUiSound('fanfare');
     });
 
     conn.on('data', (data) => {
@@ -1551,6 +1650,22 @@ document.addEventListener('DOMContentLoaded', () => {
       isP2pConnected = false;
       updateP2PStatusUI('offline', 'Error P2P');
     });
+
+    if (conn.peerConnection) {
+      conn.peerConnection.oniceconnectionstatechange = () => {
+        const iceState = conn.peerConnection.iceConnectionState;
+        console.log('[WebRTC ICE State]:', iceState);
+        if (iceState === 'connected' || iceState === 'completed') {
+          isP2pConnected = true;
+          updateP2PStatusUI('connected', p2pRole === 'host' ? 'En Vivo con Amigo' : 'En Vivo con Anfitrión');
+        } else if (iceState === 'failed') {
+          console.warn('[WebRTC ICE State] Falló la negociación directa. Intentando reinicio ICE...');
+          if (typeof conn.peerConnection.restartIce === 'function') {
+            conn.peerConnection.restartIce();
+          }
+        }
+      };
+    }
   }
 
   function initP2PHost(customCode = null) {
@@ -1559,8 +1674,13 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
+    if (p2pConn) {
+      try { p2pConn.close(); } catch (e) {}
+      p2pConn = null;
+    }
     if (p2pPeer) {
       try { p2pPeer.destroy(); } catch (e) {}
+      p2pPeer = null;
     }
 
     const roomCode = customCode || generateP2PRoomCode();
@@ -1575,17 +1695,27 @@ document.addEventListener('DOMContentLoaded', () => {
     renderShareSummaryChips();
 
     const peerId = getPeerIdFromCode(roomCode);
-    p2pPeer = new Peer(peerId, { debug: 1 });
+    p2pPeer = new Peer(peerId, createPeerConfig());
 
     p2pPeer.on('open', (id) => {
+      console.log(`[P2P Host] Registrado en el broker con ID: ${id} (Sala: ${roomCode})`);
       updateP2PStatusUI('waiting', 'Esperando Amigo...');
       showToast(`✦ Sala en vivo creada con código ${roomCode}`, 'info');
       playUiSound('click');
+      startP2PHeartbeat();
     });
 
     p2pPeer.on('connection', (conn) => {
+      console.log('[P2P Host] Conexión entrante recibida de un par');
       p2pConn = conn;
       setupDataConnection(conn);
+    });
+
+    p2pPeer.on('disconnected', () => {
+      console.warn('[P2P Host] Socket de señalización desconectado, reconectando...');
+      if (p2pPeer && !p2pPeer.destroyed) {
+        try { p2pPeer.reconnect(); } catch (e) {}
+      }
     });
 
     p2pPeer.on('error', (err) => {
@@ -1595,12 +1725,16 @@ document.addEventListener('DOMContentLoaded', () => {
         initP2PHost(retryCode);
       } else {
         updateP2PStatusUI('offline', 'Error de Conexión');
-        if (p2pHostStatusText) p2pHostStatusText.textContent = 'No se pudo registrar la sala en el servidor de señalización.';
+        if (p2pHostStatusText) p2pHostStatusText.textContent = 'No se pudo registrar la sala en el broker WebRTC. Revisa tu red.';
       }
     });
   }
 
-  function joinP2PRoom(code) {
+  let p2pJoinRetryTimer = null;
+  let p2pJoinRetryCount = 0;
+  const MAX_P2P_RETRIES = 6;
+
+  function joinP2PRoom(code, isRetry = false) {
     if (!code) return;
     const cleanCode = code.trim().toUpperCase();
     if (!cleanCode) return;
@@ -1610,34 +1744,98 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
+    if (!isRetry) {
+      p2pJoinRetryCount = 0;
+      if (p2pJoinRetryTimer) {
+        clearTimeout(p2pJoinRetryTimer);
+        p2pJoinRetryTimer = null;
+      }
+    }
+
+    if (p2pConn) {
+      try { p2pConn.close(); } catch (e) {}
+      p2pConn = null;
+    }
     if (p2pPeer) {
       try { p2pPeer.destroy(); } catch (e) {}
+      p2pPeer = null;
     }
 
     currentP2pRoomCode = cleanCode;
     p2pRole = 'guest';
 
     if (p2pCurrentRoomCode) p2pCurrentRoomCode.textContent = cleanCode;
-    updateP2PStatusUI('waiting', 'Conectando...');
-    if (p2pHostStatusText) p2pHostStatusText.textContent = `Conectando con la sala ${cleanCode}...`;
+    const retryStatusLabel = p2pJoinRetryCount > 0 ? `Buscando (${p2pJoinRetryCount}/${MAX_P2P_RETRIES})...` : 'Conectando...';
+    updateP2PStatusUI('waiting', retryStatusLabel);
+    if (p2pHostStatusText) {
+      p2pHostStatusText.textContent = `Conectando con la sala ${cleanCode}... (Intento ${p2pJoinRetryCount + 1}/${MAX_P2P_RETRIES})`;
+    }
 
-    p2pPeer = new Peer({ debug: 1 });
+    p2pPeer = new Peer(createPeerConfig());
 
     p2pPeer.on('open', () => {
       const targetPeerId = getPeerIdFromCode(cleanCode);
-      const conn = p2pPeer.connect(targetPeerId, { reliable: true });
+      console.log(`[P2P Guest] Registrado en broker, conectando a anfitrión: ${targetPeerId}`);
+      const conn = p2pPeer.connect(targetPeerId, {
+        reliable: true,
+        serialization: 'json'
+      });
       p2pConn = conn;
       setupDataConnection(conn);
+
+      // Timeout fallback for handshake
+      const connTimeout = setTimeout(() => {
+        if (!isP2pConnected && p2pJoinRetryCount < MAX_P2P_RETRIES) {
+          console.warn('[P2P Guest] Tiempo de espera agotado, reintentando...');
+          p2pJoinRetryCount++;
+          joinP2PRoom(cleanCode, true);
+        }
+      }, 7000);
+
+      conn.on('open', () => {
+        clearTimeout(connTimeout);
+        p2pJoinRetryCount = 0;
+        startP2PHeartbeat();
+      });
+    });
+
+    p2pPeer.on('disconnected', () => {
+      console.warn('[P2P Guest] Socket de señalización desconectado, reconectando...');
+      if (p2pPeer && !p2pPeer.destroyed) {
+        try { p2pPeer.reconnect(); } catch (e) {}
+      }
     });
 
     p2pPeer.on('error', (err) => {
       console.warn('PeerJS Guest Error:', err);
-      updateP2PStatusUI('offline', 'Fallo al Conectar');
-      showToast(`No se pudo conectar a la sala ${cleanCode}. Comprueba que el anfitrión tenga la sala abierta.`, 'warn');
+      if ((err.type === 'peer-unavailable' || err.type === 'network' || err.type === 'server-error') && p2pJoinRetryCount < MAX_P2P_RETRIES) {
+        p2pJoinRetryCount++;
+        const delay = Math.min(3000, 1000 + p2pJoinRetryCount * 500);
+        updateP2PStatusUI('waiting', `Reintentando (${p2pJoinRetryCount}/${MAX_P2P_RETRIES})...`);
+        if (p2pHostStatusText) {
+          p2pHostStatusText.textContent = `Buscando al anfitrión... Reintentando en ${Math.round(delay / 1000)}s (${p2pJoinRetryCount}/${MAX_P2P_RETRIES})`;
+        }
+        p2pJoinRetryTimer = setTimeout(() => {
+          joinP2PRoom(cleanCode, true);
+        }, delay);
+      } else {
+        updateP2PStatusUI('offline', 'Sala no encontrada');
+        if (p2pHostStatusText) {
+          p2pHostStatusText.textContent = `No se pudo conectar a la sala ${cleanCode}. Asegúrate de que tu amigo tenga la sala abierta en su navegador.`;
+        }
+        showToast(`No se encontró la sala ${cleanCode}. Comprueba que el anfitrión tenga su ventana abierta.`, 'warn');
+      }
     });
   }
 
   function disconnectP2P() {
+    stopP2PHeartbeat();
+    if (p2pJoinRetryTimer) {
+      clearTimeout(p2pJoinRetryTimer);
+      p2pJoinRetryTimer = null;
+    }
+    p2pJoinRetryCount = 0;
+
     if (p2pConn) {
       try { p2pConn.close(); } catch (e) {}
       p2pConn = null;
@@ -1666,6 +1864,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function generateShareUrl() {
+    if (!currentP2pRoomCode && !p2pConn && p2pRole !== 'guest') {
+      initP2PHost();
+    }
     const activeTab = document.querySelector('.nav-tab-btn.active')?.dataset.tab || 'catalog';
     const params = new URLSearchParams();
     params.set('tab', activeTab);
@@ -1739,6 +1940,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function openShareRoomModal() {
+    if (!currentP2pRoomCode && !p2pConn && p2pRole !== 'guest') {
+      initP2PHost();
+    }
     updateUserProfileUI();
     updateShareModalUrl();
     renderShareSummaryChips();
@@ -2421,12 +2625,49 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function renderTeamSlots(team, container, staggered = false) {
+  function rerollExpeditionSlot(index) {
+    if (!currentExpeditionChallenge || !currentExpeditionChallenge.team || currentExpeditionChallenge.team.length < 4) {
+      showToast('No hay una escuadra activa de expedición para re-tirar.', 'warn');
+      return;
+    }
+
+    const effectiveWhitelist = getEffectiveWhitelist();
+    const currentIds = new Set(
+      currentExpeditionChallenge.team
+        .map((c, i) => i !== index && c ? String(c.id) : null)
+        .filter(Boolean)
+    );
+
+    const available = characters.filter(ch => {
+      if (currentIds.has(String(ch.id))) return false;
+      if (effectiveWhitelist && !effectiveWhitelist.has(String(ch.id))) return false;
+      return true;
+    });
+
+    if (available.length === 0) {
+      showToast('No hay más combatientes disponibles según tus filtros de colección', 'warn');
+      return;
+    }
+
+    const randChar = available[Math.floor(Math.random() * available.length)];
+    currentExpeditionChallenge.team[index] = randChar;
+    playUiSound('tick');
+    renderTeamSlots(currentExpeditionChallenge.team, univTeamSlotsGrid, false, 'expedition');
+    showToast(`Posición ${index + 1} actualizada en Expedición: ${randChar.name}`, 'dice');
+    broadcastExpeditionState();
+  }
+
+  function renderTeamSlots(team, container, staggered = false, context = 'roulette') {
+    if (!container || !team) return;
     container.innerHTML = '';
     const fragment = document.createDocumentFragment();
+    const isExpedition = (context === 'expedition' || container === univTeamSlotsGrid);
 
     team.forEach((c, index) => {
-      const isLocked = lockedRouletteSlots.has(index);
+      const isLocked = isExpedition
+        ? lockedExpeditionSlots.has(index)
+        : lockedRouletteSlots.has(index);
+
       const slot = document.createElement('div');
       slot.className = `team-slot-card ${isLocked ? 'is-locked-card' : ''} ${staggered ? 'card-revealed' : ''}`;
       if (staggered) {
@@ -2439,31 +2680,34 @@ document.addEventListener('DOMContentLoaded', () => {
         openCharacterModal(c);
       });
 
-      const iconSrc = c.images.icon_cdn || c.images.icon || c.images.preview_cdn || c.images.preview;
-      const elemIconSrc = c.element.icon_cdn || c.element.icon;
-      const pathIconSrc = c.path.icon_cdn || c.path.icon;
+      const iconSrc = c.images?.icon_cdn || c.images?.icon || c.images?.preview_cdn || c.images?.preview || '';
+      const elemIconSrc = c.element?.icon_cdn || c.element?.icon || '';
+      const pathIconSrc = c.path?.icon_cdn || c.path?.icon || '';
+      const elemColor = c.element?.color || 'var(--accent-color)';
+      const elemName = c.element?.name || c.element || '';
+      const pathName = c.path?.name || c.path || '';
       const roleClass = getRoleBadgeClass(c.role);
       const roleIcon = getRoleIcon(c.role);
-      const rarityStars = '✦'.repeat(c.rarity);
+      const rarityStars = '✦'.repeat(c.rarity || 4);
 
       slot.innerHTML = `
         <span class="slot-role-tag role-badge ${roleClass}">
-          <span>${roleIcon}</span> Posición ${index + 1}: ${c.role}
+          <span>${roleIcon}</span> Posición ${index + 1}: ${c.role || 'Combatiente'}
         </span>
         <div class="slot-visual-wrap">
-          <div class="slot-glow-ring" style="background: ${c.element.color};"></div>
+          <div class="slot-glow-ring" style="background: ${elemColor};"></div>
           <img class="slot-avatar" src="${iconSrc}" alt="${c.name}">
         </div>
         <h4 class="slot-char-name">${c.name}</h4>
         <div class="slot-badges-row">
-          <span class="rarity-pill rarity-${c.rarity}">${rarityStars}</span>
-          <span class="elem-badge" style="border-color: ${c.element.color}40; color: ${c.element.color};">
-            <img src="${elemIconSrc}" alt="${c.element.name}">
-            ${c.element.name}
+          <span class="rarity-pill rarity-${c.rarity || 4}">${rarityStars}</span>
+          <span class="elem-badge" style="border-color: ${elemColor}40; color: ${elemColor};">
+            ${elemIconSrc ? `<img src="${elemIconSrc}" alt="${elemName}">` : ''}
+            ${elemName}
           </span>
           <span class="path-badge">
-            <img src="${pathIconSrc}" alt="${c.path.name}">
-            ${c.path.name}
+            ${pathIconSrc ? `<img src="${pathIconSrc}" alt="${pathName}">` : ''}
+            ${pathName}
           </span>
         </div>
         <p class="slot-specialty-text">${c.specialty || ''}</p>
@@ -2496,21 +2740,37 @@ document.addEventListener('DOMContentLoaded', () => {
       const lockBtn = slot.querySelector('.slot-lock-btn');
       lockBtn.addEventListener('click', (e) => {
         e.stopPropagation();
-        if (lockedRouletteSlots.has(index)) {
-          lockedRouletteSlots.delete(index);
-          showToast(`Posición ${index + 1} (${c.name}): liberada`, 'info');
+        if (isExpedition) {
+          if (lockedExpeditionSlots.has(index)) {
+            lockedExpeditionSlots.delete(index);
+            showToast(`Posición ${index + 1} (${c.name}): liberada en Expedición`, 'info');
+          } else {
+            lockedExpeditionSlots.add(index);
+            showToast(`Posición ${index + 1} (${c.name}): fijada en Expedición`, 'success');
+          }
+          playUiSound('click');
+          renderTeamSlots(currentExpeditionChallenge.team, container, false, 'expedition');
         } else {
-          lockedRouletteSlots.add(index);
-          showToast(`Posición ${index + 1} (${c.name}): fijada`, 'success');
+          if (lockedRouletteSlots.has(index)) {
+            lockedRouletteSlots.delete(index);
+            showToast(`Posición ${index + 1} (${c.name}): liberada`, 'info');
+          } else {
+            lockedRouletteSlots.add(index);
+            showToast(`Posición ${index + 1} (${c.name}): fijada`, 'success');
+          }
+          playUiSound('click');
+          renderTeamSlots(currentRouletteTeam, container, false, 'roulette');
         }
-        playUiSound('click');
-        renderTeamSlots(currentRouletteTeam, container, false);
       });
 
       const rerollBtn = slot.querySelector('.slot-reroll-btn');
       rerollBtn.addEventListener('click', (e) => {
         e.stopPropagation();
-        rerollSingleSlot(index);
+        if (isExpedition) {
+          rerollExpeditionSlot(index);
+        } else {
+          rerollSingleSlot(index);
+        }
       });
 
       const inspectBtn = slot.querySelector('.slot-inspect-btn');
@@ -2779,7 +3039,34 @@ document.addEventListener('DOMContentLoaded', () => {
      ========================================================================== */
   function generateExpedition(seed = null) {
     const effectiveWhitelist = getEffectiveWhitelist();
+    const prevTeam = (currentExpeditionChallenge && currentExpeditionChallenge.team) ? [...currentExpeditionChallenge.team] : null;
+
     currentExpeditionChallenge = HSR_GAME_MODES.generateExpeditionChallenge(currentExpeditionMode, seed, { whitelist: effectiveWhitelist });
+
+    // Preserve locked slots in expedition
+    if (lockedExpeditionSlots.size > 0 && prevTeam && prevTeam.length === 4) {
+      const lockedIds = new Set();
+      lockedExpeditionSlots.forEach(idx => {
+        if (prevTeam[idx]) {
+          currentExpeditionChallenge.team[idx] = prevTeam[idx];
+          lockedIds.add(String(prevTeam[idx].id));
+        }
+      });
+
+      // Avoid duplicates for unlocked slots
+      currentExpeditionChallenge.team.forEach((ch, idx) => {
+        if (!lockedExpeditionSlots.has(idx) && lockedIds.has(String(ch.id))) {
+          const available = characters.filter(c =>
+            !lockedIds.has(String(c.id)) &&
+            !currentExpeditionChallenge.team.some((t, i) => i !== idx && String(t?.id) === String(c.id)) &&
+            (!effectiveWhitelist || effectiveWhitelist.has(String(c.id)))
+          );
+          if (available.length > 0) {
+            currentExpeditionChallenge.team[idx] = available[Math.floor(Math.random() * available.length)];
+          }
+        }
+      });
+    }
 
     if (univSeedDisplay) {
       univSeedDisplay.textContent = `#${currentExpeditionChallenge.seed}`;
@@ -2829,8 +3116,8 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `;
 
-    // Render Starting Squad
-    renderTeamSlots(currentExpeditionChallenge.team, univTeamSlotsGrid);
+    // Render Starting Squad with expedition context
+    renderTeamSlots(currentExpeditionChallenge.team, univTeamSlotsGrid, false, 'expedition');
 
     // Setup 1v1 Scorecard Checklist
     setupExpeditionScorecard();
@@ -4094,7 +4381,8 @@ document.addEventListener('DOMContentLoaded', () => {
       generateExpedition();
     }
     currentExpeditionChallenge.team = [...squad];
-    renderExpeditionChallenge();
+    renderTeamSlots(currentExpeditionChallenge.team, univTeamSlotsGrid, false, 'expedition');
+    broadcastExpeditionState();
     switchTab('universe', true);
     showToast('¡Escuadra del Gachapón transferida a la Expedición Orbital!', 'success');
     playUiSound('fanfare');
@@ -4420,11 +4708,7 @@ document.addEventListener('DOMContentLoaded', () => {
     spinRouletteBtn.addEventListener('click', () => spinRoulette(null, true));
 
     copyTeamLinkBtn.addEventListener('click', () => {
-      if (currentRouletteTeam.length === 4) {
-        const teamIds = currentRouletteTeam.map(c => c.id).join(',');
-        const url = window.location.origin + window.location.pathname + `#tab=roulette&team=${teamIds}`;
-        copyToClipboard(url, '¡Enlace de equipo copiado! Tu amigo verá exactamente esta escuadra.');
-      }
+      openShareRoomModal();
     });
 
     rouletteOnlyFourStars.addEventListener('change', () => spinRoulette(null, true));
