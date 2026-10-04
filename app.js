@@ -127,11 +127,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // DOM Elements: Shared Room Banner (Host info display)
   const sharedRoomBanner = document.getElementById('sharedRoomBanner');
+  const sharedRoomBannerBadge = document.getElementById('sharedRoomBannerBadge');
   const sharedRoomHostAvatar = document.getElementById('sharedRoomHostAvatar');
   const sharedRoomHostName = document.getElementById('sharedRoomHostName');
   const sharedRoomHostUid = document.getElementById('sharedRoomHostUid');
+  const sharedRoomBannerCodeChip = document.getElementById('sharedRoomBannerCodeChip');
   const sharedRoomSubText = document.getElementById('sharedRoomSubText');
   const p2pLiveStatusBadge = document.getElementById('p2pLiveStatusBadge');
+  const reconnectRoomBannerBtn = document.getElementById('reconnectRoomBannerBtn');
+  const copyRoomBannerCodeBtn = document.getElementById('copyRoomBannerCodeBtn');
   const disconnectRoomBtn = document.getElementById('disconnectRoomBtn');
 
   // DOM Elements: Share Room & P2P Modal
@@ -152,6 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const shareModalFullUrlInput = document.getElementById('shareModalFullUrlInput');
   const shareModalCopyUrlBtn = document.getElementById('shareModalCopyUrlBtn');
   const shareSummaryChips = document.getElementById('shareSummaryChips');
+  const shareModalDisconnectBtn = document.getElementById('shareModalDisconnectBtn');
   const shareModalDoneBtn = document.getElementById('shareModalDoneBtn');
 
   // DOM Elements: Player 2 Dynamic Headers
@@ -163,11 +168,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // DOM Elements: Friend Inspection Modal & Trigger Buttons
   const openFriendInspectBannerBtn = document.getElementById('openFriendInspectBannerBtn');
   const rouletteFriendViewBtn = document.getElementById('rouletteFriendViewBtn');
+  const duelFriendViewBtn = document.getElementById('duelFriendViewBtn');
   const gachaFriendViewBtn = document.getElementById('gachaFriendViewBtn');
   const expeditionFriendViewBtn = document.getElementById('expeditionFriendViewBtn');
 
   const friendInspectModal = document.getElementById('friendInspectModal');
   const friendInspectModalCloseBtn = document.getElementById('friendInspectModalCloseBtn');
+  const friendInspectDisconnectBtn = document.getElementById('friendInspectDisconnectBtn');
   const friendInspectDoneBtn = document.getElementById('friendInspectDoneBtn');
   const friendInspectAvatar = document.getElementById('friendInspectAvatar');
   const friendInspectPulse = document.getElementById('friendInspectPulse');
@@ -184,6 +191,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const friendRouletteSeed = document.getElementById('friendRouletteSeed');
   const friendRouletteSlots = document.getElementById('friendRouletteSlots');
 
+  const friendInspectDuelPanel = document.getElementById('friendInspectDuelPanel');
+  const friendDuelModeTitle = document.getElementById('friendDuelModeTitle');
+  const friendDuelScoreBadge = document.getElementById('friendDuelScoreBadge');
+  const friendDuelSeed = document.getElementById('friendDuelSeed');
+  const friendDuelNode1Slots = document.getElementById('friendDuelNode1Slots');
+  const friendDuelNode2Slots = document.getElementById('friendDuelNode2Slots');
+  const friendDuelStageOverview = document.getElementById('friendDuelStageOverview');
+
   const friendInspectGachaPanel = document.getElementById('friendInspectGachaPanel');
   const friendGachaPullsText = document.getElementById('friendGachaPullsText');
   const friendGachaPity5Text = document.getElementById('friendGachaPity5Text');
@@ -197,6 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const friendExpSeed = document.getElementById('friendExpSeed');
   const friendExpSquadSlots = document.getElementById('friendExpSquadSlots');
   const friendExpCriteriaList = document.getElementById('friendExpCriteriaList');
+  const friendExpScoreCalcWidget = document.getElementById('friendExpScoreCalcWidget');
   const friendInspectEmptyState = document.getElementById('friendInspectEmptyState');
   const friendInspectOpenShareBtn = document.getElementById('friendInspectOpenShareBtn');
 
@@ -301,6 +317,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const p2BonusLabel = document.getElementById('p2BonusLabel');
   const p2BonusHelper = document.getElementById('p2BonusHelper');
   const p2BonusInput = document.getElementById('p2BonusInput');
+  const p1ScoreCalcBreakdown = document.getElementById('p1ScoreCalcBreakdown');
+  const p2ScoreCalcBreakdown = document.getElementById('p2ScoreCalcBreakdown');
 
   const calculateExpeditionBtn = document.getElementById('calculateExpeditionBtn');
   const resetExpeditionChecklistBtn = document.getElementById('resetExpeditionChecklistBtn');
@@ -806,7 +824,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function exportAllDataAsJson() {
     const exportPayload = {
       app: 'HSR_Endgame_Platform',
-      version: '1.11.2',
+      version: '1.11.5',
       exportDate: new Date().toISOString(),
       profile: userProfile,
       ownedCharacters: Array.from(ownedCharacterIds),
@@ -915,7 +933,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
       sessionStorage.clear();
-      localStorage.setItem('hsr_client_version', '1.11.2');
+      localStorage.setItem('hsr_client_version', '1.11.5');
     } catch (e) {}
     showToast('↻ Purgando almacenamiento temporal y recargando...', 'info');
     setTimeout(() => {
@@ -935,10 +953,11 @@ document.addEventListener('DOMContentLoaded', () => {
   let p2pRole = null; // 'host' | 'guest' | null
   let isP2pConnected = false;
 
-  // Friend Inspection State (Ruleta, Gachapón, Expedición)
+  // Friend Inspection State (Ruleta, Duelo, Gachapón, Expedición)
   let friendGameState = {
     profile: null,
     roulette: null,
+    duel: null,
     gacha: null,
     expedition: null,
     lastUpdated: null
@@ -954,6 +973,18 @@ document.addEventListener('DOMContentLoaded', () => {
         captain: rouletteCaptainSelect?.value || '',
         seed: document.getElementById('teamSeedDisplay')?.textContent || ''
       },
+      duel: currentDuelMatch ? {
+        mode: currentEndgameMode,
+        seed: currentDuelMatch.seed,
+        season: currentDuelMatch.season?.name || 'Rotación Procedimental',
+        restriction: currentDuelMatch.restriction || '',
+        turbulence: currentDuelMatch.turbulence,
+        bossNode1: currentDuelMatch.bossNode1,
+        bossNode2: currentDuelMatch.bossNode2,
+        playerNode1: (p2pRole === 'guest') ? currentDuelMatch.player2.node1 : currentDuelMatch.player1.node1,
+        playerNode2: (p2pRole === 'guest') ? currentDuelMatch.player2.node2 : currentDuelMatch.player1.node2,
+        score: (p2pRole === 'guest') ? (p2ScoreInput?.value || '') : (p1ScoreInput?.value || '')
+      } : null,
       gacha: currentGachaSession ? {
         activeSquad: currentGachaSession.activeSquad,
         history: currentGachaSession.history ? currentGachaSession.history.slice(-30) : [],
@@ -962,14 +993,36 @@ document.addEventListener('DOMContentLoaded', () => {
         pityCount5: currentGachaSession.pityCount5 || 0,
         seed: currentGachaSession.seed || ''
       } : null,
-      expedition: currentExpeditionChallenge ? {
-        mode: currentExpeditionMode,
-        seed: currentExpeditionChallenge.seed,
-        team: currentExpeditionChallenge.team,
-        checkedCriteria: Array.from(p1CheckedCriteria),
-        bonus: Number(p1BonusInput?.value || 0),
-        totalScore: p1ScoreBadge?.textContent || '0 pts'
-      } : null
+      expedition: currentExpeditionChallenge ? (() => {
+        const isGuest = (p2pRole === 'guest');
+        const myChecked = isGuest ? Array.from(p2CheckedCriteria) : Array.from(p1CheckedCriteria);
+        const myBonus = isGuest ? Number(p2BonusInput?.value || 0) : Number(p1BonusInput?.value || 0);
+
+        let myBase = 0;
+        if (currentExpeditionChallenge.criteria) {
+          const critMap = new Map();
+          currentExpeditionChallenge.criteria.forEach(c => critMap.set(c.id, c.points));
+          myChecked.forEach(id => {
+            if (critMap.has(id)) myBase += critMap.get(id);
+          });
+        }
+        const mult = currentExpeditionChallenge.bonusMultiplier || 0.1;
+        const myBonusPts = Math.max(0, Math.floor(myBonus * mult));
+        const myTotal = Math.max(0, myBase + myBonusPts);
+
+        return {
+          mode: currentExpeditionMode,
+          seed: currentExpeditionChallenge.seed,
+          team: currentExpeditionChallenge.team,
+          checkedCriteria: myChecked,
+          bonus: myBonus,
+          baseScore: myBase,
+          bonusScore: myBonusPts,
+          totalScore: `${myTotal} pts`,
+          bonusMultiplier: mult,
+          role: p2pRole
+        };
+      })() : null
     };
   }
 
@@ -979,6 +1032,22 @@ document.addEventListener('DOMContentLoaded', () => {
       archetype: rouletteArchetypeBadge?.textContent || '',
       captain: rouletteCaptainSelect?.value || '',
       seed: document.getElementById('teamSeedDisplay')?.textContent || ''
+    });
+  }
+
+  function broadcastDuelState() {
+    if (!currentDuelMatch) return;
+    sendP2PMessage('DUEL_SYNC', {
+      mode: currentEndgameMode,
+      seed: currentDuelMatch.seed,
+      season: currentDuelMatch.season?.name || 'Rotación Procedimental',
+      restriction: currentDuelMatch.restriction || '',
+      turbulence: currentDuelMatch.turbulence,
+      bossNode1: currentDuelMatch.bossNode1,
+      bossNode2: currentDuelMatch.bossNode2,
+      playerNode1: (p2pRole === 'guest') ? currentDuelMatch.player2.node1 : currentDuelMatch.player1.node1,
+      playerNode2: (p2pRole === 'guest') ? currentDuelMatch.player2.node2 : currentDuelMatch.player1.node2,
+      score: (p2pRole === 'guest') ? (p2ScoreInput?.value || '') : (p1ScoreInput?.value || '')
     });
   }
 
@@ -996,13 +1065,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function broadcastExpeditionState() {
     if (!currentExpeditionChallenge) return;
+    const isGuest = (p2pRole === 'guest');
+    const myChecked = isGuest ? Array.from(p2CheckedCriteria) : Array.from(p1CheckedCriteria);
+    const myBonus = isGuest ? Number(p2BonusInput?.value || 0) : Number(p1BonusInput?.value || 0);
+
+    let myBase = 0;
+    if (currentExpeditionChallenge.criteria) {
+      const critMap = new Map();
+      currentExpeditionChallenge.criteria.forEach(c => critMap.set(c.id, c.points));
+      myChecked.forEach(id => {
+        if (critMap.has(id)) myBase += critMap.get(id);
+      });
+    }
+    const mult = currentExpeditionChallenge.bonusMultiplier || 0.1;
+    const myBonusPts = Math.max(0, Math.floor(myBonus * mult));
+    const myTotal = Math.max(0, myBase + myBonusPts);
+
     sendP2PMessage('EXPEDITION_SYNC', {
       mode: currentExpeditionMode,
       seed: currentExpeditionChallenge.seed,
       team: currentExpeditionChallenge.team,
-      checkedCriteria: Array.from(p1CheckedCriteria),
-      bonus: Number(p1BonusInput?.value || 0),
-      totalScore: p1ScoreBadge?.textContent || '0 pts'
+      checkedCriteria: myChecked,
+      bonus: myBonus,
+      baseScore: myBase,
+      bonusScore: myBonusPts,
+      totalScore: `${myTotal} pts`,
+      bonusMultiplier: mult,
+      role: p2pRole
     });
   }
 
@@ -1020,7 +1109,7 @@ document.addEventListener('DOMContentLoaded', () => {
       playUiSound('click');
     }
 
-    if (p2pConn && p2pConn.open) {
+    if (isP2pConnected || (p2pConn && p2pConn.open) || (mqttClient && mqttClient.connected)) {
       sendP2PMessage('REQUEST_FULL_STATE', {});
     }
   }
@@ -1044,12 +1133,46 @@ document.addEventListener('DOMContentLoaded', () => {
     if (friendInspectRoulettePanel) {
       friendInspectRoulettePanel.style.display = (tabName === 'roulette') ? 'flex' : 'none';
     }
+    if (friendInspectDuelPanel) {
+      friendInspectDuelPanel.style.display = (tabName === 'duel') ? 'flex' : 'none';
+    }
     if (friendInspectGachaPanel) {
       friendInspectGachaPanel.style.display = (tabName === 'gacha') ? 'flex' : 'none';
     }
     if (friendInspectExpeditionPanel) {
       friendInspectExpeditionPanel.style.display = (tabName === 'expedition') ? 'flex' : 'none';
     }
+  }
+
+  function getFormatElemName(char) {
+    if (!char) return '';
+    const el = (char.element !== undefined) ? char.element : char;
+    if (!el) return '';
+    if (typeof el === 'string') return el;
+    return el.name || el.id || '';
+  }
+
+  function getFormatPathName(char) {
+    if (!char) return '';
+    const p = (char.path !== undefined) ? char.path : char;
+    if (!p) return '';
+    if (typeof p === 'string') return p;
+    return p.name || p.id || '';
+  }
+
+  function getFormatRoleName(char) {
+    if (!char) return '';
+    const r = (char.role !== undefined) ? char.role : char;
+    if (!r) return '';
+    if (typeof r === 'string') return r;
+    return r.name || r.id || '';
+  }
+
+  function getFormatCharName(char) {
+    if (!char) return 'Combatiente';
+    if (typeof char.name === 'string') return char.name;
+    if (char.name && typeof char.name === 'object') return char.name.name || char.name.id || 'Combatiente';
+    return String(char.id || 'Combatiente');
   }
 
   function renderFriendInspectUI() {
@@ -1062,7 +1185,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (friendInspectName) friendInspectName.textContent = friendName;
     if (friendInspectUid) friendInspectUid.textContent = `UID: ${friendUid}`;
 
-    const isConnected = !!(p2pConn && p2pConn.open);
+    const isConnected = isP2pConnected || !!(p2pConn && p2pConn.open) || !!(mqttClient && mqttClient.connected && currentP2pRoomCode);
     if (friendInspectStatusPill) {
       friendInspectStatusPill.className = `p2p-status-pill ${isConnected ? 'connected' : (remoteHostProfile ? 'waiting' : 'offline')}`;
       friendInspectStatusPill.textContent = isConnected ? '● En Vivo P2P' : (remoteHostProfile ? '● Enlace Compartido' : '● Desconectado');
@@ -1072,15 +1195,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (friendInspectSubtext) {
       friendInspectSubtext.textContent = friendGameState.lastUpdated
-        ? `Última sincronización: ${friendGameState.lastUpdated.toLocaleTimeString()} (${isConnected ? 'Conexión WebRTC P2P activa' : 'Caché de sala'})`
-        : (isConnected ? 'Conexión directa en tiempo real sin intermediarios.' : 'Tu amigo aún no se ha conectado en vivo a esta sala.');
+        ? `Última sincronización: ${friendGameState.lastUpdated.toLocaleTimeString()} (${isConnected ? 'Conexión activa en tiempo real' : 'Caché de sala'})`
+        : (isConnected ? 'Conexión activa en tiempo real.' : 'Tu amigo aún no se ha conectado en vivo a esta sala.');
     }
 
-    const hasAnyData = !!(friendGameState.roulette?.team?.length || friendGameState.gacha || friendGameState.expedition || isConnected || remoteHostProfile);
+    const hasAnyData = !!(friendGameState.roulette?.team?.length || friendGameState.duel || friendGameState.gacha || friendGameState.expedition || isConnected || remoteHostProfile || currentP2pRoomCode);
 
     if (!hasAnyData) {
       if (friendInspectEmptyState) friendInspectEmptyState.style.display = 'flex';
       if (friendInspectRoulettePanel) friendInspectRoulettePanel.style.display = 'none';
+      if (friendInspectDuelPanel) friendInspectDuelPanel.style.display = 'none';
       if (friendInspectGachaPanel) friendInspectGachaPanel.style.display = 'none';
       if (friendInspectExpeditionPanel) friendInspectExpeditionPanel.style.display = 'none';
       return;
@@ -1101,16 +1225,17 @@ document.addEventListener('DOMContentLoaded', () => {
           const rarity = charObj.rarity || c.rarity || 4;
           const stars = '✦'.repeat(rarity);
           const isCaptain = (friendGameState.roulette.captain && String(c.id) === String(friendGameState.roulette.captain));
+          const charName = getFormatCharName(charObj);
           return `
             <div class="friend-slot-card rarity-${rarity}">
               ${isCaptain ? '<span class="friend-slot-eidolon">Capitán</span>' : ''}
-              <img class="friend-slot-avatar" src="${imgSrc}" alt="${charObj.name || c.name}">
-              <div class="friend-slot-name">${charObj.name || c.name}</div>
+              <img class="friend-slot-avatar" src="${imgSrc}" alt="${charName}">
+              <div class="friend-slot-name">${charName}</div>
               <div style="font-size: 0.65rem; color: ${rarity === 5 ? '#fde047' : '#c084fc'};">${stars}</div>
               <div class="friend-slot-tags">
-                <span class="friend-slot-tag">${charObj.element || c.element || ''}</span>
-                <span class="friend-slot-tag">${charObj.path || c.path || ''}</span>
-                <span class="friend-slot-tag">${charObj.role || c.role || ''}</span>
+                <span class="friend-slot-tag">${getFormatElemName(charObj)}</span>
+                <span class="friend-slot-tag">${getFormatPathName(charObj)}</span>
+                <span class="friend-slot-tag">${getFormatRoleName(charObj)}</span>
               </div>
             </div>
           `;
@@ -1122,6 +1247,76 @@ document.addEventListener('DOMContentLoaded', () => {
       if (friendRouletteSlots) {
         friendRouletteSlots.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 24px; color: var(--text-muted); font-size: 0.8rem;">Tu amigo no ha girado la ruleta todavía o aún no ha compartido su composición.</div>';
       }
+    }
+
+    // 2. Render Duel Panel
+    if (friendGameState.duel) {
+      const d = friendGameState.duel;
+      const modeObj = HSR_GAME_MODES.ENDGAME_MODES[d.mode];
+      if (friendDuelModeTitle) friendDuelModeTitle.textContent = `Modo: ${modeObj?.name || d.mode || 'Duelo Endgame'}`;
+      if (friendDuelScoreBadge) friendDuelScoreBadge.textContent = `Resultado: ${d.score ? d.score : 'Pendiente'}`;
+      if (friendDuelSeed) friendDuelSeed.textContent = `Semilla: #${d.seed || '---'}`;
+
+      const renderSlotMini = (charList) => {
+        if (!charList || charList.length === 0) {
+          return '<div style="grid-column: 1/-1; text-align: center; padding: 12px; color: var(--text-muted); font-size: 0.74rem;">Sin combatientes asignados</div>';
+        }
+        return charList.map(c => {
+          const charObj = characters.find(ch => String(ch.id) === String(c.id)) || c;
+          const imgSrc = charObj.images?.icon_cdn || charObj.images?.icon || c.icon || '';
+          const rarity = charObj.rarity || c.rarity || 4;
+          const charName = getFormatCharName(charObj);
+          return `
+            <div class="friend-slot-card rarity-${rarity}">
+              <img class="friend-slot-avatar" src="${imgSrc}" alt="${charName}">
+              <div class="friend-slot-name">${charName}</div>
+              <div class="friend-slot-tags">
+                <span class="friend-slot-tag">${getFormatElemName(charObj)}</span>
+                <span class="friend-slot-tag">${getFormatRoleName(charObj)}</span>
+              </div>
+            </div>
+          `;
+        }).join('');
+      };
+
+      if (friendDuelNode1Slots) {
+        friendDuelNode1Slots.innerHTML = renderSlotMini(d.playerNode1);
+      }
+      if (friendDuelNode2Slots) {
+        friendDuelNode2Slots.innerHTML = renderSlotMini(d.playerNode2);
+      }
+
+      if (friendDuelStageOverview) {
+        const turb = d.turbulence;
+        const b1 = d.bossNode1;
+        const b2 = d.bossNode2;
+        let html = '';
+        if (d.season) {
+          const seasonName = typeof d.season === 'object' ? (d.season.name || '') : d.season;
+          html += `<div style="font-size: 0.76rem; color: #2dd4bf; font-weight: 700;">${seasonName}</div>`;
+        }
+        if (turb) {
+          const turbName = typeof turb === 'object' ? (turb.name || 'Turbulencia') : turb;
+          const turbEffect = typeof turb === 'object' ? (turb.effect || '') : '';
+          html += `<div style="font-size: 0.74rem; color: var(--text-secondary);"><strong style="color: var(--accent-light);">${turbName}:</strong> ${turbEffect}</div>`;
+        }
+        if (b1 || b2) {
+          const b1Name = typeof b1 === 'object' ? (b1.name || '') : (b1 || '');
+          const b2Name = typeof b2 === 'object' ? (b2.name || '') : (b2 || '');
+          html += `<div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; font-size: 0.72rem; color: var(--text-muted);">`;
+          if (b1Name) html += `<span>Nodo 1: <strong style="color: var(--text-primary);">${b1Name}</strong></span>`;
+          if (b2Name) html += `<span>• Nodo 2: <strong style="color: var(--text-primary);">${b2Name}</strong></span>`;
+          html += `</div>`;
+        }
+        friendDuelStageOverview.innerHTML = html || '<div style="font-size: 0.74rem; color: var(--text-muted);">Sin detalles del desafío</div>';
+      }
+    } else {
+      if (friendDuelModeTitle) friendDuelModeTitle.textContent = 'Modo: ---';
+      if (friendDuelScoreBadge) friendDuelScoreBadge.textContent = 'Resultado: ---';
+      if (friendDuelSeed) friendDuelSeed.textContent = 'Semilla: ---';
+      if (friendDuelNode1Slots) friendDuelNode1Slots.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 18px; color: var(--text-muted); font-size: 0.78rem;">Tu amigo no ha generado un duelo aún.</div>';
+      if (friendDuelNode2Slots) friendDuelNode2Slots.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 18px; color: var(--text-muted); font-size: 0.78rem;">Tu amigo no ha generado un duelo aún.</div>';
+      if (friendDuelStageOverview) friendDuelStageOverview.innerHTML = '<div style="text-align: center; padding: 10px; color: var(--text-muted); font-size: 0.74rem;">Sin desafío activo</div>';
     }
 
     // 2. Render Gacha Panel
@@ -1139,15 +1334,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const imgSrc = charObj.images?.icon_cdn || charObj.images?.icon || sq.icon || '';
             const rarity = charObj.rarity || sq.rarity || 4;
             const stars = '✦'.repeat(rarity);
+            const charName = getFormatCharName(charObj);
             return `
               <div class="friend-slot-card rarity-${rarity}">
                 <span class="friend-slot-eidolon">E${sq.eidolon || 0}</span>
-                <img class="friend-slot-avatar" src="${imgSrc}" alt="${charObj.name || sq.name}">
-                <div class="friend-slot-name">${charObj.name || sq.name}</div>
+                <img class="friend-slot-avatar" src="${imgSrc}" alt="${charName}">
+                <div class="friend-slot-name">${charName}</div>
                 <div style="font-size: 0.65rem; color: ${rarity === 5 ? '#fde047' : '#c084fc'};">${stars}</div>
                 <div class="friend-slot-tags">
-                  <span class="friend-slot-tag">${charObj.element || sq.element || ''}</span>
-                  <span class="friend-slot-tag">${charObj.path || sq.path || ''}</span>
+                  <span class="friend-slot-tag">${getFormatElemName(charObj)}</span>
+                  <span class="friend-slot-tag">${getFormatPathName(charObj)}</span>
                 </div>
               </div>
             `;
@@ -1164,12 +1360,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const charObj = characters.find(c => String(c.id) === String(item.id)) || item;
             const imgSrc = charObj.images?.icon_cdn || charObj.images?.icon || item.icon || '';
             const is5 = (item.rarity === 5);
+            const charName = getFormatCharName(charObj);
             return `
               <div class="friend-gacha-item-pill ${is5 ? 'rarity-5' : 'rarity-4'}">
-                <img class="friend-gacha-item-img" src="${imgSrc}" alt="${item.name}">
+                <img class="friend-gacha-item-img" src="${imgSrc}" alt="${charName}">
                 <div style="min-width: 0; flex: 1;">
                   <strong style="font-size: 0.75rem; color: ${is5 ? '#fde047' : '#c084fc'}; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                    ${item.name}
+                    ${charName}
                   </strong>
                   <span style="font-size: 0.66rem; color: var(--text-muted);">Tirada #${item.pullIndex || '?'}</span>
                 </div>
@@ -1196,9 +1393,91 @@ document.addEventListener('DOMContentLoaded', () => {
     if (friendGameState.expedition) {
       const exp = friendGameState.expedition;
       const modeObj = HSR_GAME_MODES.EXPEDITION_MODES[exp.mode];
+      const criteria = currentExpeditionChallenge?.criteria || modeObj?.criteriaPool || [];
+      const checkedSet = new Set(exp.checkedCriteria || []);
+
+      // 1. Calculate friend's base points & count
+      let friendBaseScore = 0;
+      let friendDoneCount = 0;
+      criteria.forEach(c => {
+        if (checkedSet.has(c.id)) {
+          friendBaseScore += c.points;
+          friendDoneCount++;
+        }
+      });
+
+      // 2. Calculate friend's bonus points
+      const mult = exp.bonusMultiplier || currentExpeditionChallenge?.bonusMultiplier || 0.1;
+      const bonusUnits = Number(exp.bonus || 0);
+      const friendBonusScore = exp.bonusScore !== undefined ? exp.bonusScore : Math.max(0, Math.floor(bonusUnits * mult));
+      const friendTotalScore = Math.max(0, friendBaseScore + friendBonusScore);
+
       if (friendExpModeTitle) friendExpModeTitle.textContent = `Modo: ${modeObj?.name || exp.mode || 'Expedición RNG'}`;
-      if (friendExpScoreBadge) friendExpScoreBadge.textContent = `Puntuación: ${exp.totalScore || '0 pts'}`;
+      if (friendExpScoreBadge) friendExpScoreBadge.textContent = `Puntuación: ${friendTotalScore.toLocaleString()} pts`;
       if (friendExpSeed) friendExpSeed.textContent = `Semilla: #${exp.seed || '---'}`;
+
+      // 3. Calculate local user's points for live 1v1 comparison
+      const isGuest = (p2pRole === 'guest');
+      const myCheckedSet = isGuest ? p2CheckedCriteria : p1CheckedCriteria;
+      const myBonusUnits = isGuest ? Number(p2BonusInput?.value || 0) : Number(p1BonusInput?.value || 0);
+      let myBaseScore = 0;
+      let myDoneCount = 0;
+      criteria.forEach(c => {
+        if (myCheckedSet.has(c.id)) {
+          myBaseScore += c.points;
+          myDoneCount++;
+        }
+      });
+      const myBonusScore = Math.max(0, Math.floor(myBonusUnits * mult));
+      const myTotalScore = Math.max(0, myBaseScore + myBonusScore);
+      const diff = friendTotalScore - myTotalScore;
+
+      // 4. Render Calculation Widget
+      if (friendExpScoreCalcWidget) {
+        friendExpScoreCalcWidget.innerHTML = `
+          <div class="friend-calc-inner">
+            <div class="friend-calc-top-row">
+              <div>
+                <span class="friend-calc-kicker">✦ CÁLCULO DE PUNTOS EN TIEMPO REAL</span>
+                <h4 class="friend-calc-friend-title">Puntuación de ${friendName}</h4>
+              </div>
+              <div class="friend-calc-badge-total">
+                <span class="calc-badge-num">${friendTotalScore.toLocaleString()}</span>
+                <span class="calc-badge-unit">pts</span>
+              </div>
+            </div>
+
+            <div class="friend-calc-grid">
+              <div class="friend-calc-col">
+                <span class="calc-label">Puntos Base (Checklist)</span>
+                <strong class="calc-val-main text-accent">${friendBaseScore.toLocaleString()} pts</strong>
+                <span class="calc-sub-text">${friendDoneCount} de ${criteria.length} objetivos</span>
+              </div>
+              <div class="friend-calc-col">
+                <span class="calc-label">Bonus de Fragmentos</span>
+                <strong class="calc-val-main text-emerald">+${friendBonusScore.toLocaleString()} pts</strong>
+                <span class="calc-sub-text">${bonusUnits.toLocaleString()} uds (×${mult})</span>
+              </div>
+              <div class="friend-calc-col">
+                <span class="calc-label">Fórmula Total</span>
+                <strong class="calc-val-main text-amber">${friendBaseScore} + ${friendBonusScore}</strong>
+                <span class="calc-sub-text">= ${friendTotalScore.toLocaleString()} pts finales</span>
+              </div>
+            </div>
+
+            <div class="friend-calc-comparison-bar ${diff > 0 ? 'friend-leading' : (diff < 0 ? 'user-leading' : 'tied')}">
+              <span class="comparison-tag">Comparativa 1v1</span>
+              <span class="comparison-text">
+                ${diff > 0 
+                  ? `✦ <strong>${friendName}</strong> te aventaja por <strong>+${diff.toLocaleString()} pts</strong> (${friendTotalScore} pts vs ${myTotalScore} tuyos)`
+                  : diff < 0 
+                  ? `✦ Llevas la delantera por <strong>+${Math.abs(diff).toLocaleString()} pts</strong> (${myTotalScore} pts vs ${friendTotalScore} de ${friendName})`
+                  : `✦ <strong>Empate exacto</strong> en <strong>${friendTotalScore.toLocaleString()} pts</strong> entre ambos`}
+              </span>
+            </div>
+          </div>
+        `;
+      }
 
       if (friendExpSquadSlots) {
         if (exp.team && exp.team.length > 0) {
@@ -1206,13 +1485,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const charObj = characters.find(ch => String(ch.id) === String(c.id)) || c;
             const imgSrc = charObj.images?.icon_cdn || charObj.images?.icon || c.icon || '';
             const rarity = charObj.rarity || c.rarity || 4;
+            const charName = getFormatCharName(charObj);
             return `
               <div class="friend-slot-card rarity-${rarity}">
-                <img class="friend-slot-avatar" src="${imgSrc}" alt="${charObj.name || c.name}">
-                <div class="friend-slot-name">${charObj.name || c.name}</div>
+                <img class="friend-slot-avatar" src="${imgSrc}" alt="${charName}">
+                <div class="friend-slot-name">${charName}</div>
                 <div class="friend-slot-tags">
-                  <span class="friend-slot-tag">${charObj.element || c.element || ''}</span>
-                  <span class="friend-slot-tag">${charObj.path || c.path || ''}</span>
+                  <span class="friend-slot-tag">${getFormatElemName(charObj)}</span>
+                  <span class="friend-slot-tag">${getFormatPathName(charObj)}</span>
                 </div>
               </div>
             `;
@@ -1223,8 +1503,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       if (friendExpCriteriaList) {
-        const criteria = currentExpeditionChallenge?.criteria || modeObj?.criteriaPool || [];
-        const checkedSet = new Set(exp.checkedCriteria || []);
         if (criteria.length > 0) {
           friendExpCriteriaList.innerHTML = criteria.map(crit => {
             const isDone = checkedSet.has(crit.id);
@@ -1245,6 +1523,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (friendExpModeTitle) friendExpModeTitle.textContent = 'Modo: ---';
       if (friendExpScoreBadge) friendExpScoreBadge.textContent = 'Puntuación: 0 pts';
       if (friendExpSeed) friendExpSeed.textContent = 'Semilla: ---';
+      if (friendExpScoreCalcWidget) {
+        friendExpScoreCalcWidget.innerHTML = `
+          <div style="text-align: center; padding: 16px; color: var(--text-muted); font-size: 0.78rem;">
+            Esperando a que tu amigo inicie su expedición o registre sus primeros objetivos...
+          </div>
+        `;
+      }
       if (friendExpSquadSlots) {
         friendExpSquadSlots.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 24px; color: var(--text-muted); font-size: 0.8rem;">Tu amigo no ha generado ninguna expedición aún.</div>';
       }
@@ -1259,14 +1544,15 @@ document.addEventListener('DOMContentLoaded', () => {
     playUiSound('click');
 
     const friendName = friendGameState.profile?.username || remotePeerProfile?.username || remoteHostProfile?.username || 'tu amigo';
+    const isChannelActive = isP2pConnected || Boolean(p2pConn && p2pConn.open) || Boolean(mqttClient && mqttClient.connected && currentP2pRoomCode);
 
-    if (p2pConn && p2pConn.open) {
+    if (isChannelActive) {
       sendP2PMessage('REQUEST_FULL_STATE', {});
       showToast(`✦ Solicitando datos actualizados a ${friendName}...`, 'info');
     } else if (remoteHostProfile) {
       showToast('✦ Refrescando datos locales de la sala compartida...', 'info');
     } else {
-      showToast('Sin conexión P2P activa con tu amigo. Conéctate con un código.', 'warn');
+      showToast('Sin conexión activa con tu amigo. Conéctate con un código.', 'warn');
     }
 
     setTimeout(() => {
@@ -1371,15 +1657,27 @@ document.addEventListener('DOMContentLoaded', () => {
         mqttClient.subscribe(mySubTopic, { qos: 0 }, (err) => {
           if (!err) {
             console.log(`[P2P Mesh] Suscrito al canal global de sala: ${mySubTopic}`);
-            if (role === 'guest') {
-              sendP2PMessage('HANDSHAKE', {
-                profile: userProfile,
-                role: 'guest',
-                fullState: getFullStatePayload()
-              });
-            } else {
-              updateP2PStatusUI('waiting', 'Esperando Amigo (Global)...');
+            // Broadcast HANDSHAKE with profile and full state immediately
+            sendP2PMessage('HANDSHAKE', {
+              profile: userProfile,
+              role: role,
+              fullState: getFullStatePayload()
+            });
+
+            if (role === 'host') {
+              updateP2PStatusUI(isP2pConnected ? 'connected' : 'waiting', isP2pConnected ? 'En Vivo con Amigo (Global)' : 'Esperando Amigo (Global)...');
             }
+
+            // Retry handshake announcement after 1.8s in case peer was still establishing subscription
+            setTimeout(() => {
+              if (!isP2pConnected && mqttClient && mqttClient.connected) {
+                sendP2PMessage('HANDSHAKE', {
+                  profile: userProfile,
+                  role: role,
+                  fullState: getFullStatePayload()
+                });
+              }
+            }, 1800);
           }
         });
       });
@@ -1444,6 +1742,63 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function updateMultiplayerBannerUI() {
+    const hasActiveRoom = Boolean(currentP2pRoomCode || remoteHostProfile || isP2pConnected);
+
+    if (shareModalDisconnectBtn) {
+      shareModalDisconnectBtn.style.display = hasActiveRoom ? 'inline-flex' : 'none';
+    }
+    if (friendInspectDisconnectBtn) {
+      friendInspectDisconnectBtn.style.display = hasActiveRoom ? 'inline-flex' : 'none';
+    }
+
+    if (!sharedRoomBanner) return;
+
+    if (!hasActiveRoom) {
+      sharedRoomBanner.style.display = 'none';
+      return;
+    }
+
+    sharedRoomBanner.style.display = 'block';
+
+    const isHost = (p2pRole === 'host');
+    const friendProfile = remotePeerProfile || remoteHostProfile;
+
+    if (sharedRoomBannerBadge) {
+      sharedRoomBannerBadge.textContent = isHost ? '✦ Mi Sala en Vivo (Anfitrión)' : '✦ Sala de Amigo (Invitado)';
+    }
+
+    if (sharedRoomBannerCodeChip) {
+      sharedRoomBannerCodeChip.textContent = currentP2pRoomCode || '---';
+      sharedRoomBannerCodeChip.style.display = currentP2pRoomCode ? 'inline-block' : 'none';
+    }
+
+    if (isHost) {
+      if (sharedRoomHostAvatar) sharedRoomHostAvatar.src = userProfile.avatar;
+      if (sharedRoomHostName) sharedRoomHostName.textContent = userProfile.username || 'Trazacaminos';
+      if (sharedRoomHostUid) sharedRoomHostUid.textContent = `UID: ${userProfile.uid || '---'}`;
+      if (sharedRoomSubText) {
+        sharedRoomSubText.textContent = isP2pConnected
+          ? `En vivo con ${friendProfile?.username || 'tu amigo'} (UID: ${friendProfile?.uid || '---'}). Sincronización activa.`
+          : `Esperando a tu amigo... Comparte el código ${currentP2pRoomCode || ''} o el enlace para jugar juntos.`;
+      }
+    } else {
+      if (sharedRoomHostAvatar) sharedRoomHostAvatar.src = remoteHostProfile?.avatar || (friendProfile?.avatar || 'https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1001.png');
+      if (sharedRoomHostName) sharedRoomHostName.textContent = remoteHostProfile?.username || (friendProfile?.username || 'Anfitrión');
+      if (sharedRoomHostUid) sharedRoomHostUid.textContent = `UID: ${remoteHostProfile?.uid || (friendProfile?.uid || '---')}`;
+      if (sharedRoomSubText) {
+        sharedRoomSubText.textContent = isP2pConnected
+          ? `Conectado en vivo con el anfitrión. Sincronización activa mediante Mesh Global.`
+          : `Conectando con la sala ${currentP2pRoomCode || ''}... Comprueba que el anfitrión esté en línea.`;
+      }
+    }
+
+    const pulseDot = document.getElementById('sharedRoomPulseDot');
+    if (pulseDot) {
+      pulseDot.style.display = isP2pConnected ? 'block' : 'none';
+    }
+  }
+
   function updateP2PStatusUI(status, label) {
     if (shareModalP2pStatus) {
       shareModalP2pStatus.classList.remove('offline', 'waiting', 'connected');
@@ -1454,7 +1809,41 @@ document.addEventListener('DOMContentLoaded', () => {
       p2pLiveStatusBadge.classList.remove('offline', 'waiting', 'connected');
       p2pLiveStatusBadge.classList.add(status);
       p2pLiveStatusBadge.textContent = `● P2P ${label}`;
-      p2pLiveStatusBadge.style.display = (status === 'offline' && !remoteHostProfile) ? 'none' : 'inline-flex';
+      p2pLiveStatusBadge.style.display = (status === 'offline' && !remoteHostProfile && !currentP2pRoomCode) ? 'none' : 'inline-flex';
+    }
+    updateMultiplayerBannerUI();
+  }
+
+  function verifyAndReconnectP2P(force = false) {
+    if (!currentP2pRoomCode) return;
+    console.log(`[P2P Health] Verificando conectividad (force=${force}, role=${p2pRole}, room=${currentP2pRoomCode})...`);
+
+    // 1. MQTT Client Verification
+    const isMqttDown = !mqttClient || !mqttClient.connected;
+    if (isMqttDown || force) {
+      console.log('[P2P Health] Reconectando cliente MQTT mesh...');
+      initMqttRoom(currentP2pRoomCode, p2pRole || 'host');
+    }
+
+    // 2. PeerJS Signaling Socket Verification
+    if (p2pPeer && !p2pPeer.destroyed && p2pPeer.disconnected) {
+      console.log('[P2P Health] Reconectando socket de señalización PeerJS...');
+      try { p2pPeer.reconnect(); } catch (e) {}
+    }
+
+    // 3. Send handshake & ping & full state request
+    sendP2PMessage('HANDSHAKE', {
+      profile: userProfile,
+      role: p2pRole || 'host',
+      fullState: getFullStatePayload()
+    });
+    sendP2PMessage('REQUEST_FULL_STATE', {});
+    sendP2PMessage('HEARTBEAT_PING', { timestamp: Date.now() });
+
+    if (force) {
+      updateP2PStatusUI('waiting', 'Reconectando...');
+      showToast('✦ Reconectando con la sala y sincronizando datos...', 'info');
+      playUiSound('click');
     }
   }
 
@@ -1530,22 +1919,58 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function syncRemoteExpeditionToScorecard(expData, senderRole) {
+    if (!expData) return;
+    if (senderRole === 'guest' && p2pRole === 'host') {
+      p2CheckedCriteria = new Set(expData.checkedCriteria || []);
+      if (p2BonusInput) p2BonusInput.value = (expData.bonus !== undefined && expData.bonus !== null) ? expData.bonus : '';
+      syncExpeditionCheckboxesUI();
+      updateLiveExpeditionScore(false);
+    } else if (senderRole === 'host' && p2pRole === 'guest') {
+      p1CheckedCriteria = new Set(expData.checkedCriteria || []);
+      if (p1BonusInput) p1BonusInput.value = (expData.bonus !== undefined && expData.bonus !== null) ? expData.bonus : '';
+      syncExpeditionCheckboxesUI();
+      updateLiveExpeditionScore(false);
+    }
+  }
+
+  const receivedMessageKeys = new Set();
+
   function handleIncomingP2PData(data) {
     if (!data || !data.type) return;
 
+    // Deduplicate identical messages delivered across both WebRTC DataChannel and MQTT Relay
+    if (data.timestamp) {
+      const msgKey = `${data.type}_${data.timestamp}_${data.role || ''}`;
+      if (receivedMessageKeys.has(msgKey)) return;
+      receivedMessageKeys.add(msgKey);
+      if (receivedMessageKeys.size > 200) {
+        const first = receivedMessageKeys.values().next().value;
+        receivedMessageKeys.delete(first);
+      }
+    }
+
     switch (data.type) {
       case 'HANDSHAKE': {
+        isP2pConnected = true;
         remotePeerProfile = data.profile;
         if (data.profile) {
           friendGameState.profile = data.profile;
         }
         if (data.fullState) {
           if (data.fullState.roulette) friendGameState.roulette = data.fullState.roulette;
+          if (data.fullState.duel) friendGameState.duel = data.fullState.duel;
           if (data.fullState.gacha) friendGameState.gacha = data.fullState.gacha;
-          if (data.fullState.expedition) friendGameState.expedition = data.fullState.expedition;
+          if (data.fullState.expedition) {
+            friendGameState.expedition = data.fullState.expedition;
+            syncRemoteExpeditionToScorecard(data.fullState.expedition, data.role);
+          }
           friendGameState.lastUpdated = new Date();
-          renderFriendInspectUI();
         }
+        renderFriendInspectUI();
+        updateMultiplayerBannerUI();
+        updateP2PStatusUI('connected', p2pRole === 'host' ? 'En Vivo con Amigo' : 'En Vivo con Anfitrión');
+
         if (p2pRole === 'host') {
           if (duelP2NameDisplay) {
             duelP2NameDisplay.textContent = `P2: ${data.profile?.username || 'Amigo'} (UID: ${data.profile?.uid || '---'})`;
@@ -1562,12 +1987,67 @@ document.addEventListener('DOMContentLoaded', () => {
             if (p2ExpSvg) p2ExpSvg.style.display = 'none';
           }
           syncStateToGuest();
-          if (data.role === 'guest') {
-            sendP2PMessage('HANDSHAKE', {
-              profile: userProfile,
-              role: 'host',
-              fullState: getFullStatePayload()
-            });
+        } else if (p2pRole === 'guest') {
+          if (duelP1NameDisplay) {
+            duelP1NameDisplay.textContent = `P1: ${data.profile?.username || 'Anfitrión'} (UID: ${data.profile?.uid || '---'})`;
+          }
+          if (p1ScoreLabel) {
+            p1ScoreLabel.textContent = `Resultado de ${data.profile?.username || 'Anfitrión'}:`;
+          }
+          if (p1ExpName) {
+            p1ExpName.textContent = `${data.profile?.username || 'Anfitrión'} (Anfitrión)`;
+          }
+          if (p1ExpAvatar && data.profile?.avatar) {
+            p1ExpAvatar.src = data.profile.avatar;
+          }
+        }
+
+        // Always reply with HANDSHAKE_REPLY containing fullState so both peers have 100% symmetric state
+        sendP2PMessage('HANDSHAKE_REPLY', {
+          profile: userProfile,
+          role: p2pRole,
+          fullState: getFullStatePayload()
+        });
+
+        showToast(`✦ Conexión en vivo con ${data.profile?.username || 'Jugador'}`, 'success');
+        playUiSound('fanfare');
+        break;
+      }
+
+      case 'HANDSHAKE_REPLY': {
+        isP2pConnected = true;
+        remotePeerProfile = data.profile;
+        if (data.profile) {
+          friendGameState.profile = data.profile;
+        }
+        if (data.fullState) {
+          if (data.fullState.roulette) friendGameState.roulette = data.fullState.roulette;
+          if (data.fullState.duel) friendGameState.duel = data.fullState.duel;
+          if (data.fullState.gacha) friendGameState.gacha = data.fullState.gacha;
+          if (data.fullState.expedition) {
+            friendGameState.expedition = data.fullState.expedition;
+            syncRemoteExpeditionToScorecard(data.fullState.expedition, data.role);
+          }
+          friendGameState.lastUpdated = new Date();
+        }
+        renderFriendInspectUI();
+        updateMultiplayerBannerUI();
+        updateP2PStatusUI('connected', p2pRole === 'host' ? 'En Vivo con Amigo' : 'En Vivo con Anfitrión');
+
+        if (p2pRole === 'host') {
+          if (duelP2NameDisplay) {
+            duelP2NameDisplay.textContent = `P2: ${data.profile?.username || 'Amigo'} (UID: ${data.profile?.uid || '---'})`;
+          }
+          if (p2ScoreLabel) {
+            p2ScoreLabel.textContent = `Resultado de ${data.profile?.username || 'Amigo'}:`;
+          }
+          if (p2ExpName) {
+            p2ExpName.textContent = `${data.profile?.username || 'Amigo'} • UID: ${data.profile?.uid || '---'}`;
+          }
+          if (p2ExpAvatar && data.profile?.avatar) {
+            p2ExpAvatar.src = data.profile.avatar;
+            p2ExpAvatar.style.display = 'inline-block';
+            if (p2ExpSvg) p2ExpSvg.style.display = 'none';
           }
         } else if (p2pRole === 'guest') {
           if (duelP1NameDisplay) {
@@ -1583,8 +2063,24 @@ document.addEventListener('DOMContentLoaded', () => {
             p1ExpAvatar.src = data.profile.avatar;
           }
         }
-        showToast(`✦ Conexión en vivo con ${data.profile?.username || 'Jugador'}`, 'success');
-        playUiSound('fanfare');
+        break;
+      }
+
+      case 'DISCONNECT': {
+        isP2pConnected = false;
+        remotePeerProfile = null;
+        friendGameState = {
+          roulette: null,
+          duel: null,
+          gacha: null,
+          expedition: null,
+          profile: null,
+          lastUpdated: null
+        };
+        updateP2PStatusUI('waiting', 'Amigo Desconectado');
+        renderFriendInspectUI();
+        updateMultiplayerBannerUI();
+        showToast('✦ Tu amigo se ha desconectado de la sala', 'warn');
         break;
       }
 
@@ -1651,7 +2147,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (label) label.classList.toggle('checked', data.checked);
           }
         }
-        updateLiveExpeditionScore();
+        updateLiveExpeditionScore(false);
+        renderFriendInspectUI();
         break;
       }
 
@@ -1659,13 +2156,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetInput = (p2pRole === 'host') ? p2BonusInput : p1BonusInput;
         if (targetInput) {
           targetInput.value = (data.value !== undefined) ? data.value : '';
-          updateLiveExpeditionScore();
+          updateLiveExpeditionScore(false);
+          renderFriendInspectUI();
         }
         break;
       }
 
       case 'EXPEDITION_CALCULATE': {
+        if (data.p1Checked && Array.isArray(data.p1Checked)) p1CheckedCriteria = new Set(data.p1Checked);
+        if (data.p2Checked && Array.isArray(data.p2Checked)) p2CheckedCriteria = new Set(data.p2Checked);
+        if (data.p1Bonus !== undefined && p1BonusInput) p1BonusInput.value = data.p1Bonus;
+        if (data.p2Bonus !== undefined && p2BonusInput) p2BonusInput.value = data.p2Bonus;
+        syncExpeditionCheckboxesUI();
+        updateLiveExpeditionScore(false);
         calculateExpeditionResult(false);
+        renderFriendInspectUI();
         showToast('✦ Tu amigo ha calculado el resultado de la expedición', 'info');
         break;
       }
@@ -1694,8 +2199,12 @@ document.addEventListener('DOMContentLoaded', () => {
       case 'FULL_STATE_RESPONSE': {
         if (data.profile) friendGameState.profile = data.profile;
         if (data.roulette) friendGameState.roulette = data.roulette;
+        if (data.duel) friendGameState.duel = data.duel;
         if (data.gacha) friendGameState.gacha = data.gacha;
-        if (data.expedition) friendGameState.expedition = data.expedition;
+        if (data.expedition) {
+          friendGameState.expedition = data.expedition;
+          syncRemoteExpeditionToScorecard(data.expedition, data.role || (p2pRole === 'host' ? 'guest' : 'host'));
+        }
         friendGameState.lastUpdated = new Date();
         renderFriendInspectUI();
         if (refreshFriendIcon) refreshFriendIcon.classList.remove('spinning');
@@ -1709,6 +2218,24 @@ document.addEventListener('DOMContentLoaded', () => {
           archetype: data.archetype,
           captain: data.captain,
           seed: data.seed
+        };
+        friendGameState.lastUpdated = new Date();
+        renderFriendInspectUI();
+        break;
+      }
+
+      case 'DUEL_SYNC': {
+        friendGameState.duel = {
+          mode: data.mode,
+          seed: data.seed,
+          season: data.season,
+          restriction: data.restriction,
+          turbulence: data.turbulence,
+          bossNode1: data.bossNode1,
+          bossNode2: data.bossNode2,
+          playerNode1: data.playerNode1,
+          playerNode2: data.playerNode2,
+          score: data.score
         };
         friendGameState.lastUpdated = new Date();
         renderFriendInspectUI();
@@ -1734,10 +2261,27 @@ document.addEventListener('DOMContentLoaded', () => {
           mode: data.mode,
           seed: data.seed,
           team: data.team,
-          checkedCriteria: data.checkedCriteria,
-          bonus: data.bonus,
-          totalScore: data.totalScore
+          checkedCriteria: data.checkedCriteria || [],
+          bonus: data.bonus || 0,
+          baseScore: data.baseScore !== undefined ? data.baseScore : 0,
+          bonusScore: data.bonusScore !== undefined ? data.bonusScore : 0,
+          totalScore: data.totalScore || '0 pts',
+          bonusMultiplier: data.bonusMultiplier || 0.1
         };
+
+        // If on the main expedition page, synchronize opponent's scorecard column in real time
+        if (data.role === 'guest' && p2pRole === 'host') {
+          p2CheckedCriteria = new Set(data.checkedCriteria || []);
+          if (p2BonusInput) p2BonusInput.value = (data.bonus !== undefined) ? data.bonus : '';
+          syncExpeditionCheckboxesUI();
+          updateLiveExpeditionScore(false);
+        } else if (data.role === 'host' && p2pRole === 'guest') {
+          p1CheckedCriteria = new Set(data.checkedCriteria || []);
+          if (p1BonusInput) p1BonusInput.value = (data.bonus !== undefined) ? data.bonus : '';
+          syncExpeditionCheckboxesUI();
+          updateLiveExpeditionScore(false);
+        }
+
         friendGameState.lastUpdated = new Date();
         renderFriendInspectUI();
         break;
@@ -1993,6 +2537,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     p2pJoinRetryCount = 0;
 
+    // Notify connected peer before closing connection
+    sendP2PMessage('DISCONNECT', {});
+
     if (mqttClient) {
       try { mqttClient.end(true); } catch (e) {}
       mqttClient = null;
@@ -2011,11 +2558,25 @@ document.addEventListener('DOMContentLoaded', () => {
     p2pRole = null;
     remoteHostProfile = null;
     remotePeerProfile = null;
+    friendGameState = {
+      roulette: null,
+      duel: null,
+      gacha: null,
+      expedition: null,
+      profile: null,
+      lastUpdated: null
+    };
+
+    closeShareRoomModal();
+    closeFriendInspectModal();
 
     if (sharedRoomBanner) sharedRoomBanner.style.display = 'none';
     if (p2pCurrentRoomCode) p2pCurrentRoomCode.textContent = '---';
     updateP2PStatusUI('offline', 'Desconectado');
     if (p2pHostStatusText) p2pHostStatusText.textContent = 'Pulsa "Generar Sala en Vivo" para obtener un código y permitir que tu amigo se conecte en tiempo real.';
+
+    renderFriendInspectUI();
+    updateMultiplayerBannerUI();
 
     const activeTab = document.querySelector('.nav-tab-btn.active')?.dataset.tab || 'catalog';
     window.location.hash = `#tab=${activeTab}`;
@@ -2144,7 +2705,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function getEffectiveWhitelist() {
     if (!isRosterFilterActive) return null;
-    return Array.from(ownedCharacterIds);
+    const arr = Array.from(ownedCharacterIds);
+    arr.has = function(id) { return this.includes(String(id)); };
+    return arr;
   }
 
   function updateRosterUI() {
@@ -2793,9 +3356,10 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Si la ranura estaba fijada, liberarla para permitir el nuevo personaje
     if (lockedExpeditionSlots.has(index)) {
-      lockedExpeditionSlots.delete(index);
+      showToast(`La posición ${index + 1} está fijada. Desbloquéala antes de re-tirar.`, 'info');
+      playUiSound('click');
+      return;
     }
 
     const effectiveWhitelist = getEffectiveWhitelist();
@@ -2807,7 +3371,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const available = characters.filter(ch => {
       if (currentIds.has(String(ch.id))) return false;
-      if (effectiveWhitelist && !effectiveWhitelist.has(String(ch.id))) return false;
+      if (effectiveWhitelist && !effectiveWhitelist.includes(String(ch.id))) return false;
       return true;
     });
 
@@ -2839,7 +3403,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const availablePool = characters.filter(ch => {
       if (lockedIds.has(String(ch.id))) return false;
-      if (effectiveWhitelist && !effectiveWhitelist.has(String(ch.id))) return false;
+      if (effectiveWhitelist && !effectiveWhitelist.includes(String(ch.id))) return false;
       return true;
     });
 
@@ -3131,6 +3695,7 @@ document.addEventListener('DOMContentLoaded', () => {
     p1ScoreInput.value = '';
     p2ScoreInput.value = '';
     duelResultBanner.style.display = 'none';
+    broadcastDuelState();
   }
 
   function renderMiniRoster(team, container) {
@@ -3240,6 +3805,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const summaryText = `[HSR Duelo 1v1 - ${HSR_GAME_MODES.ENDGAME_MODES[currentEndgameMode].abbr}]\n${titleText}\n${subText}\nSemilla: #${currentDuelMatch.seed}`;
       copyToClipboard(summaryText, 'Resultado copiado al portapapeles');
     });
+
+    broadcastDuelState();
   }
 
   /* ==========================================================================
@@ -3267,7 +3834,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const available = characters.filter(c =>
             !lockedIds.has(String(c.id)) &&
             !currentExpeditionChallenge.team.some((t, i) => i !== idx && String(t?.id) === String(c.id)) &&
-            (!effectiveWhitelist || effectiveWhitelist.has(String(c.id)))
+            (!effectiveWhitelist || effectiveWhitelist.includes(String(c.id)))
           );
           if (available.length > 0) {
             currentExpeditionChallenge.team[idx] = available[Math.floor(Math.random() * available.length)];
@@ -3344,6 +3911,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     p1ScoreBadge.textContent = '0 pts';
     p2ScoreBadge.textContent = '0 pts';
+    if (p1ScoreCalcBreakdown) p1ScoreCalcBreakdown.textContent = 'Base: 0 pts | Bonus: +0 pts';
+    if (p2ScoreCalcBreakdown) p2ScoreCalcBreakdown.textContent = 'Base: 0 pts | Bonus: +0 pts';
     expeditionResultBanner.style.display = 'none';
 
     // Render Player 1 Criteria Checklist
@@ -3412,7 +3981,8 @@ document.addEventListener('DOMContentLoaded', () => {
     broadcastExpeditionState();
   }
 
-  function updateLiveExpeditionScore() {
+  function updateLiveExpeditionScore(broadcast = true) {
+    if (!currentExpeditionChallenge || !currentExpeditionChallenge.criteria) return;
     let p1Base = 0;
     let p2Base = 0;
 
@@ -3427,28 +3997,49 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const mult = currentExpeditionChallenge.bonusMultiplier || 0.1;
-    const p1Bonus = Math.max(0, Math.floor(Number(p1BonusInput.value || 0) * mult));
-    const p2Bonus = Math.max(0, Math.floor(Number(p2BonusInput.value || 0) * mult));
+    const p1BonusRaw = Number(p1BonusInput?.value || 0);
+    const p2BonusRaw = Number(p2BonusInput?.value || 0);
+    const p1Bonus = Math.max(0, Math.floor(p1BonusRaw * mult));
+    const p2Bonus = Math.max(0, Math.floor(p2BonusRaw * mult));
 
-    p1ScoreBadge.textContent = `${Math.max(0, p1Base + p1Bonus)} pts`;
-    p2ScoreBadge.textContent = `${Math.max(0, p2Base + p2Bonus)} pts`;
-    broadcastExpeditionState();
+    const p1Total = Math.max(0, p1Base + p1Bonus);
+    const p2Total = Math.max(0, p2Base + p2Bonus);
+
+    if (p1ScoreBadge) p1ScoreBadge.textContent = `${p1Total} pts`;
+    if (p2ScoreBadge) p2ScoreBadge.textContent = `${p2Total} pts`;
+
+    if (p1ScoreCalcBreakdown) {
+      p1ScoreCalcBreakdown.textContent = `Base: ${p1Base} pts | Bonus: +${p1Bonus} pts`;
+    }
+    if (p2ScoreCalcBreakdown) {
+      p2ScoreCalcBreakdown.textContent = `Base: ${p2Base} pts | Bonus: +${p2Bonus} pts`;
+    }
+
+    if (broadcast) {
+      broadcastExpeditionState();
+    }
   }
 
   function calculateExpeditionResult(sendP2p = true) {
-    if (sendP2p) {
-      sendP2PMessage('EXPEDITION_CALCULATE', {});
-    }
-
     const outcome = HSR_GAME_MODES.calculateExpeditionWinner(
       currentExpeditionChallenge,
       Array.from(p1CheckedCriteria),
-      Number(p1BonusInput.value || 0),
+      Number(p1BonusInput?.value || 0),
       Array.from(p2CheckedCriteria),
-      Number(p2BonusInput.value || 0)
+      Number(p2BonusInput?.value || 0)
     );
 
     if (!outcome) return;
+
+    if (sendP2p) {
+      sendP2PMessage('EXPEDITION_CALCULATE', {
+        outcome,
+        p1Checked: Array.from(p1CheckedCriteria),
+        p1Bonus: p1BonusInput?.value || '0',
+        p2Checked: Array.from(p2CheckedCriteria),
+        p2Bonus: p2BonusInput?.value || '0'
+      });
+    }
 
     const p1Name = remoteHostProfile
       ? `${remoteHostProfile.username} (Anfitrión)`
@@ -3476,29 +4067,46 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     expeditionResultBanner.innerHTML = `
-      <div style="display: flex; align-items: center; gap: 14px;">
-        <div class="duel-victory-icon-wrap">
-          <svg viewBox="0 0 24 24" width="24" height="24" fill="${winnerColor}">
-            <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0 0 11 15.9V19H7v2h10v-2h-4v-3.1a5.01 5.01 0 0 0 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/>
-          </svg>
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <div class="duel-victory-icon-wrap">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="${winnerColor}">
+              <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0 0 11 15.9V19H7v2h10v-2h-4v-3.1a5.01 5.01 0 0 0 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 style="font-size: 1.1rem; font-weight: 700; color: ${winnerColor};">${titleText}</h3>
+            <p style="font-size: 0.82rem; color: var(--text-secondary); margin-top: 2px;">${subText}</p>
+          </div>
         </div>
-        <div>
-          <h3 style="font-size: 1.1rem; font-weight: 700; color: ${winnerColor};">${titleText}</h3>
-          <p style="font-size: 0.82rem; color: var(--text-secondary); margin-top: 2px;">${subText}</p>
+        <button id="copyExpeditionResultBtn" class="btn-fluent" style="font-size: 0.78rem; padding: 6px 14px;">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+          <span>Copiar Resultado</span>
+        </button>
+      </div>
+
+      <div style="display: flex; gap: 12px; margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.08); flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 200px; background: rgba(0,0,0,0.28); padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(96,205,255,0.25);">
+          <div style="font-weight: 700; color: var(--accent-light); font-size: 0.82rem; margin-bottom: 4px;">✦ ${p1Name}</div>
+          <div style="font-size: 0.74rem; color: var(--text-secondary);">Puntos Base: <strong>${outcome.player1.baseScore} pts</strong> (${outcome.player1.checkedCount} objetivos)</div>
+          <div style="font-size: 0.74rem; color: var(--text-secondary);">Bonus de Fragmentos: <strong>+${outcome.player1.bonusScore} pts</strong></div>
+          <div style="font-size: 0.84rem; font-weight: 700; color: #fff; margin-top: 4px; padding-top: 4px; border-top: 1px solid rgba(255,255,255,0.08);">Total Calculado: ${outcome.player1.totalScore} pts</div>
+        </div>
+        <div style="flex: 1; min-width: 200px; background: rgba(0,0,0,0.28); padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(248,113,113,0.25);">
+          <div style="font-weight: 700; color: #f87171; font-size: 0.82rem; margin-bottom: 4px;">✦ ${p2Name}</div>
+          <div style="font-size: 0.74rem; color: var(--text-secondary);">Puntos Base: <strong>${outcome.player2.baseScore} pts</strong> (${outcome.player2.checkedCount} objetivos)</div>
+          <div style="font-size: 0.74rem; color: var(--text-secondary);">Bonus de Fragmentos: <strong>+${outcome.player2.bonusScore} pts</strong></div>
+          <div style="font-size: 0.84rem; font-weight: 700; color: #fff; margin-top: 4px; padding-top: 4px; border-top: 1px solid rgba(255,255,255,0.08);">Total Calculado: ${outcome.player2.totalScore} pts</div>
         </div>
       </div>
-      <button id="copyExpeditionResultBtn" class="btn-fluent" style="font-size: 0.78rem; padding: 6px 14px;">
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-        <span>Copiar Resultado</span>
-      </button>
     `;
 
-    expeditionResultBanner.style.display = 'flex';
+    expeditionResultBanner.style.display = 'block';
     playUiSound('fanfare');
 
-    document.getElementById('copyExpeditionResultBtn').addEventListener('click', () => {
-      const summaryText = `[HSR Expedición 1v1 - ${currentExpeditionChallenge.mode.name}]\n${titleText}\n${subText}\nSemilla: #${currentExpeditionChallenge.seed}`;
-      copyToClipboard(summaryText, 'Resultado de expedición copiado al portapapeles');
+    document.getElementById('copyExpeditionResultBtn')?.addEventListener('click', () => {
+      const summaryText = `[HSR Expedición 1v1 - ${currentExpeditionChallenge.mode.name}]\n${titleText}\n${subText}\nDesglose:\n- ${p1Name}: Base ${outcome.player1.baseScore} pts + Bonus ${outcome.player1.bonusScore} pts = ${outcome.player1.totalScore} pts\n- ${p2Name}: Base ${outcome.player2.baseScore} pts + Bonus ${outcome.player2.bonusScore} pts = ${outcome.player2.totalScore} pts\nSemilla: #${currentExpeditionChallenge.seed}`;
+      copyToClipboard(summaryText, 'Resultado y desglose de expedición copiado al portapapeles');
     });
   }
 
@@ -4727,6 +5335,26 @@ document.addEventListener('DOMContentLoaded', () => {
     if (disconnectRoomBtn) {
       disconnectRoomBtn.addEventListener('click', disconnectP2P);
     }
+    if (shareModalDisconnectBtn) {
+      shareModalDisconnectBtn.addEventListener('click', disconnectP2P);
+    }
+    if (friendInspectDisconnectBtn) {
+      friendInspectDisconnectBtn.addEventListener('click', disconnectP2P);
+    }
+    if (reconnectRoomBannerBtn) {
+      reconnectRoomBannerBtn.addEventListener('click', () => {
+        verifyAndReconnectP2P(true);
+      });
+    }
+    if (copyRoomBannerCodeBtn) {
+      copyRoomBannerCodeBtn.addEventListener('click', () => {
+        if (currentP2pRoomCode) {
+          copyToClipboard(currentP2pRoomCode, `Código de sala ${currentP2pRoomCode} copiado`);
+        } else {
+          openShareRoomModal();
+        }
+      });
+    }
 
     // Roster Collection Modal Events
     openRosterModalBtn.addEventListener('click', openRosterModal);
@@ -4955,6 +5583,7 @@ document.addEventListener('DOMContentLoaded', () => {
       p1ScoreInput.addEventListener('input', () => {
         if (p2pRole !== 'guest') {
           sendP2PMessage('DUEL_SCORE', { score: p1ScoreInput.value });
+          broadcastDuelState();
         }
       });
     }
@@ -4963,6 +5592,7 @@ document.addEventListener('DOMContentLoaded', () => {
       p2ScoreInput.addEventListener('input', () => {
         if (p2pRole === 'guest') {
           sendP2PMessage('DUEL_SCORE', { score: p2ScoreInput.value });
+          broadcastDuelState();
         }
       });
     }
@@ -5153,6 +5783,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       });
     }
+
+    if (duelFriendViewBtn) {
+      duelFriendViewBtn.addEventListener('click', () => openFriendInspectModal('duel'));
+    }
+
+    // Auto-reconnection on visibility change, window focus, or online recovery
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible' && currentP2pRoomCode) {
+        console.log('[P2P Health] Pestaña visible nuevamente, verificando estado P2P...');
+        verifyAndReconnectP2P(false);
+      }
+    });
+
+    window.addEventListener('focus', () => {
+      if (currentP2pRoomCode) {
+        console.log('[P2P Health] Ventana con foco, verificando estado P2P...');
+        verifyAndReconnectP2P(false);
+      }
+    });
+
+    window.addEventListener('online', () => {
+      if (currentP2pRoomCode) {
+        console.log('[P2P Health] Conexión de red restaurada, reconectando P2P...');
+        verifyAndReconnectP2P(true);
+      }
+    });
   }
 
   // Initialize platform after all modules and event listeners are declared

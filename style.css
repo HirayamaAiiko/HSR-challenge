@@ -1444,6 +1444,7 @@ svg {
   align-items: center;
   justify-content: center;
   gap: 6px;
+  flex-wrap: wrap;
 }
 
 .slot-btn {
@@ -2353,6 +2354,18 @@ svg {
   border-radius: var(--radius-xs);
 }
 
+.shared-room-code-chip {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: #fde047;
+  background: rgba(253, 224, 71, 0.12);
+  border: 1px solid rgba(253, 224, 71, 0.35);
+  padding: 2px 7px;
+  border-radius: var(--radius-xs);
+  letter-spacing: 0.05em;
+}
+
 .shared-room-desc {
   font-size: 0.74rem;
   color: var(--text-secondary);
@@ -2697,7 +2710,14 @@ svg {
   padding: 4px;
   border-radius: var(--radius-sm);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  flex-wrap: wrap;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.friend-nav-pills::-webkit-scrollbar {
+  display: none;
 }
 
 .friend-nav-btn {
@@ -2710,6 +2730,8 @@ svg {
   border-radius: var(--radius-xs);
   cursor: pointer;
   transition: all 0.15s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .friend-nav-btn:hover {
@@ -2721,6 +2743,16 @@ svg {
   background: var(--accent-color);
   color: #000;
   box-shadow: 0 2px 8px rgba(96, 205, 255, 0.3);
+}
+
+.friend-duel-stage-box {
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .friend-tab-panel {
@@ -4994,5 +5026,330 @@ svg {
     width: 44px;
     height: 58px;
   }
+
+  /* Barras de acción móviles (evita desborde horizontal de botones) */
+  .roulette-options-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .roulette-mode-pills {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+
+  .roulette-mode-pills::-webkit-scrollbar {
+    display: none;
+  }
+
+  .roulette-action-buttons {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .roulette-action-buttons .btn-fluent {
+    flex: 1 1 calc(50% - 6px);
+    min-width: 120px;
+    font-size: 0.76rem;
+    padding: 7px 10px;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .roulette-action-buttons .spin-main-btn {
+    flex: 1 1 100%;
+  }
+
+  .gacha-session-actions {
+    width: 100%;
+    margin-left: 0;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+  }
+
+  .gacha-session-actions .btn-fluent {
+    flex: 1 1 auto;
+    font-size: 0.74rem;
+    padding: 6px 10px;
+    justify-content: center;
+  }
+
+  .endgame-actions-bar,
+  .expedition-actions-row {
+    width: 100%;
+    margin-left: 0;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .endgame-actions-bar .btn-fluent,
+  .expedition-actions-row .btn-fluent {
+    flex: 1 1 auto;
+    font-size: 0.74rem;
+    padding: 6px 10px;
+    justify-content: center;
+  }
+
+  /* Banner de Sala Multijugador en Móvil */
+  .shared-room-banner {
+    margin-bottom: 10px;
+  }
+
+  .shared-room-banner-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 10px 12px;
+  }
+
+  .shared-room-details {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .shared-room-actions {
+    width: 100%;
+    margin-left: 0;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 6px;
+  }
+
+  .shared-room-actions .btn-fluent,
+  .shared-room-actions .p2p-badge-status {
+    flex: 1 1 auto;
+    font-size: 0.72rem;
+    padding: 5px 8px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Modal de Inspección de Amigo en Móvil */
+  .friend-inspect-dialog {
+    max-width: 100%;
+    width: 100%;
+    padding: 14px 10px;
+  }
+
+  .friend-inspect-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .friend-inspect-actions {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .friend-inspect-actions .btn-fluent {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .friend-team-slots-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .friend-slot-card {
+    padding: 8px 4px;
+    gap: 4px;
+  }
+
+  .friend-slot-avatar {
+    width: 48px;
+    height: 48px;
+  }
+
+  .friend-slot-name {
+    font-size: 0.75rem;
+  }
+
+  .friend-slot-tags {
+    gap: 2px;
+  }
+
+  .friend-slot-tag {
+    font-size: 0.58rem;
+    padding: 1px 3px;
+  }
+
+  .friend-gacha-history-list {
+    grid-template-columns: 1fr;
+  }
+
+  .friend-crit-item {
+    font-size: 0.72rem;
+    padding: 6px 8px;
+  }
+
+  .friend-calc-grid {
+    grid-template-columns: 1fr;
+  }
 }
+
+/* ==========================================================================
+   WIDGET DE CÁLCULO Y DESGLOSE DE PUNTOS EN MODO EXPEDICIÓN
+   ========================================================================== */
+.friend-calc-box {
+  background: rgba(18, 24, 38, 0.75);
+  border: 1px solid rgba(96, 205, 255, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+  margin-top: 6px;
+}
+
+.friend-calc-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.friend-calc-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.friend-calc-kicker {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--accent-light, #93c5fd);
+  text-transform: uppercase;
+}
+
+.friend-calc-friend-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 2px 0 0 0;
+}
+
+.friend-calc-badge-total {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  background: rgba(96, 205, 255, 0.15);
+  border: 1px solid rgba(96, 205, 255, 0.35);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+}
+
+.calc-badge-num {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #67e8f9;
+}
+
+.calc-badge-unit {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent-light, #93c5fd);
+}
+
+.friend-calc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.friend-calc-col {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-xs);
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.calc-label {
+  font-size: 0.66rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.calc-val-main {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.calc-val-main.text-accent {
+  color: #60cdff;
+}
+
+.calc-val-main.text-emerald {
+  color: #4ade80;
+}
+
+.calc-val-main.text-amber {
+  color: #fde047;
+}
+
+.calc-sub-text {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.friend-calc-comparison-bar {
+  padding: 8px 12px;
+  border-radius: var(--radius-xs);
+  font-size: 0.76rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border: 1px solid transparent;
+}
+
+.friend-calc-comparison-bar.friend-leading {
+  background: rgba(248, 113, 113, 0.12);
+  border-color: rgba(248, 113, 113, 0.3);
+  color: #fca5a5;
+}
+
+.friend-calc-comparison-bar.user-leading {
+  background: rgba(34, 197, 94, 0.12);
+  border-color: rgba(34, 197, 94, 0.3);
+  color: #86efac;
+}
+
+.friend-calc-comparison-bar.tied {
+  background: rgba(234, 179, 8, 0.12);
+  border-color: rgba(234, 179, 8, 0.3);
+  color: #fde047;
+}
+
+.comparison-tag {
+  font-weight: 800;
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.scorecard-breakdown-tag {
+  font-size: 0.66rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+
 

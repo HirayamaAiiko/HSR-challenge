@@ -7,7 +7,7 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <title>Honkai: Star Rail — Compendio y Modos de Juego</title>
-  <link rel="stylesheet" href="style.css?v=1.11.2">
+  <link rel="stylesheet" href="style.css?v=1.11.5">
   <link rel="icon" href="https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Destruction.png" type="image/png">
 </head>
 <body>
@@ -26,7 +26,6 @@
             Honkai: Star Rail
             <span class="brand-badge">Tools</span>
           </h1>
-          <p>Compendio completo, ruleta y duelos 1v1 para amigos</p>
         </div>
       </div>
 
@@ -115,33 +114,49 @@
       </div>
     </header>
 
-    <!-- Shared Room Notification Banner (Visible when opening a friend's link) -->
+    <!-- Shared Room Notification Banner (Visible for both Host and Guest during live room) -->
     <aside id="sharedRoomBanner" class="shared-room-banner" style="display: none;" aria-live="polite">
       <div class="shared-room-banner-inner">
         <div class="shared-room-host-visual">
           <img id="sharedRoomHostAvatar" src="https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1001.png" alt="Host">
-          <span class="live-dot-pulse"></span>
+          <span class="live-dot-pulse" id="sharedRoomPulseDot"></span>
         </div>
         <div class="shared-room-details">
           <div class="shared-room-host-line">
-            <span class="shared-room-badge-tag">✦ Sala de Amigo</span>
-            <strong id="sharedRoomHostName">Anfitrión</strong>
+            <span class="shared-room-badge-tag" id="sharedRoomBannerBadge">✦ Sala en Vivo</span>
+            <strong id="sharedRoomHostName">Sala Activa</strong>
+            <span class="shared-room-code-chip" id="sharedRoomBannerCodeChip" title="Código de sala">---</span>
             <span class="shared-room-uid-chip" id="sharedRoomHostUid">UID: ---</span>
           </div>
           <div class="shared-room-desc" id="sharedRoomSubText">
-            Desafío sincronizado listo para jugar.
+            Sincronizando estado en tiempo real mediante Mesh Global.
           </div>
         </div>
         <div class="shared-room-actions">
-          <button type="button" id="openFriendInspectBannerBtn" class="btn-fluent btn-primary" title="Ver la ruleta, tiradas y expedición de tu amigo">
+          <button type="button" id="openFriendInspectBannerBtn" class="btn-fluent btn-primary" title="Ver la ruleta, tiradas, duelo y expedición de tu amigo">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
               <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
             </svg>
             <span>Ver Partida de Amigo</span>
           </button>
           <span class="p2p-badge-status" id="p2pLiveStatusBadge">● P2P Conectando...</span>
-          <button type="button" id="disconnectRoomBtn" class="btn-fluent" title="Desconectar y volver a mi sesión local">
-            Salir de la Sala
+          <button type="button" id="reconnectRoomBannerBtn" class="btn-fluent" title="Reconectar y forzar sincronización de sala">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+              <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+            </svg>
+            <span>Reconectar</span>
+          </button>
+          <button type="button" id="copyRoomBannerCodeBtn" class="btn-fluent" title="Copiar código de sala">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+              <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+            </svg>
+            <span>Código</span>
+          </button>
+          <button type="button" id="disconnectRoomBtn" class="btn-fluent" style="color: #f87171; border-color: rgba(248, 113, 113, 0.35); background: rgba(239, 68, 68, 0.08);" title="Desconectar y salir de la sala actual">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+              <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </svg>
+            <span>Desconectar Sala</span>
           </button>
         </div>
       </div>
@@ -381,7 +396,7 @@
           </button>
         </div>
 
-        <div style="display: flex; align-items: center; gap: 8px; margin-left: auto;">
+        <div class="endgame-actions-bar" style="display: flex; align-items: center; gap: 8px; margin-left: auto; flex-wrap: wrap;">
           <button id="newDuelMatchBtn" class="btn-fluent btn-primary">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
               <path d="M12 2l2.4 7.2h7.6l-6.1 4.5 2.3 7.1-6.2-4.5-6.2 4.5 2.3-7.1-6.1-4.5h7.6z"/>
@@ -393,6 +408,12 @@
               <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/>
             </svg>
             <span>Compartir Sala</span>
+          </button>
+          <button id="duelFriendViewBtn" class="btn-fluent" title="Ver equipo y resultado de tu amigo">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+              <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+            </svg>
+            <span>Duelo de Amigo</span>
           </button>
         </div>
 
@@ -485,7 +506,7 @@
           </button>
         </div>
 
-        <div style="display: flex; align-items: center; gap: 8px; margin-left: auto; flex-wrap: wrap;">
+        <div class="expedition-actions-row" style="display: flex; align-items: center; gap: 8px; margin-left: auto; flex-wrap: wrap;">
           <button id="newUnivChallengeBtn" class="btn-fluent btn-primary">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
@@ -498,11 +519,11 @@
             </svg>
             <span>Compartir</span>
           </button>
-          <button id="expeditionFriendViewBtn" class="btn-fluent" title="Ver objetivos y progreso de tu amigo">
+          <button id="expeditionFriendViewBtn" class="btn-fluent" title="Ver la partida y cálculo de puntos de tu amigo en tiempo real">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
               <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
             </svg>
-            <span>Progreso de Amigo</span>
+            <span>Ver Cálculo de Amigo</span>
           </button>
           <div class="seed-pill">
             Semilla: <span id="univSeedDisplay">#EXP-000000</span>
@@ -566,7 +587,10 @@
                 <img id="p1ExpAvatar" class="scorecard-player-avatar" src="https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1001.png" alt="Avatar">
                 <span id="p1ExpName" style="color: var(--accent-color);">Trazacaminos</span>
               </div>
-              <span id="p1ScoreBadge" class="scorecard-total-badge">0 pts</span>
+              <div style="text-align: right;">
+                <span id="p1ScoreBadge" class="scorecard-total-badge">0 pts</span>
+                <div id="p1ScoreCalcBreakdown" class="scorecard-breakdown-tag">Base: 0 pts | Bonus: +0 pts</div>
+              </div>
             </div>
 
             <div class="criteria-list" id="p1CriteriaList">
@@ -592,7 +616,10 @@
                 </svg>
                 <span id="p2ExpName" style="color: #f87171;">Jugador 2 (Amigo)</span>
               </div>
-              <span id="p2ScoreBadge" class="scorecard-total-badge">0 pts</span>
+              <div style="text-align: right;">
+                <span id="p2ScoreBadge" class="scorecard-total-badge">0 pts</span>
+                <div id="p2ScoreCalcBreakdown" class="scorecard-breakdown-tag">Base: 0 pts | Bonus: +0 pts</div>
+              </div>
             </div>
 
             <div class="criteria-list" id="p2CriteriaList">
@@ -914,7 +941,13 @@
             </div>
           </div>
 
-          <div class="roster-modal-footer">
+          <div class="roster-modal-footer" style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+            <button type="button" id="shareModalDisconnectBtn" class="btn-fluent" style="color: #f87171; border-color: rgba(248, 113, 113, 0.35); background: rgba(239, 68, 68, 0.08); font-size: 0.78rem;" title="Desconectar y salir de la sala actual">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+              </svg>
+              <span>Desconectar de la Sala</span>
+            </button>
             <button id="shareModalDoneBtn" class="btn-fluent" style="margin-left: auto; padding: 7px 20px;">
               Entendido
             </button>
@@ -969,6 +1002,9 @@
             <button type="button" class="friend-nav-btn active" data-friend-tab="roulette">
               <span>✦ Ruleta de Amigo</span>
             </button>
+            <button type="button" class="friend-nav-btn" data-friend-tab="duel">
+              <span>✦ Duelo Endgame</span>
+            </button>
             <button type="button" class="friend-nav-btn" data-friend-tab="gacha">
               <span>✦ Gachapón & Tiradas</span>
             </button>
@@ -986,6 +1022,38 @@
               </div>
             </div>
             <div class="friend-team-slots-grid" id="friendRouletteSlots">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+          <!-- Section 2: Duelo Endgame del Amigo -->
+          <div id="friendInspectDuelPanel" class="friend-tab-panel" style="display: none;">
+            <div class="friend-panel-head-bar">
+              <div class="friend-panel-meta">
+                <span class="friend-meta-tag" id="friendDuelModeTitle">Modo: Caos del Recuerdo</span>
+                <span class="friend-meta-tag" id="friendDuelScoreBadge">Resultado: ---</span>
+                <span class="friend-meta-tag seed-tag" id="friendDuelSeed">Semilla: ---</span>
+              </div>
+            </div>
+
+            <div class="friend-section-caption">
+              <span>◆</span> Nodo 1 del Amigo (Primera Mitad)
+            </div>
+            <div class="friend-team-slots-grid" id="friendDuelNode1Slots">
+              <!-- Rendered by JS -->
+            </div>
+
+            <div class="friend-section-caption" style="margin-top: 14px;">
+              <span>◆</span> Nodo 2 del Amigo (Segunda Mitad)
+            </div>
+            <div class="friend-team-slots-grid" id="friendDuelNode2Slots">
+              <!-- Rendered by JS -->
+            </div>
+
+            <div class="friend-section-caption" style="margin-top: 14px;">
+              <span>◆</span> Jefes y Turbulencia del Desafío
+            </div>
+            <div class="friend-duel-stage-box" id="friendDuelStageOverview">
               <!-- Rendered by JS -->
             </div>
           </div>
@@ -1025,6 +1093,11 @@
               </div>
             </div>
 
+            <!-- Widget: Desglose y Cálculo de Puntos de la Expedición del Amigo -->
+            <div id="friendExpScoreCalcWidget" class="friend-calc-box">
+              <!-- Rendered by JS -->
+            </div>
+
             <div class="friend-section-caption">
               <span>◆</span> Escuadra de Partida del Amigo
             </div>
@@ -1052,7 +1125,13 @@
             </button>
           </div>
 
-          <div class="roster-modal-footer" style="margin-top: 18px;">
+          <div class="roster-modal-footer" style="margin-top: 18px; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+            <button type="button" id="friendInspectDisconnectBtn" class="btn-fluent" style="color: #f87171; border-color: rgba(248, 113, 113, 0.35); background: rgba(239, 68, 68, 0.08); font-size: 0.76rem;" title="Desconectar y salir de la sala actual">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+              </svg>
+              <span>Desconectar Sala</span>
+            </button>
             <button id="friendInspectDoneBtn" class="btn-fluent" style="margin-left: auto; padding: 7px 20px;">
               Cerrar
             </button>
@@ -1312,8 +1391,8 @@
   <!-- Load Data and Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mqtt@5.16.0/dist/mqtt.min.js"></script>
-  <script src="characters_data.js?v=1.11.2"></script>
-  <script src="game_modes.js?v=1.11.2"></script>
-  <script src="app.js?v=1.11.2"></script>
+  <script src="characters_data.js?v=1.11.5"></script>
+  <script src="game_modes.js?v=1.11.5"></script>
+  <script src="app.js?v=1.11.5"></script>
 </body>
 </html>
