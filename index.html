@@ -7,7 +7,7 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <title>Honkai: Star Rail — Compendio y Modos de Juego</title>
-  <link rel="stylesheet" href="style.css?v=1.11.5">
+  <link rel="stylesheet" href="style.css?v=1.11.6">
   <link rel="icon" href="https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Destruction.png" type="image/png">
 </head>
 <body>
@@ -104,12 +104,13 @@
           <span id="themeBtnText" style="display:none;">Tema</span>
         </button>
 
-        <!-- Share Room Link -->
-        <button id="quickShareRoomBtn" class="btn-fluent btn-primary" title="Copiar enlace de sala">
+        <!-- Share Room Link / Multiplayer Room Dock -->
+        <button id="quickShareRoomBtn" class="btn-fluent room-dock-btn" title="Sala Multijugador & Conexión P2P en Vivo">
+          <span class="room-dock-dot offline" id="headerRoomStatusDot"></span>
           <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
             <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/>
           </svg>
-          <span>Compartir</span>
+          <span id="headerRoomStatusText">Sala Multijugador</span>
         </button>
       </div>
     </header>
@@ -1192,6 +1193,12 @@
                 </svg>
                 <span>Descargar Copia (.json)</span>
               </button>
+              <button type="button" id="exportObtainedCsvBtn" class="btn-fluent" title="Descargar tabla completa de personajes obtenidos en formato CSV para Excel/Sheets">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                  <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+                </svg>
+                <span>Exportar Obtenidos (.csv)</span>
+              </button>
               <label class="btn-fluent" style="cursor: pointer;">
                 <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
                   <path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/>
@@ -1279,7 +1286,11 @@
           <!-- Character Check-Tiles Grid -->
           <div class="roster-tiles-grid" id="rosterTilesContainer"></div>
 
-          <div class="roster-modal-footer">
+          <div class="roster-modal-footer" style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+            <button type="button" id="exportRosterCsvBtn" class="btn-fluent" style="font-size: 0.76rem;" title="Exportar la lista actual de personajes seleccionados como tabla CSV">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+              <span>Exportar Colección (.csv)</span>
+            </button>
             <button id="rosterSaveBtn" class="btn-fluent btn-primary" style="margin-left: auto; padding: 8px 24px;">
               Guardar y Aplicar
             </button>
@@ -1391,8 +1402,8 @@
   <!-- Load Data and Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mqtt@5.16.0/dist/mqtt.min.js"></script>
-  <script src="characters_data.js?v=1.11.5"></script>
-  <script src="game_modes.js?v=1.11.5"></script>
-  <script src="app.js?v=1.11.5"></script>
+  <script src="characters_data.js?v=1.11.6"></script>
+  <script src="game_modes.js?v=1.11.6"></script>
+  <script src="app.js?v=1.11.6"></script>
 </body>
 </html>

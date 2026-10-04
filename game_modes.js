@@ -294,8 +294,12 @@ const HSR_GAME_MODES = (() => {
     const { blacklist = [], whitelist = null, maxRarity = null, onlyFourStars = false } = options;
     return pool.filter(c => {
       const cid = String(c.id);
-      if (whitelist && Array.isArray(whitelist) && whitelist.length > 0 && !whitelist.includes(cid)) {
-        return false;
+      if (whitelist) {
+        if (typeof whitelist.has === 'function') {
+          if (!whitelist.has(cid)) return false;
+        } else if (Array.isArray(whitelist) && whitelist.length > 0) {
+          if (!whitelist.includes(cid)) return false;
+        }
       }
       if (blacklist.includes(cid)) return false;
       if (onlyFourStars && c.rarity !== 4) return false;
@@ -422,15 +426,23 @@ const HSR_GAME_MODES = (() => {
 
     const findValid = (idList) => {
       let found = idList.map(id => getCharacterById(id)).filter(Boolean);
-      if (options.whitelist && options.whitelist.length > 0) {
-        found = found.filter(c => options.whitelist.includes(String(c.id)));
+      if (options.whitelist) {
+        if (typeof options.whitelist.has === 'function') {
+          found = found.filter(c => options.whitelist.has(String(c.id)));
+        } else if (Array.isArray(options.whitelist) && options.whitelist.length > 0) {
+          found = found.filter(c => options.whitelist.includes(String(c.id)));
+        }
       }
       return found.length > 0 ? found : filterCandidates(catalog, options);
     };
 
     const team = [];
     const used = new Set();
-    const availablePool = filterCandidates(catalog, options);
+    let availablePool = filterCandidates(catalog, options);
+    if (availablePool.length < 4) {
+      availablePool = filterCandidates(catalog, { blacklist: options.blacklist || [] });
+      if (availablePool.length < 4) availablePool = catalog;
+    }
 
     [arch.dps, arch.sub, arch.support, arch.sustain].forEach(list => {
       const candidates = findValid(list).filter(c => !used.has(c.id));

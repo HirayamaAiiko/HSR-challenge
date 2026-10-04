@@ -113,6 +113,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const soundToggleBtn = document.getElementById('soundToggleBtn');
   const soundIcon = document.getElementById('soundIcon');
   const quickShareRoomBtn = document.getElementById('quickShareRoomBtn');
+  const headerRoomStatusDot = document.getElementById('headerRoomStatusDot');
+  const headerRoomStatusText = document.getElementById('headerRoomStatusText');
   const toastContainer = document.getElementById('toastContainer');
 
   // DOM Elements: Header User Profile & Modal
@@ -218,6 +220,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const avatarPickerContainer = document.getElementById('avatarPickerContainer');
   const exportSettingsJsonBtn = document.getElementById('exportSettingsJsonBtn');
+  const exportObtainedCsvBtn = document.getElementById('exportObtainedCsvBtn');
+  const exportRosterCsvBtn = document.getElementById('exportRosterCsvBtn');
   const importSettingsFileInput = document.getElementById('importSettingsFileInput');
   const resetAllSettingsBtn = document.getElementById('resetAllSettingsBtn');
   const saveProfileBtn = document.getElementById('saveProfileBtn');
@@ -480,12 +484,20 @@ document.addEventListener('DOMContentLoaded', () => {
       updateUserProfileUI();
     }
 
-    // Auto-join WebRTC/MQTT P2P room if room param is present
+    // Auto-join WebRTC/MQTT P2P room if room param is present, or restore session room
     if (roomParam && (!p2pConn || currentP2pRoomCode !== roomParam)) {
       joinP2PRoom(roomParam);
     } else if (!roomParam && !currentP2pRoomCode && !p2pConn) {
-      // Auto-create Host Room on startup so the host is always ready
-      initP2PHost();
+      const savedSessionRoom = sessionStorage.getItem('hsr_active_p2p_room');
+      const savedSessionRole = sessionStorage.getItem('hsr_active_p2p_role');
+      if (savedSessionRoom && savedSessionRole === 'guest') {
+        joinP2PRoom(savedSessionRoom);
+      } else if (savedSessionRoom && savedSessionRole === 'host') {
+        initP2PHost(savedSessionRoom);
+      } else {
+        // Auto-create Host Room on startup so the host is always ready
+        initP2PHost();
+      }
     }
 
     switchTab(tab, false);
@@ -822,12 +834,34 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function exportAllDataAsJson() {
+    const obtainedTable = characters
+      .filter(c => ownedCharacterIds.has(String(c.id)))
+      .map(c => {
+        const eidolon = currentGachaSession?.inventory?.find(inv => String(inv.id) === String(c.id))?.eidolon || 0;
+        return {
+          id: String(c.id),
+          name: c.name,
+          name_en: c.name_en,
+          rarity: c.rarity,
+          element: c.element?.name || '',
+          path: c.path?.name || '',
+          role: c.role || '',
+          sub_role: c.sub_role || '',
+          specialty: c.specialty || '',
+          obtained: true,
+          eidolon: eidolon
+        };
+      });
+
     const exportPayload = {
       app: 'HSR_Endgame_Platform',
-      version: '1.11.5',
+      version: '1.11.6',
       exportDate: new Date().toISOString(),
       profile: userProfile,
       ownedCharacters: Array.from(ownedCharacterIds),
+      obtainedCharactersTable: obtainedTable,
+      totalObtained: ownedCharacterIds.size,
+      totalCatalog: characters.length,
       rosterFilterActive: isRosterFilterActive,
       gachaSession: currentGachaSession,
       preferences: {
@@ -849,7 +883,47 @@ document.addEventListener('DOMContentLoaded', () => {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
-    showToast('Copia de seguridad descargada exitosamente (.json)', 'download');
+    showToast(`Copia de seguridad (.json) descargada con ${obtainedTable.length} personajes obtenidos`, 'download');
+    playUiSound('fanfare');
+  }
+
+  function exportObtainedCharactersCsv() {
+    const ownedList = characters.filter(c => ownedCharacterIds.has(String(c.id)));
+    if (ownedList.length === 0) {
+      showToast('No tienes ningún personaje marcado en tu colección todavía', 'warn');
+      return;
+    }
+
+    const headers = ['ID', 'Nombre', 'Nombre_EN', 'Rareza', 'Elemento', 'Via', 'Rol', 'SubRol', 'Especialidad', 'Obtenido', 'Eidolones'];
+    const rows = ownedList.map(c => {
+      const eidolon = currentGachaSession?.inventory?.find(inv => String(inv.id) === String(c.id))?.eidolon || 0;
+      return [
+        `"${c.id}"`,
+        `"${(c.name || '').replace(/"/g, '""')}"`,
+        `"${(c.name_en || '').replace(/"/g, '""')}"`,
+        c.rarity,
+        `"${c.element?.name || ''}"`,
+        `"${c.path?.name || ''}"`,
+        `"${c.role || ''}"`,
+        `"${(c.sub_role || '').replace(/"/g, '""')}"`,
+        `"${(c.specialty || '').replace(/"/g, '""')}"`,
+        '"SI"',
+        eidolon
+      ].join(',');
+    });
+
+    const csvContent = '\uFEFF' + [headers.join(','), ...rows].join('\r\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    const safeName = (userProfile.username || 'Trazacaminos').replace(/[^a-zA-Z0-9_-]/g, '_');
+    a.download = `HSR_Personajes_Obtenidos_${safeName}_${new Date().toISOString().slice(0, 10)}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showToast(`Tabla CSV de ${ownedList.length} personajes obtenidos descargada`, 'download');
     playUiSound('fanfare');
   }
 
@@ -869,7 +943,11 @@ document.addEventListener('DOMContentLoaded', () => {
           updateUserProfileUI();
         }
 
-        if (Array.isArray(data.ownedCharacters)) {
+        // Support both obtainedCharactersTable and ownedCharacters ID array
+        if (Array.isArray(data.obtainedCharactersTable) && data.obtainedCharactersTable.length > 0) {
+          ownedCharacterIds = new Set(data.obtainedCharactersTable.map(c => String(c.id || c)));
+          localStorage.setItem('hsr_owned_characters', JSON.stringify(Array.from(ownedCharacterIds)));
+        } else if (Array.isArray(data.ownedCharacters)) {
           ownedCharacterIds = new Set(data.ownedCharacters.map(String));
           localStorage.setItem('hsr_owned_characters', JSON.stringify(Array.from(ownedCharacterIds)));
         }
@@ -900,8 +978,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         updateRosterUI();
         renderCharacters();
+        populateCaptainSelect();
+        updateGachaPoolStatusBadge();
         closeProfileModal();
-        showToast('¡Copia de seguridad restaurada exitosamente!', 'info');
+        showToast(`¡Copia restaurada exitosamente! (${ownedCharacterIds.size} personajes en colección)`, 'info');
         playUiSound('fanfare');
       } catch (err) {
         showToast('Error al importar archivo JSON: formato incompatible', 'warn');
@@ -933,7 +1013,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
       sessionStorage.clear();
-      localStorage.setItem('hsr_client_version', '1.11.5');
+      localStorage.setItem('hsr_client_version', '1.11.6');
     } catch (e) {}
     showToast('↻ Purgando almacenamiento temporal y recargando...', 'info');
     setTimeout(() => {
@@ -1095,18 +1175,45 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  function formatFriendSyncTime(val) {
+    if (!val) return null;
+    try {
+      const d = (val instanceof Date) ? val : new Date(val);
+      if (isNaN(d.getTime())) return null;
+      return d.toLocaleTimeString();
+    } catch (e) {
+      return null;
+    }
+  }
+
   function openFriendInspectModal(initialTab = null) {
+    // 1. Close potentially conflicting modals to prevent backdrop locks
+    try {
+      if (characterModal) characterModal.classList.remove('open');
+      if (squadSwapModal) squadSwapModal.classList.remove('open');
+      if (rosterModal) rosterModal.classList.remove('open');
+    } catch (e) {}
+
     if (initialTab) {
       activeFriendTab = initialTab;
     }
-    switchFriendTab(activeFriendTab);
-    renderFriendInspectUI();
 
+    // 2. GUARANTEED: Open modal window FIRST so it NEVER fails to appear
     if (friendInspectModal) {
       friendInspectModal.classList.add('open');
       friendInspectModal.setAttribute('aria-hidden', 'false');
+      friendInspectModal.style.zIndex = '1050';
       document.body.style.overflow = 'hidden';
       playUiSound('click');
+    }
+
+    switchFriendTab(activeFriendTab);
+
+    // 3. Render friend UI defensively
+    try {
+      renderFriendInspectUI();
+    } catch (err) {
+      console.error('[Friend Inspect UI Error]', err);
     }
 
     if (isP2pConnected || (p2pConn && p2pConn.open) || (mqttClient && mqttClient.connected)) {
@@ -1176,41 +1283,43 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function renderFriendInspectUI() {
-    const friendProfile = friendGameState.profile || remotePeerProfile || remoteHostProfile;
-    const friendName = friendProfile?.username || 'Amigo';
-    const friendAvatar = friendProfile?.avatar || 'https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1001.png';
-    const friendUid = friendProfile?.uid || '---';
+    try {
+      const friendProfile = friendGameState.profile || remotePeerProfile || remoteHostProfile;
+      const friendName = friendProfile?.username || 'Amigo';
+      const friendAvatar = friendProfile?.avatar || 'https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1001.png';
+      const friendUid = friendProfile?.uid || '---';
 
-    if (friendInspectAvatar) friendInspectAvatar.src = friendAvatar;
-    if (friendInspectName) friendInspectName.textContent = friendName;
-    if (friendInspectUid) friendInspectUid.textContent = `UID: ${friendUid}`;
+      if (friendInspectAvatar) friendInspectAvatar.src = friendAvatar;
+      if (friendInspectName) friendInspectName.textContent = friendName;
+      if (friendInspectUid) friendInspectUid.textContent = `UID: ${friendUid}`;
 
-    const isConnected = isP2pConnected || !!(p2pConn && p2pConn.open) || !!(mqttClient && mqttClient.connected && currentP2pRoomCode);
-    if (friendInspectStatusPill) {
-      friendInspectStatusPill.className = `p2p-status-pill ${isConnected ? 'connected' : (remoteHostProfile ? 'waiting' : 'offline')}`;
-      friendInspectStatusPill.textContent = isConnected ? '● En Vivo P2P' : (remoteHostProfile ? '● Enlace Compartido' : '● Desconectado');
-    }
-    if (friendInspectPulse) {
-      friendInspectPulse.style.display = isConnected ? 'block' : 'none';
-    }
-    if (friendInspectSubtext) {
-      friendInspectSubtext.textContent = friendGameState.lastUpdated
-        ? `Última sincronización: ${friendGameState.lastUpdated.toLocaleTimeString()} (${isConnected ? 'Conexión activa en tiempo real' : 'Caché de sala'})`
-        : (isConnected ? 'Conexión activa en tiempo real.' : 'Tu amigo aún no se ha conectado en vivo a esta sala.');
-    }
+      const isConnected = isP2pConnected || !!(p2pConn && p2pConn.open) || !!(mqttClient && mqttClient.connected && currentP2pRoomCode);
+      if (friendInspectStatusPill) {
+        friendInspectStatusPill.className = `p2p-status-pill ${isConnected ? 'connected' : (remoteHostProfile ? 'waiting' : 'offline')}`;
+        friendInspectStatusPill.textContent = isConnected ? '● En Vivo P2P' : (remoteHostProfile ? '● Enlace Compartido' : '● Desconectado');
+      }
+      if (friendInspectPulse) {
+        friendInspectPulse.style.display = isConnected ? 'block' : 'none';
+      }
+      const syncTimeStr = formatFriendSyncTime(friendGameState.lastUpdated);
+      if (friendInspectSubtext) {
+        friendInspectSubtext.textContent = syncTimeStr
+          ? `Última sincronización: ${syncTimeStr} (${isConnected ? 'Conexión activa en tiempo real' : 'Caché de sala'})`
+          : (isConnected ? 'Conexión activa en tiempo real.' : 'Tu amigo aún no se ha conectado en vivo a esta sala.');
+      }
 
-    const hasAnyData = !!(friendGameState.roulette?.team?.length || friendGameState.duel || friendGameState.gacha || friendGameState.expedition || isConnected || remoteHostProfile || currentP2pRoomCode);
+      const hasAnyData = !!(friendGameState.roulette?.team?.length || friendGameState.duel || friendGameState.gacha || friendGameState.expedition || isConnected || remoteHostProfile || currentP2pRoomCode);
 
-    if (!hasAnyData) {
-      if (friendInspectEmptyState) friendInspectEmptyState.style.display = 'flex';
-      if (friendInspectRoulettePanel) friendInspectRoulettePanel.style.display = 'none';
-      if (friendInspectDuelPanel) friendInspectDuelPanel.style.display = 'none';
-      if (friendInspectGachaPanel) friendInspectGachaPanel.style.display = 'none';
-      if (friendInspectExpeditionPanel) friendInspectExpeditionPanel.style.display = 'none';
-      return;
-    }
+      if (!hasAnyData) {
+        if (friendInspectEmptyState) friendInspectEmptyState.style.display = 'flex';
+        if (friendInspectRoulettePanel) friendInspectRoulettePanel.style.display = 'none';
+        if (friendInspectDuelPanel) friendInspectDuelPanel.style.display = 'none';
+        if (friendInspectGachaPanel) friendInspectGachaPanel.style.display = 'none';
+        if (friendInspectExpeditionPanel) friendInspectExpeditionPanel.style.display = 'none';
+        return;
+      }
 
-    if (friendInspectEmptyState) friendInspectEmptyState.style.display = 'none';
+      if (friendInspectEmptyState) friendInspectEmptyState.style.display = 'none';
     switchFriendTab(activeFriendTab);
 
     // 1. Render Roulette Panel
@@ -1537,7 +1646,10 @@ document.addEventListener('DOMContentLoaded', () => {
         friendExpCriteriaList.innerHTML = '<div style="text-align: center; padding: 18px; color: var(--text-muted); font-size: 0.78rem;">Sin objetivos registrados.</div>';
       }
     }
+  } catch (renderErr) {
+    console.error('[Friend Inspect UI Render Error]', renderErr);
   }
+}
 
   function requestFriendDataRefresh() {
     if (refreshFriendIcon) refreshFriendIcon.classList.add('spinning');
@@ -1752,6 +1864,23 @@ document.addEventListener('DOMContentLoaded', () => {
       friendInspectDisconnectBtn.style.display = hasActiveRoom ? 'inline-flex' : 'none';
     }
 
+    // 1. Update Persistent Header Room Dock
+    if (quickShareRoomBtn) {
+      if (isP2pConnected) {
+        quickShareRoomBtn.className = 'btn-fluent room-dock-btn connected';
+        if (headerRoomStatusDot) headerRoomStatusDot.className = 'room-dock-dot connected';
+        if (headerRoomStatusText) headerRoomStatusText.textContent = currentP2pRoomCode ? `Sala ${currentP2pRoomCode}` : 'En Vivo';
+      } else if (currentP2pRoomCode) {
+        quickShareRoomBtn.className = 'btn-fluent room-dock-btn disconnected';
+        if (headerRoomStatusDot) headerRoomStatusDot.className = 'room-dock-dot disconnected';
+        if (headerRoomStatusText) headerRoomStatusText.textContent = `Reconectar`;
+      } else {
+        quickShareRoomBtn.className = 'btn-fluent room-dock-btn';
+        if (headerRoomStatusDot) headerRoomStatusDot.className = 'room-dock-dot offline';
+        if (headerRoomStatusText) headerRoomStatusText.textContent = 'Sala Multijugador';
+      }
+    }
+
     if (!sharedRoomBanner) return;
 
     if (!hasActiveRoom) {
@@ -1764,8 +1893,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const isHost = (p2pRole === 'host');
     const friendProfile = remotePeerProfile || remoteHostProfile;
 
-    if (sharedRoomBannerBadge) {
-      sharedRoomBannerBadge.textContent = isHost ? '✦ Mi Sala en Vivo (Anfitrión)' : '✦ Sala de Amigo (Invitado)';
+    if (isP2pConnected) {
+      sharedRoomBanner.classList.remove('disconnected', 'reconnecting');
+      if (reconnectRoomBannerBtn) reconnectRoomBannerBtn.classList.remove('attention-pulse');
+      if (sharedRoomBannerBadge) {
+        sharedRoomBannerBadge.textContent = isHost ? '✦ Mi Sala en Vivo (Anfitrión)' : '✦ Sala de Amigo (Invitado)';
+      }
+    } else {
+      sharedRoomBanner.classList.add('disconnected');
+      if (reconnectRoomBannerBtn) reconnectRoomBannerBtn.classList.add('attention-pulse');
+      if (sharedRoomBannerBadge) {
+        sharedRoomBannerBadge.textContent = `✕ Conexión Perdida (Sala: ${currentP2pRoomCode || '---'})`;
+      }
     }
 
     if (sharedRoomBannerCodeChip) {
@@ -1780,7 +1919,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (sharedRoomSubText) {
         sharedRoomSubText.textContent = isP2pConnected
           ? `En vivo con ${friendProfile?.username || 'tu amigo'} (UID: ${friendProfile?.uid || '---'}). Sincronización activa.`
-          : `Esperando a tu amigo... Comparte el código ${currentP2pRoomCode || ''} o el enlace para jugar juntos.`;
+          : `Conexión temporalmente interrumpida. Pulsa "Reconectar Sala" para reanudar el enlace con tu amigo.`;
       }
     } else {
       if (sharedRoomHostAvatar) sharedRoomHostAvatar.src = remoteHostProfile?.avatar || (friendProfile?.avatar || 'https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/character/1001.png');
@@ -1789,7 +1928,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (sharedRoomSubText) {
         sharedRoomSubText.textContent = isP2pConnected
           ? `Conectado en vivo con el anfitrión. Sincronización activa mediante Mesh Global.`
-          : `Conectando con la sala ${currentP2pRoomCode || ''}... Comprueba que el anfitrión esté en línea.`;
+          : `Conexión temporalmente interrumpida con la sala ${currentP2pRoomCode || ''}. Pulsa "Reconectar Sala" para volver a enlazar.`;
       }
     }
 
@@ -1831,7 +1970,19 @@ document.addEventListener('DOMContentLoaded', () => {
       try { p2pPeer.reconnect(); } catch (e) {}
     }
 
-    // 3. Send handshake & ping & full state request
+    // 3. WebRTC DataConnection Verification
+    if (p2pRole === 'guest' && currentP2pRoomCode) {
+      if (!p2pConn || !p2pConn.open || force) {
+        console.log('[P2P Health] Reconectando DataConnection WebRTC con el anfitrión...');
+        connectToPeer(currentP2pRoomCode);
+      }
+    } else if (p2pRole === 'host' && currentP2pRoomCode) {
+      if (!p2pPeer || p2pPeer.destroyed) {
+        initP2PHost(currentP2pRoomCode);
+      }
+    }
+
+    // 4. Send handshake & ping & full state request
     sendP2PMessage('HANDSHAKE', {
       profile: userProfile,
       role: p2pRole || 'host',
@@ -2333,13 +2484,29 @@ document.addEventListener('DOMContentLoaded', () => {
       isP2pConnected = false;
       updateP2PStatusUI('offline', 'Desconectado');
       if (p2pHostStatusText) p2pHostStatusText.textContent = 'La conexión P2P se ha cerrado.';
-      showToast('✦ Conexión P2P cerrada', 'warn');
+      if (currentP2pRoomCode) {
+        showToast('✦ Conexión P2P interrumpida. Reintentando en segundo plano...', 'warn');
+        setTimeout(() => {
+          if (currentP2pRoomCode && !isP2pConnected) {
+            verifyAndReconnectP2P(true);
+          }
+        }, 1800);
+      } else {
+        showToast('✦ Conexión P2P cerrada', 'warn');
+      }
     });
 
     conn.on('error', (err) => {
       console.warn('DataConnection error:', err);
       isP2pConnected = false;
       updateP2PStatusUI('offline', 'Error P2P');
+      if (currentP2pRoomCode) {
+        setTimeout(() => {
+          if (currentP2pRoomCode && !isP2pConnected) {
+            verifyAndReconnectP2P(true);
+          }
+        }, 1800);
+      }
     });
 
     if (conn.peerConnection) {
@@ -2377,6 +2544,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const roomCode = customCode || generateP2PRoomCode();
     currentP2pRoomCode = roomCode;
     p2pRole = 'host';
+    try {
+      sessionStorage.setItem('hsr_active_p2p_room', roomCode);
+      sessionStorage.setItem('hsr_active_p2p_role', 'host');
+    } catch (e) {}
 
     if (p2pCurrentRoomCode) p2pCurrentRoomCode.textContent = roomCode;
     if (p2pHostStatusText) p2pHostStatusText.textContent = `Sala creada: ${roomCode}. Esperando a que tu amigo se conecte...`;
@@ -2457,6 +2628,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     currentP2pRoomCode = cleanCode;
     p2pRole = 'guest';
+    try {
+      sessionStorage.setItem('hsr_active_p2p_room', cleanCode);
+      sessionStorage.setItem('hsr_active_p2p_role', 'guest');
+    } catch (e) {}
 
     if (p2pCurrentRoomCode) p2pCurrentRoomCode.textContent = cleanCode;
     const retryStatusLabel = p2pJoinRetryCount > 0 ? `Buscando (${p2pJoinRetryCount}/${MAX_P2P_RETRIES})...` : 'Conectando...';
@@ -2556,6 +2731,10 @@ document.addEventListener('DOMContentLoaded', () => {
     isP2pConnected = false;
     currentP2pRoomCode = null;
     p2pRole = null;
+    try {
+      sessionStorage.removeItem('hsr_active_p2p_room');
+      sessionStorage.removeItem('hsr_active_p2p_role');
+    } catch (e) {}
     remoteHostProfile = null;
     remotePeerProfile = null;
     friendGameState = {
@@ -2689,6 +2868,8 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('hsr_owned_characters', JSON.stringify(Array.from(ownedCharacterIds)));
     localStorage.setItem('hsr_roster_filter_active', String(isRosterFilterActive));
     updateRosterUI();
+    populateCaptainSelect();
+    updateGachaPoolStatusBadge();
   }
 
   function toggleCharacterOwned(cid) {
@@ -2923,7 +3104,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function populateCaptainSelect() {
     rouletteCaptainSelect.innerHTML = '<option value="">Aleatorio (Sin fijar)</option>';
-    const sorted = [...characters].sort((a, b) => a.name.localeCompare(b.name));
+    const pool = (isRosterFilterActive && ownedCharacterIds && ownedCharacterIds.size > 0)
+      ? characters.filter(c => ownedCharacterIds.has(String(c.id)))
+      : characters;
+    const sorted = [...pool].sort((a, b) => a.name.localeCompare(b.name));
     sorted.forEach(c => {
       const opt = document.createElement('option');
       opt.value = c.id;
@@ -2937,6 +3121,8 @@ document.addEventListener('DOMContentLoaded', () => {
      ========================================================================== */
   function getFilteredCharacters() {
     return currentCharacters.filter(c => {
+      if (isRosterFilterActive && !ownedCharacterIds.has(String(c.id))) return false;
+
       if (filterState.search) {
         const q = filterState.search.toLowerCase();
         const matchName = c.name.toLowerCase().includes(q) || c.name_en.toLowerCase().includes(q);
@@ -5253,6 +5439,12 @@ document.addEventListener('DOMContentLoaded', () => {
     profileModalCloseBtn.addEventListener('click', closeProfileModal);
     saveProfileBtn.addEventListener('click', saveProfile);
     exportSettingsJsonBtn.addEventListener('click', exportAllDataAsJson);
+    if (exportObtainedCsvBtn) {
+      exportObtainedCsvBtn.addEventListener('click', exportObtainedCharactersCsv);
+    }
+    if (exportRosterCsvBtn) {
+      exportRosterCsvBtn.addEventListener('click', exportObtainedCharactersCsv);
+    }
     importSettingsFileInput.addEventListener('change', handleImportJsonFile);
     resetAllSettingsBtn.addEventListener('click', resetAllData);
     if (forceClearCacheBtn) forceClearCacheBtn.addEventListener('click', forceClearAppCache);
@@ -5372,6 +5564,7 @@ document.addEventListener('DOMContentLoaded', () => {
     rosterMasterToggle.addEventListener('change', (e) => {
       isRosterFilterActive = e.target.checked;
       saveOwnedRoster();
+      renderCharacters();
       playUiSound('click');
       showToast(isRosterFilterActive ? 'Filtro de colección activado' : 'Filtro de colección desactivado', isRosterFilterActive ? 'success' : 'error');
     });

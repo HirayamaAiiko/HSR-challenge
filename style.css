@@ -2403,6 +2403,125 @@ svg {
   border-color: rgba(234, 179, 8, 0.4);
 }
 
+/* Persistent Header Room Dock & Connection Status */
+.room-dock-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  position: relative;
+  background: rgba(13, 148, 136, 0.22);
+  border: 1px solid rgba(45, 212, 191, 0.45);
+  color: var(--text-primary);
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+
+.room-dock-btn:hover {
+  background: rgba(13, 148, 136, 0.35);
+  border-color: rgba(45, 212, 191, 0.7);
+  box-shadow: 0 0 12px rgba(45, 212, 191, 0.25);
+}
+
+.room-dock-btn.connected {
+  background: rgba(16, 185, 129, 0.18);
+  border-color: rgba(52, 211, 153, 0.6);
+  color: #a7f3d0;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+}
+
+.room-dock-btn.reconnecting {
+  background: rgba(245, 158, 11, 0.18);
+  border-color: rgba(251, 191, 36, 0.6);
+  color: #fef08a;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.2);
+}
+
+.room-dock-btn.disconnected {
+  background: rgba(239, 68, 68, 0.18);
+  border-color: rgba(248, 113, 113, 0.6);
+  color: #fca5a5;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.2);
+}
+
+.room-dock-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: inline-block;
+  background: #64748b;
+  transition: background 0.3s ease;
+}
+
+.room-dock-dot.connected {
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+  animation: pulseDot 1.6s ease-in-out infinite;
+}
+
+.room-dock-dot.reconnecting {
+  background: #f59e0b;
+  box-shadow: 0 0 8px #f59e0b;
+  animation: pulseDot 1s ease-in-out infinite;
+}
+
+.room-dock-dot.disconnected {
+  background: #ef4444;
+  box-shadow: 0 0 8px #ef4444;
+  animation: pulseDot 0.8s ease-in-out infinite;
+}
+
+.room-dock-dot.offline {
+  background: #94a3b8;
+}
+
+/* Banner Alert States */
+.shared-room-banner.disconnected {
+  background: linear-gradient(90deg, rgba(239, 68, 68, 0.25) 0%, rgba(15, 23, 42, 0.95) 100%) !important;
+  border-color: rgba(248, 113, 113, 0.6) !important;
+  box-shadow: 0 4px 18px rgba(239, 68, 68, 0.25) !important;
+}
+
+.shared-room-banner.reconnecting {
+  background: linear-gradient(90deg, rgba(245, 158, 11, 0.25) 0%, rgba(15, 23, 42, 0.95) 100%) !important;
+  border-color: rgba(251, 191, 36, 0.6) !important;
+  box-shadow: 0 4px 18px rgba(245, 158, 11, 0.25) !important;
+}
+
+.shared-room-banner.disconnected .shared-room-badge-tag {
+  color: #f87171 !important;
+  background: rgba(239, 68, 68, 0.25) !important;
+}
+
+.shared-room-banner.reconnecting .shared-room-badge-tag {
+  color: #fbbf24 !important;
+  background: rgba(245, 158, 11, 0.25) !important;
+}
+
+.attention-pulse {
+  animation: attentionPulseAnim 1.6s ease-in-out infinite !important;
+  background: rgba(45, 212, 191, 0.25) !important;
+  border-color: #2dd4bf !important;
+  color: #ffffff !important;
+}
+
+@keyframes attentionPulseAnim {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.6);
+  }
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 0 14px 4px rgba(45, 212, 191, 0.4);
+  }
+}
+
+#friendInspectModal {
+  z-index: 1050 !important;
+}
+
 /* Modal de Compartir & Sala Multijugador */
 .share-dialog {
   max-width: 680px;
@@ -4756,9 +4875,21 @@ svg {
 
   /* Ocultar etiquetas largas en botones del header móvil */
   #rosterBtnText,
-  #headerUserName,
-  #quickShareRoomBtn span {
+  #headerUserName {
     display: none;
+  }
+
+  .room-dock-btn {
+    padding: 5px 9px !important;
+  }
+
+  .room-dock-btn #headerRoomStatusText {
+    display: inline-block !important;
+    font-size: 0.68rem;
+    max-width: 82px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .profile-header-btn {
