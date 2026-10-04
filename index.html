@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Honkai: Star Rail — Compendio y Modos de Juego</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=1.11.2">
   <link rel="icon" href="https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Destruction.png" type="image/png">
 </head>
 <body>
@@ -70,6 +73,13 @@
               <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
             </svg>
           </span>
+        </button>
+
+        <!-- Force Cache Clear Trigger -->
+        <button id="forceClearCacheBtn" class="btn-fluent btn-icon" title="Limpiar caché y recargar la versión más reciente">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+            <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+          </svg>
         </button>
 
         <!-- User Profile Trigger -->
@@ -507,9 +517,17 @@
 
       <!-- Recommended Starting Squad -->
       <div>
-        <h3 class="section-subheading">
-          <span>◆</span> Escuadra de Partida Sugerida
-        </h3>
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+          <h3 class="section-subheading" style="margin-bottom: 0;">
+            <span>◆</span> Escuadra de Partida Sugerida
+          </h3>
+          <button type="button" id="rerollUnivSquadBtn" class="btn-fluent" style="font-size: 0.78rem;" title="Re-sortear combatientes no fijados manteniendo los modificadores de la expedición">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+              <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+            </svg>
+            <span>Re-tirar Escuadra</span>
+          </button>
+        </div>
         <div class="team-slots-grid" id="univTeamSlotsGrid"></div>
       </div>
 
@@ -1102,6 +1120,12 @@
                 <span>Restaurar Archivo</span>
                 <input type="file" id="importSettingsFileInput" accept=".json" style="display: none;">
               </label>
+              <button id="forceClearCacheModalBtn" class="btn-fluent" style="font-size: 0.76rem;" title="Limpiar almacenamiento temporal y recargar">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+                  <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+                </svg>
+                <span>Limpiar Caché</span>
+              </button>
               <button id="resetAllSettingsBtn" class="btn-fluent" style="color: #fca5a5; margin-left: auto;">
                 Reiniciar Datos
               </button>
@@ -1287,8 +1311,9 @@
 
   <!-- Load Data and Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
-  <script src="characters_data.js"></script>
-  <script src="game_modes.js"></script>
-  <script src="app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mqtt@5.16.0/dist/mqtt.min.js"></script>
+  <script src="characters_data.js?v=1.11.2"></script>
+  <script src="game_modes.js?v=1.11.2"></script>
+  <script src="app.js?v=1.11.2"></script>
 </body>
 </html>

@@ -282,7 +282,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const univSeedDisplay = document.getElementById('univSeedDisplay');
   const univTeamSlotsGrid = document.getElementById('univTeamSlotsGrid');
   const newUnivChallengeBtn = document.getElementById('newUnivChallengeBtn');
+  const rerollUnivSquadBtn = document.getElementById('rerollUnivSquadBtn');
   const copyUnivChallengeBtn = document.getElementById('copyUnivChallengeBtn');
+  const forceClearCacheBtn = document.getElementById('forceClearCacheBtn');
+  const forceClearCacheModalBtn = document.getElementById('forceClearCacheModalBtn');
 
   // Scorecard DOM Elements
   const p1ExpAvatar = document.getElementById('p1ExpAvatar');
@@ -459,9 +462,12 @@ document.addEventListener('DOMContentLoaded', () => {
       updateUserProfileUI();
     }
 
-    // Auto-join WebRTC P2P room if room param is present
+    // Auto-join WebRTC/MQTT P2P room if room param is present
     if (roomParam && (!p2pConn || currentP2pRoomCode !== roomParam)) {
       joinP2PRoom(roomParam);
+    } else if (!roomParam && !currentP2pRoomCode && !p2pConn) {
+      // Auto-create Host Room on startup so the host is always ready
+      initP2PHost();
     }
 
     switchTab(tab, false);
@@ -800,7 +806,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function exportAllDataAsJson() {
     const exportPayload = {
       app: 'HSR_Endgame_Platform',
-      version: '1.11.1',
+      version: '1.11.2',
       exportDate: new Date().toISOString(),
       profile: userProfile,
       ownedCharacters: Array.from(ownedCharacterIds),
@@ -899,6 +905,23 @@ document.addEventListener('DOMContentLoaded', () => {
       showToast('Datos reiniciados. Recargando...', '↻');
       setTimeout(() => window.location.reload(), 500);
     }
+  }
+
+  function forceClearAppCache() {
+    try {
+      if ('caches' in window) {
+        caches.keys().then(names => {
+          names.forEach(name => caches.delete(name));
+        });
+      }
+      sessionStorage.clear();
+      localStorage.setItem('hsr_client_version', '1.11.2');
+    } catch (e) {}
+    showToast('↻ Purgando almacenamiento temporal y recargando...', 'info');
+    setTimeout(() => {
+      const cleanUrl = window.location.origin + window.location.pathname;
+      window.location.href = `${cleanUrl}?nocache=${Date.now()}`;
+    }, 350);
   }
 
   /* ==========================================================================
@@ -1306,6 +1329,100 @@ document.addEventListener('DOMContentLoaded', () => {
     return `hsrv2-peer-${clean.toLowerCase()}`;
   }
 
+  // Multi-Broker Global MQTT Mesh Network (100% Reliable Cross-Country Relay)
+  const MQTT_BROKERS = [
+    'wss://broker.emqx.io:8084/mqtt',
+    'wss://broker.hivemq.com:8884/mqtt'
+  ];
+  let currentBrokerIndex = 0;
+  let mqttClient = null;
+  const processedMessageTimestamps = new Set();
+
+  function initMqttRoom(roomCode, role) {
+    if (typeof mqtt === 'undefined') {
+      console.warn('[P2P Mesh] Librería MQTT no disponible, operando únicamente con WebRTC.');
+      return;
+    }
+    if (mqttClient) {
+      try { mqttClient.end(true); } catch (e) {}
+      mqttClient = null;
+    }
+
+    const brokerUrl = MQTT_BROKERS[currentBrokerIndex];
+    const cleanRoom = roomCode.toUpperCase().replace(/[^A-Z0-9]/g, '');
+    const clientId = `hsr_${role}_${cleanRoom}_${Math.random().toString(36).substring(2, 8)}`;
+    console.log(`[P2P Mesh] Conectando a broker global: ${brokerUrl} para sala ${cleanRoom} (${role})`);
+
+    try {
+      mqttClient = mqtt.connect(brokerUrl, {
+        clientId: clientId,
+        clean: true,
+        connectTimeout: 7000,
+        reconnectPeriod: 3000,
+        keepalive: 20
+      });
+
+      const mySubTopic = (role === 'host') 
+        ? `hsr/room/${cleanRoom}/host` 
+        : `hsr/room/${cleanRoom}/guest`;
+
+      mqttClient.on('connect', () => {
+        console.log(`[P2P Mesh] Conectado exitosamente al broker MQTT (${role})`);
+        mqttClient.subscribe(mySubTopic, { qos: 0 }, (err) => {
+          if (!err) {
+            console.log(`[P2P Mesh] Suscrito al canal global de sala: ${mySubTopic}`);
+            if (role === 'guest') {
+              sendP2PMessage('HANDSHAKE', {
+                profile: userProfile,
+                role: 'guest',
+                fullState: getFullStatePayload()
+              });
+            } else {
+              updateP2PStatusUI('waiting', 'Esperando Amigo (Global)...');
+            }
+          }
+        });
+      });
+
+      mqttClient.on('message', (topic, payload) => {
+        try {
+          const data = JSON.parse(payload.toString());
+          if (data && data.type) {
+            if (!isP2pConnected) {
+              isP2pConnected = true;
+              p2pJoinRetryCount = 0;
+              if (p2pJoinRetryTimer) {
+                clearTimeout(p2pJoinRetryTimer);
+                p2pJoinRetryTimer = null;
+              }
+              updateP2PStatusUI('connected', role === 'host' ? 'En Vivo con Amigo (Global)' : 'En Vivo con Anfitrión (Global)');
+              if (p2pHostStatusText) {
+                p2pHostStatusText.textContent = role === 'host'
+                  ? '¡Tu amigo se ha conectado a la sala! Sincronizando datos en vivo a nivel mundial.'
+                  : '¡Conectado al anfitrión en vivo!';
+              }
+              showToast(role === 'host' ? '✦ ¡Amigo conectado a la sala!' : '✦ ¡Conectado al anfitrión en vivo!', 'success');
+              playUiSound('fanfare');
+            }
+            handleIncomingP2PData(data);
+          }
+        } catch (e) {
+          console.warn('[P2P Mesh] Error procesando mensaje MQTT:', e);
+        }
+      });
+
+      mqttClient.on('error', (err) => {
+        console.warn('[P2P Mesh] Error en broker MQTT:', err);
+        if (!mqttClient.connected && currentBrokerIndex < MQTT_BROKERS.length - 1) {
+          currentBrokerIndex++;
+          initMqttRoom(roomCode, role);
+        }
+      });
+    } catch (err) {
+      console.warn('[P2P Mesh] Error al iniciar cliente MQTT:', err);
+    }
+  }
+
   let p2pHeartbeatInterval = null;
   function startP2PHeartbeat() {
     stopP2PHeartbeat();
@@ -1314,10 +1431,8 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('[P2P] Reconnecting signaling WebSocket...');
         try { p2pPeer.reconnect(); } catch (e) {}
       }
-      if (p2pConn && p2pConn.open) {
-        try {
-          p2pConn.send({ type: 'HEARTBEAT_PING', timestamp: Date.now() });
-        } catch (e) {}
+      if (isP2pConnected) {
+        sendP2PMessage('HEARTBEAT_PING', { timestamp: Date.now() });
       }
     }, 15000);
   }
@@ -1344,13 +1459,38 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function sendP2PMessage(type, payload = {}) {
+    const msg = { type, ...payload, timestamp: Date.now() };
+    const msgKey = `${type}_${msg.timestamp}_${JSON.stringify(payload).length}`;
+    processedMessageTimestamps.add(msgKey);
+    if (processedMessageTimestamps.size > 200) {
+      const first = processedMessageTimestamps.values().next().value;
+      processedMessageTimestamps.delete(first);
+    }
+
+    let sent = false;
+    // 1. Direct WebRTC DataChannel (si está disponible)
     if (p2pConn && p2pConn.open) {
       try {
-        p2pConn.send({ type, ...payload, timestamp: Date.now() });
+        p2pConn.send(msg);
+        sent = true;
       } catch (err) {
-        console.warn('P2P Message send error:', err);
+        console.warn('WebRTC send error:', err);
       }
     }
+    // 2. Global MQTT Mesh Relay (Garantía 100% entre diferentes países/ISPs)
+    if (mqttClient && mqttClient.connected && currentP2pRoomCode) {
+      try {
+        const cleanRoom = currentP2pRoomCode.toUpperCase().replace(/[^A-Z0-9]/g, '');
+        const targetTopic = (p2pRole === 'host') 
+          ? `hsr/room/${cleanRoom}/guest` 
+          : `hsr/room/${cleanRoom}/host`;
+        mqttClient.publish(targetTopic, JSON.stringify(msg));
+        sent = true;
+      } catch (err) {
+        console.warn('MQTT publish error:', err);
+      }
+    }
+    return sent;
   }
 
   function syncStateToGuest() {
@@ -1422,6 +1562,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (p2ExpSvg) p2ExpSvg.style.display = 'none';
           }
           syncStateToGuest();
+          if (data.role === 'guest') {
+            sendP2PMessage('HANDSHAKE', {
+              profile: userProfile,
+              role: 'host',
+              fullState: getFullStatePayload()
+            });
+          }
         } else if (p2pRole === 'guest') {
           if (duelP1NameDisplay) {
             duelP1NameDisplay.textContent = `P1: ${data.profile?.username || 'Anfitrión'} (UID: ${data.profile?.uid || '---'})`;
@@ -1694,6 +1841,9 @@ document.addEventListener('DOMContentLoaded', () => {
     updateShareModalUrl();
     renderShareSummaryChips();
 
+    // Global MQTT Mesh Relay Room
+    initMqttRoom(roomCode, 'host');
+
     const peerId = getPeerIdFromCode(roomCode);
     p2pPeer = new Peer(peerId, createPeerConfig());
 
@@ -1771,6 +1921,11 @@ document.addEventListener('DOMContentLoaded', () => {
       p2pHostStatusText.textContent = `Conectando con la sala ${cleanCode}... (Intento ${p2pJoinRetryCount + 1}/${MAX_P2P_RETRIES})`;
     }
 
+    // Global MQTT Mesh Relay Room
+    if (!isRetry) {
+      initMqttRoom(cleanCode, 'guest');
+    }
+
     p2pPeer = new Peer(createPeerConfig());
 
     p2pPeer.on('open', () => {
@@ -1819,11 +1974,13 @@ document.addEventListener('DOMContentLoaded', () => {
           joinP2PRoom(cleanCode, true);
         }, delay);
       } else {
-        updateP2PStatusUI('offline', 'Sala no encontrada');
-        if (p2pHostStatusText) {
-          p2pHostStatusText.textContent = `No se pudo conectar a la sala ${cleanCode}. Asegúrate de que tu amigo tenga la sala abierta en su navegador.`;
+        if (!isP2pConnected) {
+          updateP2PStatusUI('offline', 'Sala no encontrada');
+          if (p2pHostStatusText) {
+            p2pHostStatusText.textContent = `No se pudo conectar a la sala ${cleanCode}. Asegúrate de que tu amigo tenga la sala abierta en su navegador.`;
+          }
+          showToast(`No se encontró la sala ${cleanCode}. Comprueba que el anfitrión tenga su ventana abierta.`, 'warn');
         }
-        showToast(`No se encontró la sala ${cleanCode}. Comprueba que el anfitrión tenga su ventana abierta.`, 'warn');
       }
     });
   }
@@ -1835,6 +1992,11 @@ document.addEventListener('DOMContentLoaded', () => {
       p2pJoinRetryTimer = null;
     }
     p2pJoinRetryCount = 0;
+
+    if (mqttClient) {
+      try { mqttClient.end(true); } catch (e) {}
+      mqttClient = null;
+    }
 
     if (p2pConn) {
       try { p2pConn.close(); } catch (e) {}
@@ -2631,6 +2793,11 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
+    // Si la ranura estaba fijada, liberarla para permitir el nuevo personaje
+    if (lockedExpeditionSlots.has(index)) {
+      lockedExpeditionSlots.delete(index);
+    }
+
     const effectiveWhitelist = getEffectiveWhitelist();
     const currentIds = new Set(
       currentExpeditionChallenge.team
@@ -2654,6 +2821,47 @@ document.addEventListener('DOMContentLoaded', () => {
     playUiSound('tick');
     renderTeamSlots(currentExpeditionChallenge.team, univTeamSlotsGrid, false, 'expedition');
     showToast(`Posición ${index + 1} actualizada en Expedición: ${randChar.name}`, 'dice');
+    broadcastExpeditionState();
+  }
+
+  function rerollEntireExpeditionSquad() {
+    if (!currentExpeditionChallenge || !currentExpeditionChallenge.team) {
+      generateExpedition();
+      return;
+    }
+    const effectiveWhitelist = getEffectiveWhitelist();
+    const lockedIds = new Set();
+    lockedExpeditionSlots.forEach(idx => {
+      if (currentExpeditionChallenge.team[idx]) {
+        lockedIds.add(String(currentExpeditionChallenge.team[idx].id));
+      }
+    });
+
+    const availablePool = characters.filter(ch => {
+      if (lockedIds.has(String(ch.id))) return false;
+      if (effectiveWhitelist && !effectiveWhitelist.has(String(ch.id))) return false;
+      return true;
+    });
+
+    if (availablePool.length === 0) {
+      showToast('No hay más combatientes disponibles según tus filtros de colección', 'warn');
+      return;
+    }
+
+    const shuffled = [...availablePool].sort(() => 0.5 - Math.random());
+    let poolIdx = 0;
+
+    for (let i = 0; i < 4; i++) {
+      if (!lockedExpeditionSlots.has(i)) {
+        if (poolIdx < shuffled.length) {
+          currentExpeditionChallenge.team[i] = shuffled[poolIdx++];
+        }
+      }
+    }
+
+    playUiSound('dice');
+    renderTeamSlots(currentExpeditionChallenge.team, univTeamSlotsGrid, false, 'expedition');
+    showToast('Escuadra de expedición re-sorteada con éxito', 'dice');
     broadcastExpeditionState();
   }
 
@@ -4439,6 +4647,8 @@ document.addEventListener('DOMContentLoaded', () => {
     exportSettingsJsonBtn.addEventListener('click', exportAllDataAsJson);
     importSettingsFileInput.addEventListener('change', handleImportJsonFile);
     resetAllSettingsBtn.addEventListener('click', resetAllData);
+    if (forceClearCacheBtn) forceClearCacheBtn.addEventListener('click', forceClearAppCache);
+    if (forceClearCacheModalBtn) forceClearCacheModalBtn.addEventListener('click', forceClearAppCache);
     profileModal.addEventListener('click', (e) => {
       if (e.target === profileModal) closeProfileModal();
     });
@@ -4782,6 +4992,10 @@ document.addEventListener('DOMContentLoaded', () => {
         sendP2PMessage('NEW_EXPEDITION', { mode: currentExpeditionMode, seed: currentExpeditionChallenge.seed });
       }
     });
+
+    if (rerollUnivSquadBtn) {
+      rerollUnivSquadBtn.addEventListener('click', rerollEntireExpeditionSquad);
+    }
 
     copyUnivChallengeBtn.addEventListener('click', () => {
       openShareRoomModal();
