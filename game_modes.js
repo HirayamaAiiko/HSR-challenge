@@ -967,6 +967,29 @@ const HSR_GAME_MODES = (() => {
     if (pool5.length === 0) pool5 = cat.filter(c => c.rarity === 5);
     if (pool4.length === 0) pool4 = cat.filter(c => c.rarity === 4);
 
+    // No-Duplicates Filter: Exclude characters already acquired in current session inventory
+    const noDuplicatesActive = Boolean(session && session.noDuplicates);
+    let pool5Exhausted = false;
+    let pool4Exhausted = false;
+
+    if (noDuplicatesActive && Array.isArray(session.inventory) && session.inventory.length > 0) {
+      const obtainedIds = new Set(session.inventory.map(c => String(c.id)));
+      const unobtained5 = pool5.filter(c => !obtainedIds.has(String(c.id)));
+      const unobtained4 = pool4.filter(c => !obtainedIds.has(String(c.id)));
+
+      if (unobtained5.length > 0) {
+        pool5 = unobtained5;
+      } else {
+        pool5Exhausted = true; // All 5★ characters in candidate pool have been obtained
+      }
+
+      if (unobtained4.length > 0) {
+        pool4 = unobtained4;
+      } else {
+        pool4Exhausted = true; // All 4★ characters in candidate pool have been obtained
+      }
+    }
+
     let totalActiveCharacters = 0;
     if (rFilter === '5star') {
       totalActiveCharacters = pool5.length;
@@ -981,7 +1004,11 @@ const HSR_GAME_MODES = (() => {
       pool4,
       basePool,
       totalActiveCharacters,
-      isRosterFiltered: rosterFilterActive && Array.isArray(ownedIds) && ownedIds.length > 0
+      isRosterFiltered: rosterFilterActive && Array.isArray(ownedIds) && ownedIds.length > 0,
+      noDuplicatesActive,
+      pool5Exhausted,
+      pool4Exhausted,
+      isExhausted: noDuplicatesActive && pool5Exhausted && pool4Exhausted
     };
   }
 
@@ -1008,6 +1035,7 @@ const HSR_GAME_MODES = (() => {
       pity5StarTarget: targetPity, // Configurable: default 90 (hard pity guaranteed 5★)
       rarityFilter: rFilter, // 'all', '5star', '4star'
       filterByOwnedRoster: Boolean(options?.filterByOwnedRoster),
+      noDuplicates: Boolean(options?.noDuplicates),
       activeSquad: [null, null, null, null],
       inventory: [],
       history: []
@@ -1278,12 +1306,14 @@ const HSR_GAME_MODES = (() => {
 
     const rarityFilterLabel = session.rarityFilter === '5star' ? 'Solo 5★' : (session.rarityFilter === '4star' ? 'Solo 4★' : 'Todos [5★ y 4★]');
     const rosterFilterLabel = session.filterByOwnedRoster ? 'Sincronizado con Roster Personal' : 'Catálogo Completo';
+    const noDuplicatesLabel = session.noDuplicates ? 'Activo (Solo Personajes Nuevos)' : 'Inactivo (Permite Eidolons)';
 
     return `✦ ACTA DE AUDITORÍA Y SALTO // AIIKO MUSIC & STAR RAIL ✦
 Código Criptográfico de Verificación: ${session.seed}
 Banner Activo: ${banner.title}
 Filtro de Rareza: ${rarityFilterLabel}
 Filtro de Roster: ${rosterFilterLabel}
+Filtro Sin Duplicados: ${noDuplicatesLabel}
 Pity 5★ Configurado: Garantizado en ${session.pity5StarTarget || 90} tiros (Pity Actual: ${session.pity5Star}/${session.pity5StarTarget || 90})
 Pity 4★: Garantizado en 10 tiros (Pity Actual: ${session.pity4Star}/10)
 Tiradas Realizadas: ${session.totalPulls} / ${session.pullLimit ? session.pullLimit : 'Ilimitado'}

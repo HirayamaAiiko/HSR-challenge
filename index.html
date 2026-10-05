@@ -7,7 +7,7 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <title>Honkai: Star Rail — Compendio y Modos de Juego</title>
-  <link rel="stylesheet" href="style.css?v=1.11.6">
+  <link rel="stylesheet" href="style.css?v=1.12.0">
   <link rel="icon" href="https://cdn.jsdelivr.net/gh/Mar-7th/StarRailRes@master/icon/path/Destruction.png" type="image/png">
 </head>
 <body>
@@ -663,7 +663,12 @@
             <label class="gacha-checkbox-label" for="gachaSyncRosterToggle" title="Limitar personajes sorteables a tu colección guardada">
               <input type="checkbox" id="gachaSyncRosterToggle">
               <span class="checkbox-custom"></span>
-              <span class="gacha-sync-text">Limitar a mi Roster de Colección</span>
+              <span class="gacha-sync-text">Limitar a mi Roster</span>
+            </label>
+            <label class="gacha-checkbox-label" for="gachaNoDuplicatesToggle" title="Excluir del pool los personajes ya obtenidos en el inventario del Gachapón (solo sacar personajes nuevos)">
+              <input type="checkbox" id="gachaNoDuplicatesToggle">
+              <span class="checkbox-custom"></span>
+              <span class="gacha-sync-text">✦ Sin Duplicados (Solo Nuevos)</span>
             </label>
             <span class="gacha-pool-badge" id="gachaPoolStatusBadge">Cargando personajes...</span>
           </div>
@@ -1402,8 +1407,8 @@
   <!-- Load Data and Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mqtt@5.16.0/dist/mqtt.min.js"></script>
-  <script src="characters_data.js?v=1.11.6"></script>
-  <script src="game_modes.js?v=1.11.6"></script>
-  <script src="app.js?v=1.11.6"></script>
+  <script src="characters_data.js?v=1.12.0"></script>
+  <script src="game_modes.js?v=1.12.0"></script>
+  <script src="app.js?v=1.12.0"></script>
 </body>
 </html>

@@ -91,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentGachaRarityFilter = 'all'; // 'all', '5star', '4star'
   let currentGachaPityTarget = 90; // Configurable: 50, 70, 80, 90, custom
   let currentGachaSyncRoster = false;
+  let currentGachaNoDuplicates = false;
   let currentGachaSession = null;
   let activeSwapSlotIndex = null;
   let lastPullType = 'single'; // 'starter', 'single', 'ten'
@@ -336,6 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // DOM Elements: Gachapón Engine & Modals
   const gachaRarityFilterPills = document.getElementById('gachaRarityFilterPills');
   const gachaSyncRosterToggle = document.getElementById('gachaSyncRosterToggle');
+  const gachaNoDuplicatesToggle = document.getElementById('gachaNoDuplicatesToggle');
   const gachaPoolStatusBadge = document.getElementById('gachaPoolStatusBadge');
   const gachaPityTargetPills = document.getElementById('gachaPityTargetPills');
   const gachaCustomPityInput = document.getElementById('gachaCustomPityInput');
@@ -855,7 +857,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const exportPayload = {
       app: 'HSR_Endgame_Platform',
-      version: '1.11.6',
+      version: '1.12.0',
       exportDate: new Date().toISOString(),
       profile: userProfile,
       ownedCharacters: Array.from(ownedCharacterIds),
@@ -1013,7 +1015,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
       sessionStorage.clear();
-      localStorage.setItem('hsr_client_version', '1.11.6');
+      localStorage.setItem('hsr_client_version', '1.12.0');
     } catch (e) {}
     showToast('↻ Purgando almacenamiento temporal y recargando...', 'info');
     setTimeout(() => {
@@ -4456,6 +4458,7 @@ document.addEventListener('DOMContentLoaded', () => {
           currentGachaPityTarget = currentGachaSession.pity5StarTarget || 90;
           currentGachaRarityFilter = currentGachaSession.rarityFilter || 'all';
           currentGachaSyncRoster = Boolean(currentGachaSession.filterByOwnedRoster);
+          currentGachaNoDuplicates = Boolean(currentGachaSession.noDuplicates);
         }
       } catch (e) {
         currentGachaSession = null;
@@ -4465,12 +4468,16 @@ document.addEventListener('DOMContentLoaded', () => {
       currentGachaSession = HSR_GAME_MODES.createGachaSession(currentGachaLimit, null, {
         pity5StarTarget: currentGachaPityTarget,
         rarityFilter: currentGachaRarityFilter,
-        filterByOwnedRoster: currentGachaSyncRoster
+        filterByOwnedRoster: currentGachaSyncRoster,
+        noDuplicates: currentGachaNoDuplicates
       });
       saveGachaSession();
     }
     if (gachaSyncRosterToggle) {
       gachaSyncRosterToggle.checked = currentGachaSyncRoster;
+    }
+    if (gachaNoDuplicatesToggle) {
+      gachaNoDuplicatesToggle.checked = currentGachaNoDuplicates;
     }
   }
 
@@ -4586,20 +4593,35 @@ document.addEventListener('DOMContentLoaded', () => {
     if (gachaPoolStatusBadge) {
       const count = poolData.totalActiveCharacters;
       const isSync = currentGachaSession?.filterByOwnedRoster;
+      const isNoDup = currentGachaSession?.noDuplicates;
+
+      let labelText = '';
       if (isSync) {
-        gachaPoolStatusBadge.textContent = `${count} personajes de tu colección`;
-        gachaPoolStatusBadge.className = 'gacha-pool-badge synced';
+        labelText = `${count} personajes de tu colección`;
       } else {
-        gachaPoolStatusBadge.textContent = `${count} personajes disponibles en el pool`;
-        gachaPoolStatusBadge.className = 'gacha-pool-badge';
+        labelText = `${count} personajes disponibles en el pool`;
       }
+
+      if (isNoDup) {
+        if (poolData.isExhausted) {
+          labelText += ' • ✦ Sin Duplicados (¡Colección completada!)';
+        } else {
+          labelText += ` • ✦ Sin Duplicados (${poolData.pool5.length} de 5★ / ${poolData.pool4.length} de 4★)`;
+        }
+      }
+
+      gachaPoolStatusBadge.textContent = labelText;
+      gachaPoolStatusBadge.className = isSync ? 'gacha-pool-badge synced' : 'gacha-pool-badge';
     }
 
     if (gachaActivePoolBadge) {
       const filter = currentGachaSession?.rarityFilter || 'all';
-      const label = filter === '5star' ? `Solo 5★ (${poolData.pool5.length})` :
-                    filter === '4star' ? `Solo 4★ (${poolData.pool4.length})` :
-                    `5★ y 4★ (${poolData.totalActiveCharacters})`;
+      let label = filter === '5star' ? `Solo 5★ (${poolData.pool5.length})` :
+                  filter === '4star' ? `Solo 4★ (${poolData.pool4.length})` :
+                  `5★ y 4★ (${poolData.totalActiveCharacters})`;
+      if (currentGachaSession?.noDuplicates) {
+        label += ' [Sin Duplicados]';
+      }
       gachaActivePoolBadge.textContent = label;
       gachaActivePoolBadge.title = poolData.isRosterFiltered ? 'Filtrado por colección de personajes obtenida' : 'Todos los personajes del juego';
     }
@@ -5403,9 +5425,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function resetGachaSession() {
     if (confirm('¿Reiniciar sesión del Gachapón? Se restablecerán tus tiradas, inventario y escuadra activa con un nuevo código de auditoría.')) {
-      currentGachaSession = HSR_GAME_MODES.createGachaSession(currentGachaBannerId, currentGachaLimit);
+      currentGachaSession = HSR_GAME_MODES.createGachaSession(currentGachaLimit, null, {
+        pity5StarTarget: currentGachaPityTarget,
+        rarityFilter: currentGachaRarityFilter,
+        filterByOwnedRoster: currentGachaSyncRoster,
+        noDuplicates: currentGachaNoDuplicates
+      });
       saveGachaSession();
       renderGachaUI();
+      updateGachaPoolStatusBadge();
       showToast('Sesión de Gachapón reiniciada con éxito', '↻');
       playUiSound('click');
     }
@@ -5871,6 +5899,25 @@ document.addEventListener('DOMContentLoaded', () => {
           currentGachaSyncRoster
             ? 'Gachapón sincronizado: solo saldrán personajes de tu colección'
             : 'Gachapón global: todos los personajes disponibles en el universo de salto',
+          'info'
+        );
+      });
+    }
+
+    if (gachaNoDuplicatesToggle) {
+      gachaNoDuplicatesToggle.addEventListener('change', (e) => {
+        currentGachaNoDuplicates = e.target.checked;
+        if (currentGachaSession) {
+          currentGachaSession.noDuplicates = currentGachaNoDuplicates;
+          saveGachaSession();
+        }
+        playUiSound('click');
+        updateGachaPoolStatusBadge();
+        renderGachaBannerStage();
+        showToast(
+          currentGachaNoDuplicates
+            ? '✦ Gachapón: Modo sin duplicados activado (solo personajes nuevos)'
+            : 'Gachapón: Duplicados permitidos (desbloqueo de Eidolons normal)',
           'info'
         );
       });
